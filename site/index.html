@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caleb Pierce | Frontend Developer</title>
+  <meta name="description" content="Caleb Pierce is a frontend web developer based in Florida with 4 years of experience building fast, modern websites.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='8' fill='%234f9cff'/%3E%3Cpath d='M10.5 9.5 6 14l4.5 4.5M17.5 9.5 22 14l-4.5 4.5M16 8l-4 12' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Decorative depth layers: drifting light shafts + passing sea life -->
+  <div class="rays" aria-hidden="true"></div>
+  <div id="sealife" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <a href="#top" class="nav-logo" aria-label="Caleb Pierce home">
+      <svg class="logo-mark" width="30" height="30" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="logoGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#63a9ff"/>
+            <stop offset="1" stop-color="#2b6be0"/>
+          </linearGradient>
+        </defs>
+        <rect width="28" height="28" rx="8" fill="url(#logoGrad)"/>
+        <path d="M10.5 9.5 6 14l4.5 4.5M17.5 9.5 22 14l-4.5 4.5M16 8l-4 12" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="logo-name">Caleb Pierce</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#apps">Apps</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ============ HERO / ABOUT ============ -->
+  <main id="top">
+    <section class="hero" id="about">
+      <p class="eyebrow">Frontend Developer &middot; Florida, USA</p>
+      <h1>Caleb Pierce<span class="accent">.</span></h1>
+      <p class="hero-tagline">
+        I build clean, fast, modern websites from first pixel to launch.
+      </p>
+      <p class="hero-body">
+        For the past 4 years I've been designing and developing frontend experiences
+        that load quick, look sharp on every screen, and are easy for real people to use.
+        I work solo, which means one point of contact and full ownership of your project
+        from start to finish.
+      </p>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-primary">View my work</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+      <ul class="hero-stats">
+        <li><strong>4+</strong><span>Years of experience</span></li>
+        <li><strong>100%</strong><span>Custom code, no templates</span></li>
+        <li><strong>FL</strong><span>Based in Florida</span></li>
+      </ul>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section class="work" id="work">
+      <div class="section-head">
+        <p class="eyebrow">Selected Work</p>
+        <h2>Things I've built</h2>
+        <p class="section-sub">Live sites, with a preview of each. Click a project to visit it.</p>
+      </div>
+      <!-- Cards are generated from the PROJECTS list at the top of script.js -->
+      <div class="work-grid" id="work-grid"></div>
+    </section>
+
+    <!-- ============ APPS AND WIDGETS ============ -->
+    <section class="work apps" id="apps">
+      <div class="section-head">
+        <p class="eyebrow">Applications</p>
+        <h2>Apps and widgets</h2>
+        <p class="section-sub">Standalone tools and desktop builds, beyond the browser.</p>
+      </div>
+      <!-- Cards are generated from the APPS list at the top of script.js -->
+      <div class="work-grid" id="apps-grid"></div>
+    </section>
+  </main>
+
+  <!-- ============ CONTACT ============ -->
+  <footer class="contact" id="contact">
+    <p class="eyebrow">Contact</p>
+    <h2>Let's build something<span class="accent">.</span></h2>
+    <p class="contact-sub">Have a project in mind? Reach out. I usually reply within a day.</p>
+    <p class="contact-meta">Caleb Pierce &middot; Florida, USA</p>
+
+    <div class="contact-grid">
+      <a class="contact-btn" href="mailto:CFpremiumwebdevelopment@gmail.com">
+        <span class="contact-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        </span>
+        <span class="contact-text">
+          <strong>Email me</strong>
+          <span>CFpremiumwebdevelopment@gmail.com</span>
+        </span>
+        <span class="contact-arrow" aria-hidden="true">&#8599;</span>
+      </a>
+
+      <a class="contact-btn" href="tel:+13527446548">
+        <span class="contact-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.79.66 2.63a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.45-1.27a2 2 0 0 1 2.11-.45c.84.32 1.73.54 2.63.66A2 2 0 0 1 22 16.92Z"/></svg>
+        </span>
+        <span class="contact-text">
+          <strong>Call me</strong>
+          <span>(352) 744 6548</span>
+        </span>
+        <span class="contact-arrow" aria-hidden="true">&#8599;</span>
+      </a>
+
+      <a class="contact-btn" href="https://github.com/calebseft-source" target="_blank" rel="noopener noreferrer">
+        <span class="contact-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        </span>
+        <span class="contact-text">
+          <strong>GitHub</strong>
+          <span>github.com/calebseft-source</span>
+        </span>
+        <span class="contact-arrow" aria-hidden="true">&#8599;</span>
+      </a>
+
+      <!-- Replace the href below with your real LinkedIn URL when ready -->
+      <a class="contact-btn" href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+        <span class="contact-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.72C24 .77 23.2 0 22.22 0Z"/></svg>
+        </span>
+        <span class="contact-text">
+          <strong>LinkedIn</strong>
+          <span>linkedin.com/in/yourusername</span>
+        </span>
+        <span class="contact-arrow" aria-hidden="true">&#8599;</span>
+      </a>
+    </div>
+
+    <p class="copyright">&copy; <span id="year"></span> Caleb Pierce. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
