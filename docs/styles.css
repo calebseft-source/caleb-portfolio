@@ -116,8 +116,8 @@ body {
 
 @keyframes mcol-fade {
   0% { opacity: 0; }
-  18% { opacity: var(--op); }
-  78% { opacity: var(--op); }
+  7% { opacity: var(--op); }
+  88% { opacity: var(--op); }
   100% { opacity: 0; }
 }
 

@@ -351,10 +351,13 @@ const rainEl = document.getElementById("coderain");
 const rainCalm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // Slow fall, gentle opacity. near = closest/brightest/fastest.
+// life and drift are scaled together, so the fall SPEED (drift/life)
+// is unchanged from before — only the lifespan is shorter, which
+// makes drops fade in and out quicker.
 const RAIN_TIERS = [
-  { cls: "far", size: 12, op: 0.10, life: [15, 22], drift: [120, 220] },
-  { cls: "mid", size: 15, op: 0.15, life: [12, 18], drift: [180, 300] },
-  { cls: "near", size: 18, op: 0.20, life: [9, 14], drift: [240, 380] },
+  { cls: "far", size: 12, op: 0.10, life: [10, 15], drift: [80, 150] },
+  { cls: "mid", size: 15, op: 0.15, life: [8, 12], drift: [120, 200] },
+  { cls: "near", size: 18, op: 0.20, life: [6, 10], drift: [170, 270] },
 ];
 const RAIN_MAX = 11; // how many drops may be on screen at once
 
@@ -395,25 +398,24 @@ function spawnDrop() {
 
 function rainLoop() {
   spawnDrop();
-  setTimeout(rainLoop, rainRand(900, 2200));
+  setTimeout(rainLoop, rainRand(700, 1700));
 }
 
-// Every live drop cycles its glyphs in real time as it falls. This
-// only rewrites text content — the fall/fade animations are untouched,
-// so the scroll speed stays exactly the same.
+// Every live drop cycles its glyphs rapidly as it falls — close to the
+// speed of the "Coming Soon" scramble. This only rewrites text content;
+// the fall/fade animations are untouched, so the scroll speed stays
+// exactly the same.
 function flickerRain() {
   const cols = rainEl ? rainEl.children : [];
   for (let c = 0; c < cols.length; c++) {
     const col = cols[c];
     const chars = col.textContent.split("\n");
-    const swaps = 1 + Math.floor(Math.random() * 2); // 1-2 glyphs per drop per tick
-    for (let s = 0; s < swaps; s++) {
-      const idx = Math.floor(Math.random() * chars.length);
-      if (chars[idx]) chars[idx] = randGlyphR();
+    for (let i = 0; i < chars.length; i++) {
+      if (chars[i] && Math.random() < 0.7) chars[i] = randGlyphR();
     }
     col.textContent = chars.join("\n");
   }
-  setTimeout(flickerRain, 70);
+  setTimeout(flickerRain, 30);
 }
 
 if (!rainCalm && rainEl) {
