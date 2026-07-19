@@ -11,9 +11,9 @@ sea life silhouettes that swim past as you scroll (watch for the submarine).
 
 ## Structure
 
-- `site/index.html` page structure
-- `site/styles.css` all styling, colors live in `:root`
-- `site/script.js` project lists (`PROJECTS`, `APPS`), card rendering, and the ocean
+- `docs/index.html` page structure
+- `docs/styles.css` all styling, colors live in `:root`
+- `docs/script.js` project lists (`PROJECTS`, `APPS`), card rendering, and the ocean
 - `server.py` tiny stdlib static server, Railway ready (binds `0.0.0.0:$PORT`)
 
 ## Run locally

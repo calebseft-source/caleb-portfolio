@@ -7,7 +7,7 @@ import os
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 
 PORT = int(os.environ.get("PORT", 8641))
-ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "site")
+ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs")
 
 
 class Handler(SimpleHTTPRequestHandler):
