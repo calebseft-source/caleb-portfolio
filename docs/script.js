@@ -415,7 +415,7 @@ function flickerRain() {
     }
     col.textContent = chars.join("\n");
   }
-  setTimeout(flickerRain, 30);
+  setTimeout(flickerRain, 40);
 }
 
 if (!rainCalm && rainEl) {
