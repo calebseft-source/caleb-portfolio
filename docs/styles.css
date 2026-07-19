@@ -688,6 +688,39 @@ body {
   transform: translate(0, 0);
 }
 
+/* Placeholder contact buttons: present but not clickable */
+.contact-btn.disabled { cursor: default; }
+
+.contact-btn.disabled:hover {
+  transform: none;
+  border-color: var(--border);
+  box-shadow: none;
+}
+
+.contact-btn.disabled:hover .contact-icon {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* Matrix decode styling for scrambled contact values, same
+   treatment as the Coming Soon label */
+.contact-scramble {
+  font-family: Consolas, "Cascadia Mono", "Courier New", monospace;
+}
+
+.contact-scramble .sc {
+  display: inline-block;
+  width: 1ch;
+  text-align: center;
+}
+
+.contact-scramble .sc.sp { width: 0.7ch; }
+
+.contact-scramble .sc.glitch {
+  color: var(--accent);
+  opacity: 0.85;
+}
+
 .copyright {
   margin-top: 48px;
   font-size: 0.8rem;

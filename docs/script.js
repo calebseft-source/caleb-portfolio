@@ -333,6 +333,10 @@ renderGrid(PROJECTS, "work-grid", COMING_SOON_CARDS);
 renderGrid(APPS, "apps-grid", 0);
 document.getElementById("year").textContent = new Date().getFullYear();
 
+// LinkedIn placeholder: same matrix decode as the Coming Soon label
+const linkedinStatus = document.getElementById("linkedin-status");
+if (linkedinStatus) startScramble(linkedinStatus, "Not available");
+
 /* ============================================================
    SEA LIFE: tiny silhouettes drifting by behind the page.
    Purely decorative. Small fish pass now and then; bigger
