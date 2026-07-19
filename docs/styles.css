@@ -103,56 +103,9 @@ body {
   to { opacity: 1; }
 }
 
-/* ============ SEA LIFE ============ */
-
-#sealife {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.creature {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  will-change: transform, opacity;
-  animation:
-    creature-swim var(--dur) linear forwards,
-    creature-fade var(--dur) linear forwards;
-}
-
-.creature svg {
-  display: block;
-  width: var(--w);
-  height: auto;
-  fill: #060a12;
-  animation: creature-bob var(--bobdur) ease-in-out infinite alternate;
-}
-
-@keyframes creature-swim {
-  from { transform: translate3d(var(--x0), var(--y0), 0); }
-  to { transform: translate3d(var(--x1), var(--y1), 0); }
-}
-
-@keyframes creature-fade {
-  0% { opacity: 0; }
-  9% { opacity: var(--op); }
-  86% { opacity: var(--op); }
-  100% { opacity: 0; }
-}
-
-@keyframes creature-bob {
-  from { transform: scaleX(var(--flip)) translateY(-5px); }
-  to { transform: scaleX(var(--flip)) translateY(5px); }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .rays::before,
   .rays::after { animation: rays-breathe 11s ease-in-out infinite alternate; }
-  #sealife { display: none; }
 }
 
 .accent { color: var(--accent); }
