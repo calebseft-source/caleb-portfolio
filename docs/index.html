@@ -11,13 +11,45 @@
   <meta property="og:url" content="https://cfwebdev.net/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='8' fill='%234f9cff'/%3E%3Cpath d='M10.5 9.5 6 14l4.5 4.5M17.5 9.5 22 14l-4.5 4.5M16 8l-4 12' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='8' fill='%232fe66f'/%3E%3Cpath d='M10.5 9.5 6 14l4.5 4.5M17.5 9.5 22 14l-4.5 4.5M16 8l-4 12' stroke='%2304140b' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Decorative depth layer: drifting light shafts -->
-  <div class="rays" aria-hidden="true"></div>
+  <!-- Decorative background: circuit traces with traveling pulses,
+       and a green code-rain layer generated in script.js -->
+  <svg id="circuit" viewBox="0 0 1200 750" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g class="traces">
+      <path id="tr1" d="M-40 120 H 250 V 340 H 560 V 230 H 940 V 60"/>
+      <path id="tr2" d="M1240 170 H 990 V 430 H 700 V 620 H 360 V 470"/>
+      <path id="tr3" d="M60 780 V 520 H 330 V 650 H 680 V 470 H 1030 V 300 H 1240"/>
+      <path id="tr4" d="M-40 400 H 150 V 590 H 40"/>
+      <path id="tr5" d="M430 -30 V 130 H 780 V 40"/>
+      <path id="tr6" d="M1240 690 H 1080 V 500 H 1180"/>
+    </g>
+    <g class="nodes">
+      <circle cx="250" cy="120" r="4"/><circle cx="250" cy="340" r="4"/>
+      <circle cx="560" cy="340" r="4"/><circle cx="560" cy="230" r="4"/>
+      <circle cx="940" cy="230" r="5"/><circle cx="990" cy="170" r="4"/>
+      <circle cx="990" cy="430" r="4"/><circle cx="700" cy="430" r="4"/>
+      <circle cx="700" cy="620" r="4"/><circle cx="360" cy="620" r="5"/>
+      <circle cx="330" cy="520" r="4"/><circle cx="330" cy="650" r="4"/>
+      <circle cx="680" cy="650" r="4"/><circle cx="680" cy="470" r="4"/>
+      <circle cx="1030" cy="470" r="4"/><circle cx="1030" cy="300" r="5"/>
+      <circle cx="150" cy="400" r="4"/><circle cx="150" cy="590" r="4"/>
+      <circle cx="780" cy="130" r="4"/><circle cx="780" cy="40" r="4"/>
+      <circle cx="1080" cy="690" r="4"/><circle cx="1080" cy="500" r="4"/>
+    </g>
+    <g class="pulses">
+      <circle r="3"><animateMotion dur="7s" repeatCount="indefinite" rotate="auto"><mpath href="#tr1"/></animateMotion></circle>
+      <circle r="2.5"><animateMotion dur="9s" begin="1.5s" repeatCount="indefinite"><mpath href="#tr2"/></animateMotion></circle>
+      <circle r="3"><animateMotion dur="11s" repeatCount="indefinite"><mpath href="#tr3"/></animateMotion></circle>
+      <circle r="2.5"><animateMotion dur="6s" begin="3s" repeatCount="indefinite"><mpath href="#tr5"/></animateMotion></circle>
+      <circle r="2.5"><animateMotion dur="8s" begin="2s" repeatCount="indefinite"><mpath href="#tr6"/></animateMotion></circle>
+      <circle r="3"><animateMotion dur="10s" begin="4.5s" repeatCount="indefinite"><mpath href="#tr3"/></animateMotion></circle>
+    </g>
+  </svg>
+  <div id="coderain" aria-hidden="true"></div>
 
   <!-- ============ NAV ============ -->
   <header class="nav">
@@ -25,12 +57,12 @@
       <svg class="logo-mark" width="30" height="30" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
           <linearGradient id="logoGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#63a9ff"/>
-            <stop offset="1" stop-color="#2b6be0"/>
+            <stop stop-color="#5ef2a0"/>
+            <stop offset="1" stop-color="#1cae5b"/>
           </linearGradient>
         </defs>
         <rect width="28" height="28" rx="8" fill="url(#logoGrad)"/>
-        <path d="M10.5 9.5 6 14l4.5 4.5M17.5 9.5 22 14l-4.5 4.5M16 8l-4 12" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10.5 9.5 6 14l4.5 4.5M17.5 9.5 22 14l-4.5 4.5M16 8l-4 12" stroke="#04140b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <span class="logo-name">Caleb Pierce</span>
     </a>

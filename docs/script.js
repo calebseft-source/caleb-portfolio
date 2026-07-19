@@ -336,3 +336,86 @@ document.getElementById("year").textContent = new Date().getFullYear();
 // LinkedIn placeholder: same matrix decode as the Coming Soon label
 const linkedinStatus = document.getElementById("linkedin-status");
 if (linkedinStatus) startScramble(linkedinStatus, "Not available");
+
+/* ============================================================
+   CODE RAIN: sparse green glyph drops. Each one fades in at a
+   random spot, drifts slowly down, then fades out and is removed.
+   A spawner keeps a small number alive at once so the screen never
+   feels cluttered. Three depth tiers vary size, speed, and opacity.
+   Transform + opacity only, so it stays smooth. Pairs with the
+   circuit SVG in index.html. Delete this section (and #coderain /
+   #circuit) to turn it off.
+   ============================================================ */
+const RAIN_GLYPHS = "01<>[]{}=+*/#$%&?ABCDEF0123456789";
+const rainEl = document.getElementById("coderain");
+const rainCalm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Slow fall, gentle opacity. near = closest/brightest/fastest.
+const RAIN_TIERS = [
+  { cls: "far", size: 12, op: 0.10, life: [15, 22], drift: [120, 220] },
+  { cls: "mid", size: 15, op: 0.15, life: [12, 18], drift: [180, 300] },
+  { cls: "near", size: 18, op: 0.20, life: [9, 14], drift: [240, 380] },
+];
+const RAIN_MAX = 11; // how many drops may be on screen at once
+
+const rainRand = (a, b) => a + Math.random() * (b - a);
+const randGlyphR = () => RAIN_GLYPHS[Math.floor(Math.random() * RAIN_GLYPHS.length)];
+
+function spawnDrop() {
+  if (!rainEl) return;
+  if (rainEl.children.length >= RAIN_MAX) return;
+
+  const tier = RAIN_TIERS[Math.floor(Math.random() * RAIN_TIERS.length)];
+  const col = document.createElement("div");
+  col.className = "mcol " + tier.cls;
+
+  const glyphs = Math.round(rainRand(7, 16));
+  let strip = "";
+  for (let g = 0; g < glyphs; g++) strip += randGlyphR() + "\n";
+  col.textContent = strip;
+
+  // Random point on screen to appear, then a slow downward drift.
+  const startY = rainRand(-60, window.innerHeight * 0.55);
+  const drift = rainRand(tier.drift[0], tier.drift[1]);
+  const life = rainRand(tier.life[0], tier.life[1]);
+
+  col.style.left = rainRand(0, window.innerWidth - 20) + "px";
+  col.style.fontSize = tier.size + "px";
+  col.style.setProperty("--y0", startY + "px");
+  col.style.setProperty("--y1", startY + drift + "px");
+  col.style.setProperty("--op", tier.op);
+  col.style.setProperty("--life", life + "s");
+
+  col.dataset.glyphs = glyphs;
+  col.addEventListener("animationend", (e) => {
+    if (e.animationName === "mcol-fade") col.remove();
+  });
+  rainEl.appendChild(col);
+}
+
+function rainLoop() {
+  spawnDrop();
+  setTimeout(rainLoop, rainRand(900, 2200));
+}
+
+// Low-frequency glyph swaps so live drops shimmer a little.
+function flickerRain() {
+  const cols = rainEl ? rainEl.children : [];
+  if (cols.length) {
+    const col = cols[Math.floor(Math.random() * cols.length)];
+    const chars = col.textContent.split("\n");
+    const idx = Math.floor(Math.random() * chars.length);
+    if (chars[idx]) {
+      chars[idx] = randGlyphR();
+      col.textContent = chars.join("\n");
+    }
+  }
+  setTimeout(flickerRain, 140);
+}
+
+if (!rainCalm && rainEl) {
+  // Seed a few so the page does not start empty.
+  for (let i = 0; i < 5; i++) setTimeout(spawnDrop, i * 400);
+  setTimeout(rainLoop, 1200);
+  setTimeout(flickerRain, 800);
+}

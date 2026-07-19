@@ -5,33 +5,39 @@
    ============================================================ */
 
 :root {
-  --bg: #0a0d12;
-  --bg-raised: #10151d;
-  --bg-card: #121924;
-  --border: #1f2a38;
-  --text: #e8edf4;
-  --muted: #93a1b3;
-  --accent: #4f9cff;
-  --accent-soft: rgba(79, 156, 255, 0.12);
+  --bg: #04070a;
+  --bg-raised: #080d0a;
+  --bg-card: #0a1210;
+  --border: #17271c;
+  --text: #e6f2ea;
+  --muted: #869a8d;
+  --accent: #2fe66f;
+  --accent-soft: rgba(47, 230, 111, 0.12);
+  --accent-ink: #04140b;
   --radius: 14px;
   --font: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+  --mono: Consolas, "Cascadia Mono", "SF Mono", "Courier New", monospace;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
 
-/* The page descends like water: blue lit near the surface at the
-   top, fading darker and quieter the further down you scroll. */
+/* Near-black base with a faint green glow up top for depth, fading
+   to pure black at the bottom. The circuit + code rain layers ride
+   on top of this. */
 html {
-  background: linear-gradient(
-    180deg,
-    #14203a 0%,
-    #0d1526 20%,
-    #0a0e18 48%,
-    #070910 76%,
-    #04050a 100%
-  );
+  background:
+    radial-gradient(ellipse 85% 55% at 50% -12%, rgba(47, 230, 111, 0.10), transparent 62%),
+    linear-gradient(
+      180deg,
+      #081310 0%,
+      #061009 24%,
+      #040a07 52%,
+      #030604 78%,
+      #010302 100%
+    );
+  background-attachment: fixed;
 }
 
 body {
@@ -43,69 +49,81 @@ body {
   position: relative;
 }
 
-/* Faint light shafts near the surface. Two layers drift slowly in
-   opposite directions and breathe, then dissolve on the way down.
-   Transform and opacity only, so the motion stays butter smooth. */
-.rays {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 120vh;
+/* ============ CIRCUIT LAYER ============ */
+/* Faint green circuit traces with glowing pulses that travel along
+   the paths. Sits furthest back, behind the code rain. */
+#circuit {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -3;
+}
+
+#circuit .traces path {
+  fill: none;
+  stroke: rgba(47, 230, 111, 0.10);
+  stroke-width: 1.4;
+}
+
+#circuit .nodes circle { fill: rgba(47, 230, 111, 0.16); }
+
+#circuit .pulses circle {
+  fill: #9dffc6;
+  filter: drop-shadow(0 0 5px rgba(47, 230, 111, 0.95));
+}
+
+/* ============ CODE RAIN LAYER ============ */
+/* Columns of green glyphs streaming downward. Depth comes from three
+   size/speed/opacity tiers. The whole layer is masked so it fades at
+   the very top and bottom of the viewport. Only transform animates,
+   so it stays smooth. */
+#coderain {
+  position: fixed;
+  inset: 0;
   overflow: hidden;
   pointer-events: none;
-  z-index: -1;
+  z-index: -2;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 88%, transparent 100%);
 }
 
-.rays::before,
-.rays::after {
-  content: "";
+/* Each drop is transient: it fades in at a random spot, drifts down
+   slowly, then fades out and is removed. Transform + opacity only. */
+.mcol {
   position: absolute;
   top: 0;
-  bottom: 0;
-  left: -14%;
-  width: 128%;
-  -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.45) 45%, transparent 85%);
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.45) 45%, transparent 85%);
+  font-family: var(--mono);
+  line-height: 1.4;
+  color: var(--accent);
+  white-space: pre;
+  text-align: center;
+  user-select: none;
+  opacity: 0;
   will-change: transform, opacity;
-}
-
-.rays::before {
-  background:
-    linear-gradient(108deg, transparent 44%, rgba(99, 169, 255, 0.075) 49%, transparent 54%),
-    linear-gradient(121deg, transparent 20%, rgba(99, 169, 255, 0.06) 28%, transparent 36%);
   animation:
-    rays-drift-a 26s ease-in-out infinite alternate,
-    rays-breathe 11s ease-in-out infinite alternate;
+    mcol-fall var(--life) linear forwards,
+    mcol-fade var(--life) ease-in-out forwards;
 }
 
-.rays::after {
-  background:
-    linear-gradient(96deg, transparent 60%, rgba(99, 169, 255, 0.055) 66%, transparent 72%),
-    linear-gradient(114deg, transparent 33%, rgba(99, 169, 255, 0.045) 39%, transparent 45%);
-  animation:
-    rays-drift-b 34s ease-in-out infinite alternate,
-    rays-breathe 13s ease-in-out infinite alternate-reverse;
+.mcol.near { text-shadow: 0 0 6px rgba(47, 230, 111, 0.55); }
+
+@keyframes mcol-fall {
+  from { transform: translate3d(0, var(--y0), 0); }
+  to { transform: translate3d(0, var(--y1), 0); }
 }
 
-@keyframes rays-drift-a {
-  from { transform: translate3d(-52px, 0, 0); }
-  to { transform: translate3d(52px, 0, 0); }
-}
-
-@keyframes rays-drift-b {
-  from { transform: translate3d(44px, 0, 0); }
-  to { transform: translate3d(-44px, 0, 0); }
-}
-
-@keyframes rays-breathe {
-  from { opacity: 0.55; }
-  to { opacity: 1; }
+@keyframes mcol-fade {
+  0% { opacity: 0; }
+  18% { opacity: var(--op); }
+  78% { opacity: var(--op); }
+  100% { opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rays::before,
-  .rays::after { animation: rays-breathe 11s ease-in-out infinite alternate; }
+  #coderain { display: none; }
+  #circuit .pulses { display: none; }
 }
 
 .accent { color: var(--accent); }
@@ -173,7 +191,7 @@ body {
 
 .nav-cta:hover {
   background: var(--accent);
-  color: #fff !important;
+  color: var(--accent-ink) !important;
 }
 
 /* ============ HERO ============ */
@@ -248,10 +266,11 @@ body {
 
 .btn-primary {
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-ink);
+  font-weight: 700;
 }
 
-.btn-primary:hover { background: #3d8bef; }
+.btn-primary:hover { background: #25c25f; }
 
 .btn-ghost {
   color: var(--text);
@@ -607,7 +626,7 @@ body {
 
 .contact-btn:hover .contact-icon {
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-ink);
 }
 
 .contact-text { min-width: 0; }
