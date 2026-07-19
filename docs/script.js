@@ -398,19 +398,22 @@ function rainLoop() {
   setTimeout(rainLoop, rainRand(900, 2200));
 }
 
-// Low-frequency glyph swaps so live drops shimmer a little.
+// Every live drop cycles its glyphs in real time as it falls. This
+// only rewrites text content — the fall/fade animations are untouched,
+// so the scroll speed stays exactly the same.
 function flickerRain() {
   const cols = rainEl ? rainEl.children : [];
-  if (cols.length) {
-    const col = cols[Math.floor(Math.random() * cols.length)];
+  for (let c = 0; c < cols.length; c++) {
+    const col = cols[c];
     const chars = col.textContent.split("\n");
-    const idx = Math.floor(Math.random() * chars.length);
-    if (chars[idx]) {
-      chars[idx] = randGlyphR();
-      col.textContent = chars.join("\n");
+    const swaps = 1 + Math.floor(Math.random() * 2); // 1-2 glyphs per drop per tick
+    for (let s = 0; s < swaps; s++) {
+      const idx = Math.floor(Math.random() * chars.length);
+      if (chars[idx]) chars[idx] = randGlyphR();
     }
+    col.textContent = chars.join("\n");
   }
-  setTimeout(flickerRain, 140);
+  setTimeout(flickerRain, 70);
 }
 
 if (!rainCalm && rainEl) {
