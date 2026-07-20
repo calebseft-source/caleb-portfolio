@@ -26,7 +26,8 @@ const PROJECTS = [
   {
     title: "LeadRadar",
     url: "https://web-production-dd55e.up.railway.app/",
-    description: "A freelance lead finder that scans local businesses, audits their websites, and surfaces the ones that need a developer.",
+    label: "leadlocator.net",
+    description: "An automatic lead finder that scans local businesses, audits their websites, and surfaces the ones that need a freelancer.",
   },
 ];
 
@@ -137,7 +138,9 @@ function renderGrid(list, gridId, soonCount) {
 
     const domainTag = document.createElement("span");
     domainTag.className = "card-domain";
-    domainTag.textContent = domain;
+    // `label` overrides the shown domain (e.g. a real brand domain while
+    // the link still points at a temporary host).
+    domainTag.textContent = project.label || domain;
 
     body.append(title, desc, domainTag);
     card.append(preview, body);
