@@ -42,6 +42,19 @@ const APPS = [
   },
 ];
 
+/* Cards for the Social Media section. A card with `images` shows a
+   screenshot slideshow; add `href` to make the whole card open a page
+   (e.g. an interactive template bundle). */
+const SOCIAL = [
+  {
+    title: "Link-in-Bio Templates",
+    href: "templates/linkinbio.html",
+    images: ["assets/tpl-1.png", "assets/tpl-2.png", "assets/tpl-3.png", "assets/tpl-4.png"],
+    badge: "Template",
+    description: "Custom animated link-in-bio pages I design for creators, with dark and light themes and a mobile-first layout. Open it to swipe through four different design directions.",
+  },
+];
+
 /* How many animated "Coming Soon" placeholder cards to show after
    your web projects. Set to 0 once you have enough work listed. */
 const COMING_SOON_CARDS = 1;
@@ -163,11 +176,25 @@ function renderGrid(list, gridId, soonCount) {
 }
 
 function buildSlideshowCard(project) {
-  const card = document.createElement("div");
-  card.className = "card card-static";
+  // With an href the whole card becomes a link that opens the page.
+  const isLink = !!project.href;
+  const card = document.createElement(isLink ? "a" : "div");
+  card.className = "card card-static" + (isLink ? " card-open" : "");
+  if (isLink) {
+    card.href = project.href;
+    card.target = "_blank";
+    card.rel = "noopener noreferrer";
+  }
 
   const preview = document.createElement("div");
   preview.className = "card-preview slide-preview";
+
+  if (isLink) {
+    const hint = document.createElement("span");
+    hint.className = "preview-hint";
+    hint.textContent = "Open ↗";
+    preview.appendChild(hint);
+  }
 
   const imgs = project.images.map((src, i) => {
     const img = document.createElement("img");
@@ -342,6 +369,7 @@ function buildComingSoonCard() {
 
 renderGrid(PROJECTS, "work-grid", COMING_SOON_CARDS);
 renderGrid(APPS, "apps-grid", 0);
+renderGrid(SOCIAL, "social-grid", 0);
 document.getElementById("year").textContent = new Date().getFullYear();
 
 // LinkedIn placeholder: same matrix decode as the Coming Soon label

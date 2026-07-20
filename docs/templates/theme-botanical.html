@@ -1,0 +1,134 @@
+<title>Link-in-Bio Template · Botanical</title>
+<style>
+  :root{
+    --paper:#F1EEE2; --card:#FBF9F2; --sage:#8A9A7B; --forest:#2F3B2C; --clay:#B96A47;
+    --ink:#2F3B2C; --muted:#6E7A63; --line:rgba(47,59,44,.16); --shadow:rgba(47,59,44,.14);
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--paper:#161d15; --card:#1e271c; --sage:#9fb08e; --forest:#e7ecdf; --clay:#d9835e;
+      --ink:#e7ecdf; --muted:#9aa891; --line:rgba(231,236,223,.14); --shadow:rgba(0,0,0,.5);}
+  }
+  :root[data-theme="light"]{--paper:#F1EEE2; --card:#FBF9F2; --sage:#8A9A7B; --forest:#2F3B2C; --clay:#B96A47; --ink:#2F3B2C; --muted:#6E7A63; --line:rgba(47,59,44,.16); --shadow:rgba(47,59,44,.14);}
+  :root[data-theme="dark"]{--paper:#161d15; --card:#1e271c; --sage:#9fb08e; --forest:#e7ecdf; --clay:#d9835e; --ink:#e7ecdf; --muted:#9aa891; --line:rgba(231,236,223,.14); --shadow:rgba(0,0,0,.5);}
+  *{box-sizing:border-box}
+  .wrap{min-height:100vh; display:flex; align-items:center; justify-content:center; padding:44px 16px; position:relative; overflow:hidden;
+    color:var(--ink); font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif; background:var(--paper)}
+  .leaf{position:absolute; opacity:.5; color:var(--sage); pointer-events:none}
+  .leaf.a{top:-40px; left:-30px; width:260px; transform:rotate(-18deg); transform-origin:80% 20%; animation:swayA 9s ease-in-out infinite}
+  .leaf.b{bottom:-60px; right:-40px; width:300px; transform:rotate(150deg); transform-origin:20% 80%; animation:swayB 11s ease-in-out infinite}
+  @keyframes swayA{0%,100%{transform:rotate(-21deg)}50%{transform:rotate(-14deg)}}
+  @keyframes swayB{0%,100%{transform:rotate(147deg)}50%{transform:rotate(154deg)}}
+  .vine{position:absolute; top:0; left:50%; width:120px; height:180px; transform:translateX(-50%); color:var(--sage); opacity:.65; pointer-events:none; z-index:1}
+  .vine path,.vine circle{stroke-dasharray:1; stroke-dashoffset:1; animation:draw 2.6s ease forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  #pollen{position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:1}
+  .tag{position:absolute; top:22px; left:26px; z-index:5; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--muted); display:flex; gap:8px; align-items:center}
+  .tag::before{content:""; width:20px; height:1px; background:var(--clay)}
+  .toggle{position:absolute; top:16px; right:20px; z-index:5; cursor:pointer; width:40px; height:40px; border-radius:50%;
+    border:1px solid var(--line); background:var(--card); color:var(--ink); display:flex; align-items:center; justify-content:center; font-size:17px; transition:transform .3s}
+  .toggle:hover{transform:rotate(20deg) scale(1.06)}
+  .col{position:relative; z-index:2; width:430px; max-width:100%; text-align:center}
+  .avatar{width:120px; height:120px; border-radius:50%; margin:0 auto 22px; position:relative; padding:5px; border:1px solid var(--line)}
+  .avatar span{display:flex; width:100%; height:100%; border-radius:50%; align-items:center; justify-content:center;
+    background:linear-gradient(160deg,#cfd8bf,#e8ddc8); color:var(--forest); font-family:"Hoefler Text",Georgia,serif; font-size:46px; font-style:italic}
+  .name{font-family:"Hoefler Text","Iowan Old Style",Georgia,serif; font-weight:400; font-size:46px; margin:0; line-height:1; letter-spacing:.01em}
+  .rule{width:44px; height:1px; background:var(--clay); margin:16px auto}
+  .role{font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:var(--clay)}
+  .bio{margin:14px auto 0; max-width:320px; font-size:14px; line-height:1.65; color:var(--muted); font-family:"Hoefler Text",Georgia,serif; font-style:italic}
+  .socials{display:flex; justify-content:center; gap:26px; margin:20px 0 30px; font-size:12px; letter-spacing:.18em; text-transform:uppercase}
+  .socials a{color:var(--ink); text-decoration:none; padding-bottom:3px; border-bottom:1px solid transparent; transition:border-color .2s, color .2s}
+  .socials a:hover{border-color:var(--clay); color:var(--clay)}
+  .links{display:flex; flex-direction:column; gap:0; text-align:left; border-top:1px solid var(--line)}
+  .card{display:flex; align-items:center; gap:16px; text-decoration:none; color:var(--ink); padding:20px 6px; border-bottom:1px solid var(--line);
+    transition:padding-left .3s, background .3s; opacity:0; transform:translateY(12px)}
+  .card:hover{padding-left:16px; background:var(--card)}
+  .num{font-family:"Hoefler Text",Georgia,serif; font-style:italic; font-size:15px; color:var(--sage); width:22px; flex:none}
+  .card .tt{font-size:16px; font-weight:500}
+  .card .ss{font-size:12px; color:var(--muted); margin-top:2px}
+  .card .go{margin-left:auto; color:var(--muted); font-size:17px; transition:transform .25s, color .25s}
+  .card:hover .go{transform:translateX(4px); color:var(--clay)}
+  .primary{border-bottom:1px solid var(--line)}
+  .primary .box{margin-left:auto; margin-right:0; padding:8px 20px; background:var(--forest); color:var(--paper); font-size:12px; letter-spacing:.14em; text-transform:uppercase; border-radius:2px; transition:background .25s}
+  .card.primary:hover .box{background:var(--clay)}
+  .capture{margin:30px 0 6px; opacity:0; transform:translateY(12px)}
+  .capture p{margin:0 0 12px; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+  .field{display:flex; gap:0; border:1px solid var(--line); border-radius:2px; overflow:hidden; background:var(--card)}
+  .field input{flex:1; border:none; background:transparent; padding:13px 16px; font-size:13px; color:var(--ink); outline:none}
+  .field input::placeholder{color:var(--muted)}
+  .field button{border:none; padding:0 22px; font-size:12px; letter-spacing:.14em; text-transform:uppercase; cursor:pointer; background:var(--forest); color:var(--paper); transition:background .2s}
+  .field button:hover{background:var(--clay)}
+  .foot{margin-top:34px; display:flex; align-items:center; justify-content:center; gap:12px; opacity:0; transform:translateY(12px)}
+  .qr{width:60px; height:60px; padding:6px; background:var(--card); border:1px solid var(--line); border-radius:4px}
+  .qr svg{width:100%; height:100%}
+  .foot small{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted)}
+  .reveal{opacity:1 !important; transform:none !important}
+  .card,.capture,.foot{transition:opacity .55s ease, transform .55s cubic-bezier(.2,.8,.2,1), padding-left .3s, background .3s}
+  @media (prefers-reduced-motion:reduce){.card,.capture,.foot{opacity:1 !important; transform:none !important}}
+  @media (max-width:480px){
+    .wrap{padding:40px 18px}
+    .name{font-size:38px}
+    .avatar{width:104px; height:104px}
+    .leaf.a{width:180px; top:-24px; left:-40px}
+    .leaf.b{width:200px; bottom:-30px; right:-50px}
+    .vine{display:none}
+    .toggle{top:12px; right:12px}
+    .card{padding:18px 4px}
+  }
+</style>
+<div class="wrap">
+  <svg class="leaf a" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M50 95 C20 70 20 30 50 5 C80 30 80 70 50 95 Z"/><path d="M50 12 L50 90"/><path d="M50 40 L28 30 M50 40 L72 30 M50 60 L26 52 M50 60 L74 52"/></svg>
+  <svg class="leaf b" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M50 95 C20 70 20 30 50 5 C80 30 80 70 50 95 Z"/><path d="M50 12 L50 90"/><path d="M50 40 L28 30 M50 40 L72 30 M50 60 L26 52 M50 60 L74 52"/></svg>
+  <canvas id="pollen"></canvas>
+  <svg class="vine" viewBox="0 0 120 180" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+    <path pathLength="1" d="M60 0 C60 30 40 40 44 70 C48 100 78 110 70 150 C66 168 60 172 60 180"/>
+    <path pathLength="1" d="M46 58 C30 52 22 40 22 30 C36 32 46 44 46 58 Z"/>
+    <path pathLength="1" d="M64 96 C82 92 92 80 92 70 C78 72 66 84 64 96 Z"/>
+    <path pathLength="1" d="M56 130 C40 128 30 118 30 108 C44 108 56 118 56 130 Z"/>
+    <circle pathLength="1" cx="60" cy="176" r="3.5"/>
+  </svg>
+  <div class="tag">Botanical</div>
+  <button class="toggle" id="toggle" aria-label="Toggle theme">☾</button>
+  <div class="col">
+    <div class="avatar"><span>Y</span></div>
+    <h1 class="name">Your Name</h1>
+    <div class="rule"></div>
+    <div class="role">UGC Creator</div>
+    <p class="bio">Authentic content that sells. Travel, beauty, wellness, and the little hidden gems in between.</p>
+    <nav class="socials">
+      <a href="#">Instagram</a>
+      <a href="#">TikTok</a>
+      <a href="#">Threads</a>
+    </nav>
+    <div class="links">
+      <a class="card primary" href="#"><span class="num">&#10022;</span><span><span class="tt">Work with me</span><span class="ss">Collaborations and paid partnerships</span></span><span class="box">Inquire</span></a>
+      <a class="card" href="#"><span class="num">01</span><span><span class="tt">Portfolio and media kit</span><span class="ss">Sample work, rates, and past brands</span></span><span class="go">&rarr;</span></a>
+      <a class="card" href="#"><span class="num">02</span><span><span class="tt">Watch my reels</span><span class="ss">Top content from TikTok and Instagram</span></span><span class="go">&rarr;</span></a>
+      <a class="card" href="#"><span class="num">03</span><span><span class="tt">Shop my favorites</span><span class="ss">Storefront and affiliate picks</span></span><span class="go">&rarr;</span></a>
+      <a class="card" href="#"><span class="num">04</span><span><span class="tt">Get in touch</span><span class="ss">hello@yourdomain.com</span></span><span class="go">&rarr;</span></a>
+    </div>
+    <div class="capture"><p>Stay in the loop</p>
+      <form class="field" onsubmit="return false"><input type="email" placeholder="your@email.com" aria-label="Email"><button type="submit">Join</button></form>
+    </div>
+    <div class="foot">
+      <div class="qr" aria-hidden="true"><svg viewBox="0 0 100 100" fill="var(--forest)"><rect x="0" y="0" width="28" height="28" rx="3"/><rect x="8" y="8" width="12" height="12" fill="var(--card)"/><rect x="72" y="0" width="28" height="28" rx="3"/><rect x="80" y="8" width="12" height="12" fill="var(--card)"/><rect x="0" y="72" width="28" height="28" rx="3"/><rect x="8" y="80" width="12" height="12" fill="var(--card)"/><rect x="40" y="6" width="8" height="8"/><rect x="54" y="6" width="8" height="8"/><rect x="40" y="20" width="8" height="8"/><rect x="6" y="40" width="8" height="8"/><rect x="20" y="40" width="8" height="8"/><rect x="40" y="40" width="8" height="8"/><rect x="54" y="40" width="8" height="8"/><rect x="68" y="40" width="8" height="8"/><rect x="86" y="40" width="8" height="8"/><rect x="40" y="54" width="8" height="8"/><rect x="68" y="54" width="8" height="8"/><rect x="86" y="54" width="8" height="8"/><rect x="40" y="68" width="8" height="8"/><rect x="54" y="68" width="8" height="8"/><rect x="72" y="72" width="8" height="8"/><rect x="86" y="72" width="8" height="8"/><rect x="54" y="86" width="8" height="8"/><rect x="72" y="86" width="8" height="8"/><rect x="86" y="86" width="8" height="8"/></svg></div>
+      <small>Scan to save</small>
+    </div>
+  </div>
+</div>
+<script>
+(function(){var root=document.documentElement,t=document.getElementById("toggle");
+function sysDark(){return matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches}
+function isDark(){var e=root.getAttribute("data-theme");return e?e==="dark":sysDark()}
+function paint(){t.textContent=isDark()?"☀":"☾"}
+t.onclick=function(){root.setAttribute("data-theme",isDark()?"light":"dark");paint()};paint();
+document.querySelectorAll(".card,.capture,.foot").forEach(function(el,i){setTimeout(function(){el.classList.add("reveal")},140+i*80)});
+var reduce=matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches;
+if(!reduce){var c=document.getElementById("pollen"),x=c.getContext("2d"),W,H,p=[];
+ function size(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight}
+ function seed(){p=[];var n=Math.round(W/34);for(var i=0;i<n;i++)p.push({x:Math.random()*W,y:Math.random()*H,r:.8+Math.random()*2,s:.1+Math.random()*.35,o:.15+Math.random()*.35,ph:Math.random()*6.28})}
+ function tick(){x.clearRect(0,0,W,H);var dk=isDark();for(var i=0;i<p.length;i++){var q=p[i];q.y-=q.s;q.ph+=.015;if(q.y<-6){q.y=H+6;q.x=Math.random()*W}
+   x.beginPath();x.arc(q.x+Math.sin(q.ph)*14,q.y,q.r,0,7);x.fillStyle=(dk?"rgba(159,176,142,":"rgba(138,154,123,")+q.o+")";x.fill()}
+   requestAnimationFrame(tick)}
+ size();seed();tick();window.addEventListener("resize",function(){size();seed()})}
+})();
+</script>

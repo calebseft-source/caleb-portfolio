@@ -411,6 +411,18 @@ body {
 
 .card-static { cursor: default; }
 
+/* A slideshow card that is also a link: restore the hover lift and
+   reveal the "Open" hint on hover. */
+.card-static.card-open { cursor: pointer; }
+
+.card-static.card-open:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+}
+
+.card-static.card-open:hover .preview-hint { opacity: 1; }
+
 .slide-preview { background: var(--bg-raised); }
 
 .slide-img {

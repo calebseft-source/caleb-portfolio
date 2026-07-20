@@ -1,0 +1,148 @@
+<title>Link-in-Bio Template · Golden Hour</title>
+<style>
+  :root{
+    --cream:#FBEAD7; --peach:#FFC79A; --coral:#FF7E5F; --rose:#F0567F; --plum:#4A1A32;
+    --ink:#4A1A32; --muted:#9A5C6B; --paper:#FFF6EC; --line:rgba(74,26,50,.12);
+    --sun-a:#FFE0B0; --sun-b:#FFB07C; --sun-c:#FF8FA8; --shadow:rgba(120,40,60,.24);
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--cream:#2a1220; --paper:#1c0c16; --ink:#ffe6d4; --muted:#c98da0; --line:rgba(255,220,200,.14);
+      --sun-a:#3a1226; --sun-b:#5a1d33; --sun-c:#2a0f1e; --shadow:rgba(0,0,0,.5);}
+  }
+  :root[data-theme="light"]{--cream:#FBEAD7; --paper:#FFF6EC; --ink:#4A1A32; --muted:#9A5C6B; --line:rgba(74,26,50,.12);
+    --sun-a:#FFE0B0; --sun-b:#FFB07C; --sun-c:#FF8FA8; --shadow:rgba(120,40,60,.24);}
+  :root[data-theme="dark"]{--cream:#2a1220; --paper:#1c0c16; --ink:#ffe6d4; --muted:#c98da0; --line:rgba(255,220,200,.14);
+    --sun-a:#3a1226; --sun-b:#5a1d33; --sun-c:#2a0f1e; --shadow:rgba(0,0,0,.5);}
+  *{box-sizing:border-box}
+  .wrap{min-height:100vh; display:flex; align-items:center; justify-content:center; padding:40px 16px;
+    position:relative; overflow:hidden; color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:radial-gradient(90% 60% at 50% 118%, var(--sun-c), transparent 60%),
+      radial-gradient(120% 80% at 50% -20%, var(--sun-a), transparent 55%),
+      linear-gradient(180deg, var(--sun-a), var(--sun-b));}
+  .sun{position:absolute; left:50%; bottom:-140px; transform:translateX(-50%); width:520px; height:520px; border-radius:50%; z-index:1;
+    background:radial-gradient(circle, rgba(255,225,180,.9), rgba(255,140,120,.4) 45%, transparent 70%); animation:pulse 7s ease-in-out infinite}
+  @keyframes pulse{50%{transform:translateX(-50%) scale(1.08)}}
+  .rays{position:absolute; left:50%; bottom:-140px; width:1100px; height:1100px; transform:translate(-50%,50%); z-index:0; opacity:.5; pointer-events:none;
+    background:repeating-conic-gradient(from 0deg, rgba(255,225,180,.35) 0deg 6deg, transparent 6deg 16deg);
+    -webkit-mask:radial-gradient(circle, #000 8%, transparent 62%); mask:radial-gradient(circle, #000 8%, transparent 62%);
+    animation:turn 90s linear infinite}
+  @keyframes turn{to{transform:translate(-50%,50%) rotate(360deg)}}
+  #dust{position:absolute; inset:0; width:100%; height:100%; z-index:1; pointer-events:none}
+  .birds{position:absolute; top:16%; left:0; z-index:1; width:120px; color:var(--plum); opacity:.5; animation:fly 26s linear infinite}
+  @keyframes fly{0%{transform:translateX(-140px) translateY(0)}50%{transform:translateX(60vw) translateY(-24px)}100%{transform:translateX(120vw) translateY(6px)}}
+  .tag{position:absolute; top:20px; left:24px; z-index:5; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); display:flex; gap:8px; align-items:center}
+  .tag::before{content:""; width:20px; height:1px; background:var(--coral)}
+  .toggle{position:absolute; top:16px; right:20px; z-index:5; cursor:pointer; width:40px; height:40px; border-radius:50%;
+    border:1px solid var(--line); background:rgba(255,255,255,.4); backdrop-filter:blur(10px); color:var(--ink);
+    display:flex; align-items:center; justify-content:center; font-size:17px; transition:transform .3s}
+  .toggle:hover{transform:rotate(20deg) scale(1.06)}
+  .phone{position:relative; z-index:2; width:376px; max-width:100%; border-radius:46px; padding:11px;
+    background:linear-gradient(160deg, rgba(255,255,255,.55), rgba(255,255,255,.1)); border:1px solid rgba(255,255,255,.6);
+    box-shadow:0 44px 100px -34px var(--shadow)}
+  .screen{border-radius:36px; overflow:hidden; background:var(--paper); height:720px; overflow-y:auto; scrollbar-width:none}
+  .screen::-webkit-scrollbar{display:none}
+  .hero{padding:54px 26px 26px; text-align:center; position:relative;
+    background:linear-gradient(180deg, var(--peach), var(--paper))}
+  .avatar{width:110px; height:110px; border-radius:50%; margin:0 auto 16px; padding:4px;
+    background:linear-gradient(135deg, var(--coral), var(--rose), var(--peach))}
+  .avatar span{display:flex; width:100%; height:100%; border-radius:50%; align-items:center; justify-content:center;
+    background:linear-gradient(160deg,#ffdcc0,#ffc0cf); color:var(--plum); font-family:Georgia,serif; font-size:44px; font-weight:700; font-style:italic}
+  .name{font-family:Georgia,"Times New Roman",serif; font-weight:700; font-style:italic; font-size:40px; margin:0; letter-spacing:-.01em}
+  .role{margin:6px 0 0; font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:var(--coral); font-weight:600}
+  .bio{margin:12px auto 0; max-width:260px; font-size:13.5px; line-height:1.55; color:var(--muted)}
+  .socials{display:flex; justify-content:center; gap:12px; margin-top:16px}
+  .socials a{width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background:var(--plum); color:var(--paper); text-decoration:none; font-size:15px; font-weight:700; transition:transform .2s}
+  .socials a:hover{transform:translateY(-3px) scale(1.08)}
+  .links{padding:22px 20px 10px; display:flex; flex-direction:column; gap:12px}
+  .card{display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--ink); padding:16px 18px; border-radius:999px;
+    background:var(--paper); border:1.5px solid var(--line); transition:transform .25s, box-shadow .25s, border-color .25s;
+    opacity:0; transform:translateY(14px)}
+  .card:hover{transform:translateY(-3px); box-shadow:0 16px 30px -18px var(--shadow); border-color:var(--coral)}
+  .card .ic{width:34px; height:34px; flex:none; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, var(--peach), var(--coral)); color:var(--plum); font-size:17px}
+  .card .tt{font-size:14.5px; font-weight:700}
+  .card .ss{font-size:11.5px; color:var(--muted); margin-top:1px}
+  .card .go{margin-left:auto; color:var(--muted); font-size:16px; transition:transform .25s}
+  .card:hover .go{transform:translateX(3px); color:var(--coral)}
+  .primary{background:linear-gradient(135deg, var(--coral), var(--rose)); color:#fff; border:none; justify-content:center; gap:9px;
+    box-shadow:0 16px 30px -14px rgba(240,86,127,.7)}
+  .primary .tt{font-size:15px; letter-spacing:.02em}
+  .capture{margin:6px 20px 4px; opacity:0; transform:translateY(14px)}
+  .capture p{margin:0 0 9px; font-size:12px; color:var(--muted); text-align:center}
+  .field{display:flex; gap:8px; background:var(--paper); border:1.5px solid var(--line); border-radius:999px; padding:6px}
+  .field input{flex:1; border:none; background:transparent; padding:10px 14px; font-size:13px; color:var(--ink); outline:none}
+  .field input::placeholder{color:var(--muted)}
+  .field button{border:none; border-radius:999px; padding:0 18px; font-size:13px; font-weight:700; cursor:pointer;
+    background:linear-gradient(135deg,var(--coral),var(--rose)); color:#fff; transition:transform .2s}
+  .field button:hover{transform:scale(1.05)}
+  .foot{padding:22px 24px 32px; text-align:center; opacity:0; transform:translateY(14px)}
+  .qr{width:76px; height:76px; margin:0 auto 10px; border-radius:16px; padding:8px; background:var(--peach)}
+  .qr svg{width:100%; height:100%}
+  .foot small{font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
+  .reveal{opacity:1 !important; transform:none !important}
+  .card,.capture,.foot{transition:transform .55s cubic-bezier(.2,.8,.2,1), opacity .55s, box-shadow .25s, border-color .25s}
+  @media (prefers-reduced-motion:reduce){.sun{animation:none}.card,.capture,.foot{opacity:1 !important; transform:none !important; transition:none}}
+  @media (max-width:480px){
+    .wrap{padding:16px 12px}
+    .phone{width:100%; padding:7px; border-radius:38px}
+    .screen{height:auto; border-radius:30px}
+    .hero{padding:46px 22px 24px}
+    .name{font-size:34px}
+    .toggle{top:12px; right:12px}
+    .birds{display:none}
+  }
+</style>
+<div class="wrap">
+  <div class="rays"></div>
+  <div class="sun"></div>
+  <canvas id="dust"></canvas>
+  <svg class="birds" viewBox="0 0 120 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 18 Q14 8 22 18 Q30 8 38 18"/><path d="M54 26 Q60 19 66 26 Q72 19 78 26"/><path d="M92 14 Q98 8 104 14 Q110 8 116 14"/></svg>
+  <div class="tag">Golden Hour</div>
+  <button class="toggle" id="toggle" aria-label="Toggle theme">☾</button>
+  <div class="phone"><div class="screen">
+    <header class="hero">
+      <div class="avatar"><span>Y</span></div>
+      <h1 class="name">Your Name</h1>
+      <p class="role">UGC Creator</p>
+      <p class="bio">Authentic content that sells. Travel, beauty, wellness, and the little hidden gems in between.</p>
+      <nav class="socials">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="TikTok">TT</a>
+        <a href="#" aria-label="Threads">@</a>
+      </nav>
+    </header>
+    <div class="links">
+      <a class="card primary" href="#"><span class="tt">Work with me</span></a>
+      <a class="card" href="#"><span class="ic">&#9635;</span><span><span class="tt">Portfolio &amp; media kit</span><span class="ss">Sample work, rates, and past brands</span></span><span class="go">&rarr;</span></a>
+      <a class="card" href="#"><span class="ic">&#9654;</span><span><span class="tt">Watch my reels</span><span class="ss">Top content from TikTok and Instagram</span></span><span class="go">&rarr;</span></a>
+      <a class="card" href="#"><span class="ic">&#9788;</span><span><span class="tt">Shop my favorites</span><span class="ss">Storefront and affiliate picks</span></span><span class="go">&rarr;</span></a>
+      <a class="card" href="#"><span class="ic">&#9993;</span><span><span class="tt">Get in touch</span><span class="ss">hello@yourdomain.com</span></span><span class="go">&rarr;</span></a>
+    </div>
+    <div class="capture"><p>Brand or fellow creator. Stay in the loop.</p>
+      <form class="field" onsubmit="return false"><input type="email" placeholder="your@email.com" aria-label="Email"><button type="submit">Join</button></form>
+    </div>
+    <div class="foot">
+      <div class="qr" aria-hidden="true"><svg viewBox="0 0 100 100" fill="var(--plum)"><rect x="0" y="0" width="28" height="28" rx="4"/><rect x="8" y="8" width="12" height="12" fill="var(--peach)"/><rect x="72" y="0" width="28" height="28" rx="4"/><rect x="80" y="8" width="12" height="12" fill="var(--peach)"/><rect x="0" y="72" width="28" height="28" rx="4"/><rect x="8" y="80" width="12" height="12" fill="var(--peach)"/><rect x="40" y="6" width="8" height="8"/><rect x="54" y="6" width="8" height="8"/><rect x="40" y="20" width="8" height="8"/><rect x="6" y="40" width="8" height="8"/><rect x="20" y="40" width="8" height="8"/><rect x="40" y="40" width="8" height="8"/><rect x="54" y="40" width="8" height="8"/><rect x="68" y="40" width="8" height="8"/><rect x="86" y="40" width="8" height="8"/><rect x="40" y="54" width="8" height="8"/><rect x="68" y="54" width="8" height="8"/><rect x="86" y="54" width="8" height="8"/><rect x="40" y="68" width="8" height="8"/><rect x="54" y="68" width="8" height="8"/><rect x="72" y="72" width="8" height="8"/><rect x="86" y="72" width="8" height="8"/><rect x="54" y="86" width="8" height="8"/><rect x="72" y="86" width="8" height="8"/><rect x="86" y="86" width="8" height="8"/></svg></div>
+      <small>Scan to save</small>
+    </div>
+  </div></div>
+</div>
+<script>
+(function(){var root=document.documentElement,t=document.getElementById("toggle");
+function sysDark(){return matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches}
+function isDark(){var e=root.getAttribute("data-theme");return e?e==="dark":sysDark()}
+function paint(){t.textContent=isDark()?"☀":"☾"}
+t.onclick=function(){root.setAttribute("data-theme",isDark()?"light":"dark");paint()};paint();
+document.querySelectorAll(".card,.capture,.foot").forEach(function(el,i){setTimeout(function(){el.classList.add("reveal")},140+i*90)});
+var reduce=matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches;
+if(!reduce){var c=document.getElementById("dust"),x=c.getContext("2d"),W,H,p=[];
+ function size(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight}
+ function seed(){p=[];var n=Math.round(W/16);for(var i=0;i<n;i++)p.push({x:Math.random()*W,y:Math.random()*H,r:.6+Math.random()*2.2,s:.15+Math.random()*.5,o:.15+Math.random()*.5,ph:Math.random()*6.28})}
+ function tick(){x.clearRect(0,0,W,H);for(var i=0;i<p.length;i++){var q=p[i];q.y-=q.s;q.ph+=.02;if(q.y<-6){q.y=H+6;q.x=Math.random()*W}
+   x.beginPath();x.arc(q.x+Math.sin(q.ph)*10,q.y,q.r,0,7);x.fillStyle="rgba(255,238,205,"+q.o+")";x.shadowBlur=8;x.shadowColor="rgba(255,210,150,.8)";x.fill()}
+   x.shadowBlur=0;requestAnimationFrame(tick)}
+ size();seed();tick();window.addEventListener("resize",function(){size();seed()})}
+})();
+</script>

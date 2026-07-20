@@ -1,0 +1,144 @@
+<title>Link-in-Bio Template · Champagne Noir</title>
+<style>
+  :root{
+    --bg:#14110C; --bg2:#1d1811; --card:rgba(255,255,255,.03); --ink:#F3ECDD; --muted:#B6A88C;
+    --gold:#C9A24B; --gold-soft:#E4CB8C; --blush:#E4B79A; --line:rgba(201,162,75,.34); --hair:rgba(243,236,221,.12);
+  }
+  :root[data-theme="light"]{
+    --bg:#F4EEE1; --bg2:#EDE4D2; --card:rgba(20,17,12,.02); --ink:#2A2114; --muted:#7A6B4E;
+    --gold:#A9812A; --gold-soft:#8a6a22; --blush:#B9764E; --line:rgba(166,124,32,.4); --hair:rgba(42,33,20,.14);
+  }
+  @media (prefers-color-scheme:light){
+    :root:not([data-theme="dark"]){--bg:#F4EEE1; --bg2:#EDE4D2; --card:rgba(20,17,12,.02); --ink:#2A2114; --muted:#7A6B4E;
+      --gold:#A9812A; --gold-soft:#8a6a22; --blush:#B9764E; --line:rgba(166,124,32,.4); --hair:rgba(42,33,20,.14);}
+  }
+  *{box-sizing:border-box}
+  .wrap{min-height:100vh; display:flex; align-items:center; justify-content:center; padding:44px 16px; position:relative; overflow:hidden;
+    color:var(--ink); font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:radial-gradient(120% 90% at 50% -10%, var(--bg2), var(--bg) 60%)}
+  .sweep{position:absolute; inset:-40% -10%; z-index:0; pointer-events:none; opacity:.5;
+    background:linear-gradient(115deg, transparent 40%, rgba(228,203,140,.14) 50%, transparent 60%);
+    background-size:250% 250%; animation:sweep 9s ease-in-out infinite}
+  @keyframes sweep{0%{background-position:120% 0}100%{background-position:-40% 0}}
+  #gdust{position:absolute; inset:0; width:100%; height:100%; z-index:1; pointer-events:none}
+  .spark{position:absolute; z-index:1; color:var(--gold); opacity:0; animation:sp 5s ease-in-out infinite}
+  .spark svg{width:14px; height:14px; display:block; filter:drop-shadow(0 0 4px var(--gold))}
+  @keyframes sp{0%,100%{opacity:0; transform:scale(.3) rotate(0deg)}50%{opacity:.95; transform:scale(1) rotate(90deg)}}
+  .tag{position:absolute; top:22px; left:26px; z-index:5; font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--muted); display:flex; gap:8px; align-items:center}
+  .tag::before{content:""; width:22px; height:1px; background:var(--gold)}
+  .toggle{position:absolute; top:16px; right:20px; z-index:5; cursor:pointer; width:40px; height:40px; border-radius:50%;
+    border:1px solid var(--line); background:transparent; color:var(--gold); display:flex; align-items:center; justify-content:center; font-size:16px; transition:transform .3s}
+  .toggle:hover{transform:rotate(20deg) scale(1.08)}
+  .cover{position:relative; z-index:2; width:392px; max-width:100%; padding:14px; background:var(--card);
+    border:1px solid var(--line); box-shadow:0 50px 110px -40px rgba(0,0,0,.7)}
+  .frame{border:1px solid var(--hair); outline:1px solid var(--line); outline-offset:5px; padding:36px 26px 30px}
+  .hero{text-align:center}
+  .mast{font-size:9px; letter-spacing:.5em; text-transform:uppercase; color:var(--gold); margin-bottom:20px}
+  .avatar{width:104px; height:104px; border-radius:50%; margin:0 auto 20px; padding:1px; position:relative;
+    background:conic-gradient(from 140deg, var(--gold), var(--gold-soft), var(--blush), var(--gold))}
+  .avatar span{display:flex; width:100%; height:100%; border-radius:50%; align-items:center; justify-content:center;
+    background:radial-gradient(circle at 35% 30%, #2a2418, #14110c); color:var(--gold-soft); font-family:"Hoefler Text",Georgia,serif; font-style:italic; font-size:42px}
+  :root[data-theme="light"] .avatar span{background:radial-gradient(circle at 35% 30%,#f7f0e0,#e6d8bd); color:#8a6a22}
+  .name{font-family:"Hoefler Text","Iowan Old Style",Georgia,serif; font-weight:400; font-size:52px; line-height:.92; margin:0; letter-spacing:.06em; text-transform:uppercase;
+    background:linear-gradient(100deg,var(--ink),var(--gold-soft),var(--ink)); background-size:200% auto; -webkit-background-clip:text; background-clip:text; color:transparent; animation:shine 6s linear infinite}
+  @keyframes shine{to{background-position:200% center}}
+  .rule{display:flex; align-items:center; justify-content:center; gap:12px; margin:16px 0 4px}
+  .rule::before,.rule::after{content:""; width:38px; height:1px; background:var(--line)}
+  .rule span{font-size:10px; letter-spacing:.36em; text-transform:uppercase; color:var(--gold)}
+  .bio{margin:12px auto 0; max-width:280px; font-size:13px; line-height:1.65; color:var(--muted); font-family:"Hoefler Text",Georgia,serif; font-style:italic}
+  .socials{display:flex; justify-content:center; gap:24px; margin:20px 0 4px; font-size:11px; letter-spacing:.18em; text-transform:uppercase}
+  .socials a{color:var(--ink); text-decoration:none; padding-bottom:3px; border-bottom:1px solid transparent; transition:border-color .25s, color .25s}
+  .socials a:hover{border-color:var(--gold); color:var(--gold)}
+  .links{margin-top:26px; display:flex; flex-direction:column}
+  .card{display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--ink); padding:17px 4px; border-top:1px solid var(--hair);
+    transition:padding-left .3s, background .3s; opacity:0; transform:translateY(12px)}
+  .card:last-of-type{border-bottom:1px solid var(--hair)}
+  .card:hover{padding-left:14px}
+  .num{font-family:"Hoefler Text",Georgia,serif; font-style:italic; font-size:14px; color:var(--gold); width:22px; flex:none}
+  .card .tt{font-size:14.5px; font-weight:500; letter-spacing:.02em}
+  .card .ss{font-size:11.5px; color:var(--muted); margin-top:2px}
+  .card .go{margin-left:auto; color:var(--muted); font-size:16px; transition:transform .25s, color .25s}
+  .card:hover .go{transform:translateX(4px); color:var(--gold)}
+  .primary{margin-top:22px; border:none !important; padding:0}
+  .primary .btn{display:flex; align-items:center; justify-content:center; gap:10px; width:100%; padding:16px;
+    border:1px solid var(--gold); color:var(--gold); font-size:12px; letter-spacing:.28em; text-transform:uppercase; transition:background .3s, color .3s}
+  .card.primary:hover .btn{background:var(--gold); color:var(--bg)}
+  .card.primary:hover{padding-left:0}
+  .capture{margin:24px 0 4px; opacity:0; transform:translateY(12px)}
+  .capture p{margin:0 0 10px; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--muted); text-align:center}
+  .field{display:flex; border:1px solid var(--line); background:transparent}
+  .field input{flex:1; border:none; background:transparent; padding:13px 14px; font-size:13px; color:var(--ink); outline:none}
+  .field input::placeholder{color:var(--muted)}
+  .field button{border:none; border-left:1px solid var(--line); padding:0 20px; font-size:10px; letter-spacing:.2em; text-transform:uppercase; cursor:pointer; background:var(--gold); color:var(--bg); transition:opacity .2s}
+  .field button:hover{opacity:.85}
+  .foot{margin-top:26px; display:flex; align-items:center; justify-content:center; gap:12px; opacity:0; transform:translateY(12px)}
+  .qr{width:58px; height:58px; padding:5px; border:1px solid var(--line)}
+  .qr svg{width:100%; height:100%}
+  .foot small{font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--muted)}
+  .reveal{opacity:1 !important; transform:none !important}
+  .card,.capture,.foot{transition:opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1), padding-left .3s, background .3s}
+  @media (prefers-reduced-motion:reduce){.sweep,.name{animation:none}.card,.capture,.foot{opacity:1 !important; transform:none !important}}
+  @media (max-width:480px){
+    .wrap{padding:24px 12px}
+    .cover{padding:11px}
+    .frame{padding:30px 18px 26px; outline-offset:4px}
+    .name{font-size:44px}
+    .toggle{top:12px; right:12px}
+    .spark{display:none}
+  }
+</style>
+<div class="wrap">
+  <div class="sweep"></div>
+  <canvas id="gdust"></canvas>
+  <span class="spark" style="top:20%;left:22%;animation-delay:.3s"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg></span>
+  <span class="spark" style="top:32%;left:78%;animation-delay:1.8s"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg></span>
+  <span class="spark" style="top:70%;left:16%;animation-delay:2.7s"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg></span>
+  <span class="spark" style="top:78%;left:80%;animation-delay:3.9s"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"/></svg></span>
+  <div class="tag">Champagne Noir</div>
+  <button class="toggle" id="toggle" aria-label="Toggle theme">☀</button>
+  <div class="cover"><div class="frame">
+    <header class="hero">
+      <div class="mast">Established for the discerning brand</div>
+      <div class="avatar"><span>Y</span></div>
+      <h1 class="name">Your Name</h1>
+      <div class="rule"><span>UGC Creator</span></div>
+      <p class="bio">Authentic content that sells. Travel, beauty, wellness, and the little hidden gems in between.</p>
+      <nav class="socials">
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Threads</a>
+      </nav>
+    </header>
+    <div class="links">
+      <a class="card primary" href="#"><span class="btn">Work with me</span></a>
+      <a class="card" href="#"><span class="num">I</span><span><span class="tt">Portfolio and media kit</span><span class="ss">Sample work, rates, and past brands</span></span><span class="go">&rarr;</span></a>
+      <a class="card" href="#"><span class="num">II</span><span><span class="tt">Watch my reels</span><span class="ss">Top content from TikTok and Instagram</span></span><span class="go">&rarr;</span></a>
+      <a class="card" href="#"><span class="num">III</span><span><span class="tt">Shop my favorites</span><span class="ss">Storefront and affiliate picks</span></span><span class="go">&rarr;</span></a>
+      <a class="card" href="#"><span class="num">IV</span><span><span class="tt">Get in touch</span><span class="ss">hello@yourdomain.com</span></span><span class="go">&rarr;</span></a>
+    </div>
+    <div class="capture"><p>Brand or creator, stay in the loop</p>
+      <form class="field" onsubmit="return false"><input type="email" placeholder="your@email.com" aria-label="Email"><button type="submit">Join</button></form>
+    </div>
+    <div class="foot">
+      <div class="qr" aria-hidden="true"><svg viewBox="0 0 100 100" fill="var(--gold)"><rect x="0" y="0" width="28" height="28" rx="2"/><rect x="8" y="8" width="12" height="12" fill="var(--bg)"/><rect x="72" y="0" width="28" height="28" rx="2"/><rect x="80" y="8" width="12" height="12" fill="var(--bg)"/><rect x="0" y="72" width="28" height="28" rx="2"/><rect x="8" y="80" width="12" height="12" fill="var(--bg)"/><rect x="40" y="6" width="8" height="8"/><rect x="54" y="6" width="8" height="8"/><rect x="40" y="20" width="8" height="8"/><rect x="6" y="40" width="8" height="8"/><rect x="20" y="40" width="8" height="8"/><rect x="40" y="40" width="8" height="8"/><rect x="54" y="40" width="8" height="8"/><rect x="68" y="40" width="8" height="8"/><rect x="86" y="40" width="8" height="8"/><rect x="40" y="54" width="8" height="8"/><rect x="68" y="54" width="8" height="8"/><rect x="86" y="54" width="8" height="8"/><rect x="40" y="68" width="8" height="8"/><rect x="54" y="68" width="8" height="8"/><rect x="72" y="72" width="8" height="8"/><rect x="86" y="72" width="8" height="8"/><rect x="54" y="86" width="8" height="8"/><rect x="72" y="86" width="8" height="8"/><rect x="86" y="86" width="8" height="8"/></svg></div>
+      <small>Scan to save</small>
+    </div>
+  </div></div>
+</div>
+<script>
+(function(){var root=document.documentElement,t=document.getElementById("toggle");
+function sysDark(){return !(matchMedia&&matchMedia("(prefers-color-scheme:light)").matches)}
+function isDark(){var e=root.getAttribute("data-theme");return e?e==="dark":sysDark()}
+function paint(){t.textContent=isDark()?"☀":"☾"}
+t.onclick=function(){root.setAttribute("data-theme",isDark()?"light":"dark");paint()};paint();
+document.querySelectorAll(".card,.capture,.foot").forEach(function(el,i){setTimeout(function(){el.classList.add("reveal")},160+i*90)});
+var reduce=matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches;
+if(!reduce){var c=document.getElementById("gdust"),x=c.getContext("2d"),W,H,p=[];
+ function size(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight}
+ function seed(){p=[];var n=Math.round(W/20);for(var i=0;i<n;i++)p.push({x:Math.random()*W,y:Math.random()*H,r:.5+Math.random()*1.8,s:.08+Math.random()*.4,o:.2+Math.random()*.5,ph:Math.random()*6.28})}
+ function tick(){x.clearRect(0,0,W,H);var g=isDark()?"212,178,102":"166,124,42";for(var i=0;i<p.length;i++){var q=p[i];q.y-=q.s;q.ph+=.02;if(q.y<-6){q.y=H+6;q.x=Math.random()*W}
+   x.beginPath();x.arc(q.x+Math.sin(q.ph)*9,q.y,q.r,0,7);x.fillStyle="rgba("+g+","+q.o+")";x.shadowBlur=6;x.shadowColor="rgba("+g+",.7)";x.fill()}
+   x.shadowBlur=0;requestAnimationFrame(tick)}
+ size();seed();tick();window.addEventListener("resize",function(){size();seed()})}
+})();
+</script>

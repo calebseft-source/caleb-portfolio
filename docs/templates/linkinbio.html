@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Link-in-Bio Templates - Champagne Noir</title>
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{background:#0b0906;font-family:ui-sans-serif,system-ui,"Segoe UI",Roboto,sans-serif;color:#E4CB8C;overflow:hidden}
+  .bar{position:fixed;top:0;left:0;right:0;height:52px;display:flex;align-items:center;justify-content:center;z-index:10;
+    background:linear-gradient(#0b0906ee,rgba(11,9,6,0));pointer-events:none}
+  .bar .lab{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#B6A88C}
+  .bar .lab b{color:#C9A24B;font-weight:600}
+  .track{display:flex;width:100vw;height:100vh;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .track::-webkit-scrollbar{display:none}
+  .slide{flex:0 0 100vw;height:100vh;scroll-snap-align:center}
+  .slide iframe{width:100%;height:100%;border:0;display:block}
+  .nav{position:fixed;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;
+    border:1px solid rgba(201,162,75,.45);background:rgba(11,9,6,.55);color:#C9A24B;font-size:22px;line-height:1;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:11;backdrop-filter:blur(6px);transition:.2s}
+  .nav:hover{background:#C9A24B;color:#0b0906}
+  .prev{left:16px}.next{right:16px}
+  .dots{position:fixed;bottom:20px;left:0;right:0;display:flex;justify-content:center;gap:10px;z-index:11}
+  .dots b{width:8px;height:8px;border-radius:50%;background:rgba(201,162,75,.32);cursor:pointer;transition:.3s}
+  .dots b.on{background:#C9A24B;width:24px;border-radius:4px}
+  .cap{position:fixed;bottom:44px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#7a6d52;z-index:11;pointer-events:none}
+  @media (max-width:480px){ .nav{width:40px;height:40px;font-size:19px} .prev{left:8px}.next{right:8px} }
+</style>
+</head>
+<body>
+  <div class="bar"><span class="lab"><b>Link-in-Bio Templates</b> &nbsp;·&nbsp; four design directions</span></div>
+
+  <div class="track" id="track">
+    <div class="slide"><iframe src="theme-ocean.html" title="Ocean Glass" loading="eager"></iframe></div>
+    <div class="slide"><iframe src="theme-golden.html" title="Golden Hour" loading="lazy"></iframe></div>
+    <div class="slide"><iframe src="theme-botanical.html" title="Botanical" loading="lazy"></iframe></div>
+    <div class="slide"><iframe src="theme-champagne.html" title="Champagne Noir" loading="lazy"></iframe></div>
+  </div>
+
+  <button class="nav prev" id="prev" aria-label="Previous">&#8249;</button>
+  <button class="nav next" id="next" aria-label="Next">&#8250;</button>
+  <div class="dots" id="dots"></div>
+  <div class="cap">Demo content · swipe, use arrows, or press ← →</div>
+
+<script>
+  const track = document.getElementById('track');
+  const slides = [...track.children];
+  const dotsWrap = document.getElementById('dots');
+  const names = ['Ocean Glass','Golden Hour','Botanical','Champagne Noir'];
+  let idx = 0;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('b');
+    d.title = names[i];
+    if (i === 0) d.className = 'on';
+    d.addEventListener('click', () => go(i));
+    dotsWrap.appendChild(d);
+  });
+  const dots = [...dotsWrap.children];
+
+  function go(i) {
+    idx = Math.max(0, Math.min(slides.length - 1, i));
+    track.scrollTo({ left: idx * track.clientWidth, behavior: 'smooth' });
+    sync();
+  }
+  function sync() {
+    dots.forEach((d, i) => d.classList.toggle('on', i === idx));
+  }
+
+  document.getElementById('prev').addEventListener('click', () => go(idx - 1));
+  document.getElementById('next').addEventListener('click', () => go(idx + 1));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') go(idx - 1);
+    if (e.key === 'ArrowRight') go(idx + 1);
+  });
+
+  // keep the active dot in sync when the user swipes/scrolls directly
+  let t;
+  track.addEventListener('scroll', () => {
+    clearTimeout(t);
+    t = setTimeout(() => {
+      const i = Math.round(track.scrollLeft / track.clientWidth);
+      if (i !== idx) { idx = i; sync(); }
+    }, 90);
+  });
+  window.addEventListener('resize', () => track.scrollTo({ left: idx * track.clientWidth }));
+</script>
+</body>
+</html>
