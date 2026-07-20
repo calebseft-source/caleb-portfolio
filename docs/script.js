@@ -30,6 +30,11 @@ const PROJECTS = [
     status: "Alpha",
     description: "An automatic lead finder that scans local businesses, audits their websites, and surfaces the ones that need a freelancer.",
   },
+  {
+    title: "UGC Yulii",
+    url: "https://ugcyulii.com",
+    description: "Custom link-in-bio site for a lifestyle and travel UGC creator, with animated design, dark and light themes, and shoppable links.",
+  },
 ];
 
 /* Cards for the Apps and widgets section, same format as PROJECTS. */
@@ -57,7 +62,7 @@ const SOCIAL = [
 
 /* How many animated "Coming Soon" placeholder cards to show after
    your web projects. Set to 0 once you have enough work listed. */
-const COMING_SOON_CARDS = 1;
+const COMING_SOON_CARDS = 0;
 
 /* ============================================================
    Everything below renders the cards. No need to touch it.
