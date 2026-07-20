@@ -24,7 +24,7 @@ const PROJECTS = [
     description: "Cinematic multi page website for a Florida martial arts gym, with programs, schedules, pricing, and photo galleries.",
   },
   {
-    title: "LeadRadar",
+    title: "LeadLocator",
     url: "https://web-production-dd55e.up.railway.app/",
     label: "leadlocator.net",
     status: "Alpha",
