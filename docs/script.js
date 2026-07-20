@@ -27,6 +27,7 @@ const PROJECTS = [
     title: "LeadRadar",
     url: "https://web-production-dd55e.up.railway.app/",
     label: "leadlocator.net",
+    status: "Alpha",
     description: "An automatic lead finder that scans local businesses, audits their websites, and surfaces the ones that need a freelancer.",
   },
 ];
@@ -143,6 +144,13 @@ function renderGrid(list, gridId, soonCount) {
     domainTag.textContent = project.label || domain;
 
     body.append(title, desc, domainTag);
+    // Optional status flag (e.g. "Alpha") shown beside the domain chip.
+    if (project.status) {
+      const status = document.createElement("span");
+      status.className = "card-status";
+      status.textContent = project.status;
+      body.append(status);
+    }
     card.append(preview, body);
     grid.appendChild(card);
 
