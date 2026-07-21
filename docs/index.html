@@ -196,8 +196,36 @@
 
   <script src="script.js"></script>
 
-  <!-- Cloudflare Web Analytics -->
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "78d90b8e0f7c47d5b3379746c0540876"}'></script>
+  <!-- Cloudflare Web Analytics — loaded conditionally so it skips
+       link-preview crawlers, headless/automation, and your own visits.
+       Visit the site once with ?noanalytics on any browser of yours to
+       stop counting yourself there; ?trackme turns counting back on. -->
+  <script>
+  (function () {
+    try {
+      var qs = location.search;
+      if (/[?&]noanalytics\b/i.test(qs)) localStorage.setItem("cf_optout", "1");
+      if (/[?&]trackme\b/i.test(qs)) localStorage.removeItem("cf_optout");
+
+      var ua = navigator.userAgent || "";
+      // Known crawlers / link-preview bots / headless automation.
+      var isBot = /bot|crawler|spider|slurp|headless|lighthouse|facebookexternalhit|embedly|pingdom|gtmetrix|prerender/i.test(ua);
+      var isAutomated = navigator.webdriver === true;
+      var optedOut = localStorage.getItem("cf_optout") === "1";
+
+      // Don't count: bots, automation, or you (opted out).
+      if (isBot || isAutomated || optedOut) return;
+
+      var s = document.createElement("script");
+      s.defer = true;
+      s.src = "https://static.cloudflareinsights.com/beacon.min.js";
+      s.setAttribute("data-cf-beacon", '{"token": "78d90b8e0f7c47d5b3379746c0540876"}');
+      document.head.appendChild(s);
+    } catch (e) {
+      /* on any error, skip analytics rather than risk breaking the page */
+    }
+  })();
+  </script>
   <!-- End Cloudflare Web Analytics -->
 </body>
 </html>
