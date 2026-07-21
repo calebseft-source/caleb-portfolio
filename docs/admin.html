@@ -162,10 +162,10 @@
     const p = $("#pass").value.trim();
     if(!p){ $("#gateerr").textContent="Enter a passphrase."; return; }
     sessionStorage.setItem("cfpass", p);
-    $("#gate").classList.add("hide");
-    $("#app").style.display="block";
+    $("#gateerr").textContent="Checking...";
     load();
   }
+  function showApp(){ $("#gate").classList.add("hide"); $("#app").style.display="block"; $("#gateerr").textContent=""; }
   $("#enter").onclick = unlock;
   $("#pass").addEventListener("keydown", e => { if(e.key==="Enter") unlock(); });
   $("#signout").onclick = () => { sessionStorage.removeItem("cfpass"); location.reload(); };
@@ -175,10 +175,9 @@
     b.classList.add("on"); range = b.dataset.range; load();
   });
 
-  // if already unlocked this session, or in demo mode, skip the gate
-  if(DEMO || sessionStorage.getItem("cfpass")){
-    $("#gate").classList.add("hide"); $("#app").style.display="block"; load();
-  }
+  // demo skips the gate; a saved session tries to load, but the gate
+  // stays up until a load actually succeeds
+  if(DEMO || sessionStorage.getItem("cfpass")){ load(); }
 
   /* ---- demo data ---- */
   function demoData(){
@@ -222,17 +221,24 @@
   /* ---- load ---- */
   async function load(){
     $("#err").style.display="none";
-    if(DEMO){ render(demoData()); return; }
-    if(!WORKER_URL){ $("#err").style.display="block"; $("#err").textContent="Backend not connected yet. The Worker URL still needs to be set in admin.html (CONFIG at top)."; return; }
+    if(DEMO){ showApp(); render(demoData()); return; }
+    if(!WORKER_URL){ showApp(); $("#err").style.display="block"; $("#err").textContent="Backend not connected yet (Worker URL not set)."; return; }
     $("#app").classList.add("loading");
     try{
       const r = await fetch(WORKER_URL+"?range="+range, { headers:{ "X-Admin-Pass": sessionStorage.getItem("cfpass")||"" } });
-      if(r.status===401){ sessionStorage.removeItem("cfpass"); location.reload(); return; }
+      if(r.status===401){
+        sessionStorage.removeItem("cfpass");
+        $("#gate").classList.remove("hide"); $("#app").style.display="none";
+        $("#gateerr").textContent="Incorrect passphrase. Try again.";
+        $("#pass").value=""; $("#pass").focus();
+        return;
+      }
       if(!r.ok) throw new Error("HTTP "+r.status);
       const d = await r.json();
       if(d.error) throw new Error(d.error);
-      render(d);
+      showApp(); render(d);
     }catch(e){
+      showApp();
       $("#err").style.display="block"; $("#err").textContent="Could not load analytics: "+e.message;
     }finally{ $("#app").classList.remove("loading"); }
   }
