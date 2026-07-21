@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Analytics · Caleb Pierce</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='8' fill='%232fe66f'/%3E%3Cpath d='M10.5 9.5 6 14l4.5 4.5M17.5 9.5 22 14l-4.5 4.5M16 8l-4 12' stroke='%2304140b' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+  /* ============================================================
+     CONFIG — after the Worker is deployed, set WORKER_URL to its
+     URL (e.g. https://cfwebdev-analytics.<sub>.workers.dev).
+     Until then, open this page with ?demo to preview the layout.
+     ============================================================ */
+  :root{
+    --bg:#04070a; --panel:#0a1210; --panel2:#0c1712; --border:#17271c;
+    --text:#e6f2ea; --muted:#869a8d; --accent:#2fe66f; --accent-soft:rgba(47,230,111,.12);
+    --ink:#04140b; --mono:Consolas,"Cascadia Mono","SF Mono","Courier New",monospace;
+    --font:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--font);color:var(--text);min-height:100vh;
+    background:radial-gradient(ellipse 90% 55% at 50% -12%,rgba(47,230,111,.10),transparent 62%),
+      linear-gradient(180deg,#081310 0%,#061009 30%,#040a07 70%,#020403 100%);
+    background-attachment:fixed;-webkit-font-smoothing:antialiased}
+
+  /* ---- gate ---- */
+  #gate{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:24px;
+    background:rgba(4,7,10,.92);backdrop-filter:blur(4px)}
+  #gate.hide{display:none}
+  .gatecard{width:100%;max-width:360px;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:30px 26px;text-align:center}
+  .logo{width:46px;height:46px;border-radius:12px;margin:0 auto 16px;display:grid;place-items:center;
+    background:linear-gradient(135deg,#5ef2a0,#1cae5b)}
+  .logo svg{width:26px;height:26px}
+  .gatecard h1{font-size:1.15rem;font-weight:800;letter-spacing:-.01em}
+  .gatecard p{margin-top:6px;font-size:.85rem;color:var(--muted)}
+  .gatecard input{width:100%;margin-top:18px;padding:12px 14px;background:#060d0a;border:1px solid var(--border);
+    border-radius:10px;color:var(--text);font-family:var(--mono);font-size:.95rem;outline:none}
+  .gatecard input:focus{border-color:var(--accent)}
+  .gatecard button{width:100%;margin-top:12px;padding:12px;border:0;border-radius:999px;background:var(--accent);
+    color:var(--ink);font-weight:700;font-size:.95rem;cursor:pointer}
+  .gateerr{margin-top:12px;font-size:.82rem;color:#ff6b6b;min-height:1em}
+
+  /* ---- app ---- */
+  .wrap{max-width:1040px;margin:0 auto;padding:28px 22px 60px}
+  header.top{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:26px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand .mk{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(135deg,#5ef2a0,#1cae5b)}
+  .brand .mk svg{width:20px;height:20px}
+  .brand b{font-size:1.05rem;font-weight:800}
+  .brand span{display:block;font-size:.75rem;color:var(--muted)}
+  .spacer{flex:1}
+  .ranges{display:flex;gap:6px;background:var(--panel);border:1px solid var(--border);border-radius:999px;padding:4px}
+  .ranges button{border:0;background:transparent;color:var(--muted);font-weight:600;font-size:.82rem;padding:7px 14px;border-radius:999px;cursor:pointer}
+  .ranges button.on{background:var(--accent);color:var(--ink)}
+  .iconbtn{border:1px solid var(--border);background:var(--panel);color:var(--muted);width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:1rem}
+  .iconbtn:hover{color:var(--accent);border-color:var(--accent)}
+
+  .note{font-size:.8rem;color:var(--muted);margin-bottom:18px}
+  .note b{color:var(--accent)}
+
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:20px}
+  .tile{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:18px 20px}
+  .tile .k{font-size:.76rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+  .tile .v{font-size:2rem;font-weight:800;color:var(--accent);margin-top:6px;line-height:1;font-variant-numeric:tabular-nums}
+  .tile .sub{font-size:.76rem;color:var(--muted);margin-top:5px}
+
+  .chartcard{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:18px 20px 14px;margin-bottom:20px}
+  .chartcard h2,.panel h2{font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700;margin-bottom:16px}
+  .chart{display:flex;align-items:flex-end;gap:6px;height:150px}
+  .chart .bar{flex:1;min-width:4px;background:linear-gradient(180deg,var(--accent),#1a9b52);border-radius:4px 4px 0 0;position:relative;transition:height .5s cubic-bezier(.2,.8,.2,1);min-height:2px}
+  .chart .bar:hover{filter:brightness(1.2)}
+  .chart .bar .tip{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:6px;white-space:nowrap;
+    background:#02110a;border:1px solid var(--border);border-radius:6px;padding:4px 8px;font-size:.72rem;opacity:0;pointer-events:none;transition:opacity .2s}
+  .chart .bar:hover .tip{opacity:1}
+  .xaxis{display:flex;gap:6px;margin-top:8px}
+  .xaxis span{flex:1;text-align:center;font-size:.66rem;color:var(--muted);overflow:hidden;white-space:nowrap}
+
+  .panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:18px 20px}
+  .row{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+  .row:last-child{border-bottom:0}
+  .row .lbl{flex:1;font-size:.9rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .row .barbg{position:absolute;inset:0;background:var(--accent-soft);border-radius:6px;z-index:0}
+  .row .cell{position:relative;flex:1;min-width:0}
+  .row .track{position:relative;height:26px;display:flex;align-items:center;padding:0 8px;border-radius:6px;overflow:hidden}
+  .row .val{font-size:.85rem;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;flex:none}
+  .empty{color:var(--muted);font-size:.85rem;padding:8px 0}
+
+  .foot{margin-top:26px;font-size:.72rem;color:var(--muted);text-align:center;line-height:1.7}
+  .foot a{color:var(--accent);text-decoration:none}
+  #err{display:none;background:rgba(255,107,107,.08);border:1px solid rgba(255,107,107,.3);color:#ff9b9b;padding:14px 16px;border-radius:12px;font-size:.85rem;margin-bottom:18px}
+  .loading{opacity:.4;pointer-events:none}
+  @media(max-width:520px){.tile .v{font-size:1.6rem}}
+</style>
+</head>
+<body>
+
+  <!-- passphrase gate -->
+  <div id="gate">
+    <div class="gatecard">
+      <div class="logo"><svg viewBox="0 0 28 28" fill="none"><path d="M10.5 9.5 6 14l4.5 4.5M17.5 9.5 22 14l-4.5 4.5M16 8l-4 12" stroke="#04140b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h1>Admin Access</h1>
+      <p>Enter your dashboard passphrase.</p>
+      <input id="pass" type="password" placeholder="passphrase" autocomplete="current-password" autofocus>
+      <button id="enter">Unlock</button>
+      <div class="gateerr" id="gateerr"></div>
+    </div>
+  </div>
+
+  <!-- dashboard -->
+  <div class="wrap" id="app" style="display:none">
+    <header class="top">
+      <div class="brand">
+        <span class="mk"><svg viewBox="0 0 28 28" fill="none"><path d="M10.5 9.5 6 14l4.5 4.5M17.5 9.5 22 14l-4.5 4.5M16 8l-4 12" stroke="#04140b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div><b>Analytics</b><span>cfwebdev.net</span></div>
+      </div>
+      <div class="spacer"></div>
+      <div class="ranges" id="ranges">
+        <button data-range="24h">24h</button>
+        <button data-range="7d" class="on">7 days</button>
+        <button data-range="30d">30 days</button>
+      </div>
+      <button class="iconbtn" id="refresh" title="Refresh">&#10227;</button>
+      <button class="iconbtn" id="signout" title="Sign out">&#8853;</button>
+    </header>
+
+    <div id="err"></div>
+    <div class="note" id="note"></div>
+
+    <div class="tiles" id="tiles"></div>
+
+    <div class="chartcard">
+      <h2 id="chartTitle">Page views over time</h2>
+      <div class="chart" id="chart"></div>
+      <div class="xaxis" id="xaxis"></div>
+    </div>
+
+    <div class="panels">
+      <div class="panel"><h2>Top pages</h2><div id="pages"></div></div>
+      <div class="panel"><h2>Top countries</h2><div id="countries"></div></div>
+      <div class="panel"><h2>Top referrers</h2><div id="referrers"></div></div>
+    </div>
+
+    <div class="foot">
+      Powered by Cloudflare Web Analytics &middot; privacy-friendly, cookieless.<br>
+      Numbers are sampled estimates, matching your Cloudflare dashboard.
+    </div>
+  </div>
+
+<script>
+  /* ====== CONFIG ====== */
+  const WORKER_URL = "https://cfwebdev-analytics.cfpremiumwebdevelopment.workers.dev"; // deployed Worker
+  const DEMO = new URLSearchParams(location.search).has("demo");
+
+  const $ = s => document.querySelector(s);
+  const fmt = n => (n>=1000 ? (n/1000).toFixed(n>=10000?0:1)+"k" : String(n));
+  let range = "7d";
+
+  /* ---- gate ---- */
+  function unlock(){
+    const p = $("#pass").value.trim();
+    if(!p){ $("#gateerr").textContent="Enter a passphrase."; return; }
+    sessionStorage.setItem("cfpass", p);
+    $("#gate").classList.add("hide");
+    $("#app").style.display="block";
+    load();
+  }
+  $("#enter").onclick = unlock;
+  $("#pass").addEventListener("keydown", e => { if(e.key==="Enter") unlock(); });
+  $("#signout").onclick = () => { sessionStorage.removeItem("cfpass"); location.reload(); };
+  $("#refresh").onclick = () => load();
+  document.querySelectorAll("#ranges button").forEach(b => b.onclick = () => {
+    document.querySelectorAll("#ranges button").forEach(x=>x.classList.remove("on"));
+    b.classList.add("on"); range = b.dataset.range; load();
+  });
+
+  // if already unlocked this session, or in demo mode, skip the gate
+  if(DEMO || sessionStorage.getItem("cfpass")){
+    $("#gate").classList.add("hide"); $("#app").style.display="block"; load();
+  }
+
+  /* ---- demo data ---- */
+  function demoData(){
+    const days = range==="24h"?1:range==="30d"?30:7;
+    const series=[]; const now=new Date();
+    for(let i=days-1;i>=0;i--){ const d=new Date(now-i*864e5);
+      series.push({label:(d.getMonth()+1)+"/"+d.getDate(), views:Math.round(40+Math.random()*120), visits:Math.round(25+Math.random()*70)}); }
+    const views=series.reduce((a,b)=>a+b.views,0), visits=series.reduce((a,b)=>a+b.visits,0);
+    return {views,visits,series,
+      pages:[["/",Math.round(views*.52)],["/#work",Math.round(views*.2)],["/templates/linkinbio.html",Math.round(views*.14)],["/#contact",Math.round(views*.08)],["/#social",Math.round(views*.06)]],
+      countries:[["United States",Math.round(visits*.61)],["Canada",Math.round(visits*.12)],["United Kingdom",Math.round(visits*.09)],["Germany",Math.round(visits*.06)],["Brazil",Math.round(visits*.05)]],
+      referrers:[["Direct / none",Math.round(visits*.55)],["google.com",Math.round(visits*.21)],["instagram.com",Math.round(visits*.12)],["linkedin.com",Math.round(visits*.07)]]};
+  }
+
+  /* ---- render ---- */
+  function render(d){
+    $("#note").innerHTML = DEMO ? "<b>Demo mode</b> — sample data for layout preview. Live numbers appear once the Worker backend is connected."
+      : "Live data from Cloudflare &middot; last "+({["24h"]:"24 hours",["7d"]:"7 days",["30d"]:"30 days"})[range]+".";
+    $("#tiles").innerHTML =
+      tile("Visits", fmt(d.visits), "unique sessions") +
+      tile("Page views", fmt(d.views), "total loads") +
+      tile("Views / visit", d.visits? (d.views/d.visits).toFixed(1):"0", "engagement");
+
+    const max = Math.max(1,...d.series.map(s=>s.views));
+    $("#chart").innerHTML = d.series.map(s =>
+      `<div class="bar" style="height:${Math.max(2,Math.round(s.views/max*100))}%"><span class="tip">${s.label}: ${s.views} views · ${s.visits} visits</span></div>`).join("");
+    $("#xaxis").innerHTML = d.series.map((s,i)=> (d.series.length>12 && i%Math.ceil(d.series.length/8)!==0) ? "<span></span>" : `<span>${s.label}</span>`).join("");
+
+    $("#pages").innerHTML = list(d.pages);
+    $("#countries").innerHTML = list(d.countries);
+    $("#referrers").innerHTML = list(d.referrers);
+  }
+  function tile(k,v,sub){ return `<div class="tile"><div class="k">${k}</div><div class="v">${v}</div><div class="sub">${sub}</div></div>`; }
+  function list(rows){
+    if(!rows||!rows.length) return `<div class="empty">No data yet.</div>`;
+    const max = Math.max(...rows.map(r=>r[1]));
+    return rows.map(([label,val])=>`<div class="row"><div class="cell"><div class="track"><div class="barbg" style="width:${Math.round(val/max*100)}%"></div><span class="lbl" style="position:relative;z-index:1">${esc(label)}</span></div></div><span class="val">${fmt(val)}</span></div>`).join("");
+  }
+  function esc(s){ return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+  /* ---- load ---- */
+  async function load(){
+    $("#err").style.display="none";
+    if(DEMO){ render(demoData()); return; }
+    if(!WORKER_URL){ $("#err").style.display="block"; $("#err").textContent="Backend not connected yet. The Worker URL still needs to be set in admin.html (CONFIG at top)."; return; }
+    $("#app").classList.add("loading");
+    try{
+      const r = await fetch(WORKER_URL+"?range="+range, { headers:{ "X-Admin-Pass": sessionStorage.getItem("cfpass")||"" } });
+      if(r.status===401){ sessionStorage.removeItem("cfpass"); location.reload(); return; }
+      if(!r.ok) throw new Error("HTTP "+r.status);
+      const d = await r.json();
+      if(d.error) throw new Error(d.error);
+      render(d);
+    }catch(e){
+      $("#err").style.display="block"; $("#err").textContent="Could not load analytics: "+e.message;
+    }finally{ $("#app").classList.remove("loading"); }
+  }
+</script>
+</body>
+</html>
