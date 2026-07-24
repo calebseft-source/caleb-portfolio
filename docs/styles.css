@@ -592,6 +592,110 @@ body {
   border-radius: 999px;
 }
 
+/* ============ GRAPHIC DESIGN GALLERY ============ */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.gtile {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-card);
+  cursor: zoom-in;
+  font-family: inherit;
+  text-align: left;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.gtile:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+}
+
+/* Logos are shown on a light "framed" panel so they read clearly
+   against the dark site, whatever their own background. */
+.gimg {
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #f4f5f4;
+}
+
+.gimg img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.gcap {
+  padding: 13px 16px;
+}
+
+.gcap b {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.gcap span {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* ---- lightbox ---- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 4vw;
+  background: rgba(2, 6, 4, 0.92);
+  backdrop-filter: blur(4px);
+}
+
+.lightbox.show { display: flex; }
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 92vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+.lb-close {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(10, 18, 14, 0.8);
+  color: var(--text);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.lb-close:hover { color: var(--accent); border-color: var(--accent); }
+
 /* ============ CONTACT ============ */
 
 .contact {

@@ -60,6 +60,17 @@ const SOCIAL = [
   },
 ];
 
+/* Graphic Design gallery. Each item is an image tile that opens in a
+   lightbox on click. Add more by copying a block. */
+const GRAPHICS = [
+  { src: "assets/logos/northgc-brand-board.png", title: "North GC Dental", sub: "Brand identity system" },
+  { src: "assets/logos/northgc-logo.png", title: "North GC Dental", sub: "Primary logo" },
+  { src: "assets/logos/northgc-app-icon.png", title: "North GC Dental", sub: "App icon" },
+  { src: "assets/logos/siegel-star.png", title: "Siegel Basketball", sub: "Team mark" },
+  { src: "assets/logos/siegel-shs.png", title: "Siegel Basketball", sub: "Secondary mark" },
+  { src: "assets/logos/siegel-standards.png", title: "Siegel Basketball", sub: "Team graphic" },
+];
+
 /* How many animated "Coming Soon" placeholder cards to show after
    your web projects. Set to 0 once you have enough work listed. */
 const COMING_SOON_CARDS = 0;
@@ -375,7 +386,63 @@ function buildComingSoonCard() {
 renderGrid(PROJECTS, "work-grid", COMING_SOON_CARDS);
 renderGrid(APPS, "apps-grid", 0);
 renderGrid(SOCIAL, "social-grid", 0);
+renderGallery();
 document.getElementById("year").textContent = new Date().getFullYear();
+
+/* ============================================================
+   GRAPHIC DESIGN gallery + lightbox.
+   ============================================================ */
+function renderGallery() {
+  const grid = document.getElementById("graphics-grid");
+  if (!grid) return;
+  grid.innerHTML = "";
+  GRAPHICS.forEach((g) => {
+    const tile = document.createElement("button");
+    tile.className = "gtile";
+    tile.type = "button";
+
+    const wrap = document.createElement("div");
+    wrap.className = "gimg";
+    const img = document.createElement("img");
+    img.src = g.src;
+    img.alt = g.title + " - " + g.sub;
+    img.loading = "lazy";
+    wrap.appendChild(img);
+
+    const cap = document.createElement("div");
+    cap.className = "gcap";
+    const t = document.createElement("b");
+    t.textContent = g.title;
+    const s = document.createElement("span");
+    s.textContent = g.sub;
+    cap.append(t, s);
+
+    tile.append(wrap, cap);
+    tile.addEventListener("click", () => openLightbox(g.src, img.alt));
+    grid.appendChild(tile);
+  });
+}
+
+const lightbox = document.getElementById("lightbox");
+const lbImg = document.getElementById("lb-img");
+function openLightbox(src, alt) {
+  if (!lightbox) return;
+  lbImg.src = src;
+  lbImg.alt = alt || "";
+  lightbox.classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+function closeLightbox() {
+  if (!lightbox) return;
+  lightbox.classList.remove("show");
+  lbImg.src = "";
+  document.body.style.overflow = "";
+}
+if (lightbox) {
+  document.getElementById("lb-close").addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
+}
 
 // LinkedIn placeholder: same matrix decode as the Coming Soon label
 const linkedinStatus = document.getElementById("linkedin-status");
