@@ -30,6 +30,11 @@ const PROJECTS = [
     status: "Alpha",
     description: "An automatic lead finder that scans local businesses, audits their websites, and surfaces the ones that need a freelancer.",
   },
+];
+
+/* Content Creator Sites — full websites built for creators. Same card
+   format as PROJECTS; add a block for each new creator site. */
+const CREATORS = [
   {
     title: "UGC Yulii",
     url: "https://ugcyulii.com",
@@ -384,6 +389,7 @@ function buildComingSoonCard() {
 }
 
 renderGrid(PROJECTS, "work-grid", COMING_SOON_CARDS);
+renderGrid(CREATORS, "creators-grid", 0);
 renderGrid(APPS, "apps-grid", 0);
 renderGrid(SOCIAL, "social-grid", 0);
 renderGallery();
@@ -421,6 +427,22 @@ function renderGallery() {
     tile.addEventListener("click", () => openLightbox(g.src, img.alt));
     grid.appendChild(tile);
   });
+}
+
+/* Mobile nav menu toggle */
+const navToggle = document.getElementById("navToggle");
+const navEl = document.querySelector(".nav");
+if (navToggle && navEl) {
+  navToggle.addEventListener("click", () => {
+    const open = navEl.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  navEl.querySelectorAll(".nav-links a").forEach((a) =>
+    a.addEventListener("click", () => {
+      navEl.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+    })
+  );
 }
 
 const lightbox = document.getElementById("lightbox");
