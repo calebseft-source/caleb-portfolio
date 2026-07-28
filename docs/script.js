@@ -76,6 +76,17 @@ const GRAPHICS = [
   { src: "assets/logos/siegel-standards.png", title: "Siegel Basketball", sub: "Team graphic" },
 ];
 
+/* Game Art gallery. Same tile shape as GRAPHICS, but rendered into the
+   dark variant of the gallery since these are contact sheets authored on
+   a near-black background. Regenerate the sheets, do not hand-edit them. */
+const GAMEART = [
+  { src: "assets/gameart/characters.png", title: "Characters", sub: "Player, shades, ally hound, five giants" },
+  { src: "assets/gameart/boss.png", title: "Boss", sub: "Three-phase sea god and attack set" },
+  { src: "assets/gameart/effects.png", title: "Hazards and effects", sub: "Combat FX and attack telegraphs" },
+  { src: "assets/gameart/relics.png", title: "Relics", sub: "18 shrines, icons, and rarity frames" },
+  { src: "assets/gameart/environment.png", title: "Environment", sub: "Seamless tiles, props, and pickups" },
+];
+
 /* How many animated "Coming Soon" placeholder cards to show after
    your web projects. Set to 0 once you have enough work listed. */
 const COMING_SOON_CARDS = 0;
@@ -392,17 +403,18 @@ renderGrid(PROJECTS, "work-grid", COMING_SOON_CARDS);
 renderGrid(CREATORS, "creators-grid", 0);
 renderGrid(APPS, "apps-grid", 0);
 renderGrid(SOCIAL, "social-grid", 0);
-renderGallery();
+renderGallery(GRAPHICS, "graphics-grid");
+renderGallery(GAMEART, "gameart-grid");
 document.getElementById("year").textContent = new Date().getFullYear();
 
 /* ============================================================
-   GRAPHIC DESIGN gallery + lightbox.
+   GRAPHIC DESIGN + GAME ART galleries, and the shared lightbox.
    ============================================================ */
-function renderGallery() {
-  const grid = document.getElementById("graphics-grid");
+function renderGallery(list, gridId) {
+  const grid = document.getElementById(gridId);
   if (!grid) return;
   grid.innerHTML = "";
-  GRAPHICS.forEach((g) => {
+  list.forEach((g) => {
     const tile = document.createElement("button");
     tile.className = "gtile";
     tile.type = "button";

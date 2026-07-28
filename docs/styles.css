@@ -638,6 +638,14 @@ body {
   display: block;
 }
 
+/* Dark variant, used by the Game Art gallery. The sprite sheets are authored
+   on #0a1210, so matching the panel to it and dropping the padding lets each
+   sheet bleed into its tile instead of sitting in a visible box. */
+.gallery.dark .gimg {
+  background: var(--bg-card);
+  padding: 0;
+}
+
 .gcap {
   padding: 13px 16px;
 }
@@ -837,7 +845,9 @@ body {
 /* Hamburger button — hidden until the nav gets too wide for the screen */
 .nav-toggle { display: none; }
 
-@media (max-width: 860px) {
+/* Breakpoint was 860px when the nav had 7 items. Game Art makes 8, which needs
+   more room before it crowds the logo, so the hamburger takes over sooner. */
+@media (max-width: 940px) {
   .nav-toggle {
     display: flex;
     flex-direction: column;
