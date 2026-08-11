@@ -300,6 +300,8 @@ body {
   font-size: 1.55rem;
   font-weight: 800;
   color: var(--accent);
+  line-height: 1.15;
+  min-height: 2.3em;
 }
 
 .hero-stats span {
