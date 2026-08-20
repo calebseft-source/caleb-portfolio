@@ -19,6 +19,12 @@
 
 const PROJECTS = [
   {
+    title: "SALTWRATH",
+    url: "https://saltwrath.com",
+    label: "saltwrath.com",
+    description: "The official promo site for my Greek-myth roguelite, built to match the game's storm-and-bronze look and send visitors straight to the Steam wishlist.",
+  },
+  {
     title: "Xtreme Gracie Jiu Jitsu",
     url: "https://xtreme-gracie.higgsfield.app/",
     description: "Cinematic multi page website for a Florida martial arts gym, with programs, schedules, pricing, and photo galleries.",
