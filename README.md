@@ -1,19 +1,24 @@
-# Caleb Pierce Portfolio
+# cfwebdev
 
-Personal portfolio site for Caleb Pierce, a frontend developer based in Florida.
+Service-focused portfolio and lead-generation site for cfwebdev, the Orlando web studio run by Caleb Pierce.
 
-Live site: https://calebpierce.higgsfield.app
+Live site: https://cfwebdev.net
 
-Plain HTML, CSS, and JavaScript. No frameworks, no build step. Features live
-site previews on project cards, a screenshot slideshow for desktop apps, an
-underwater depth background with drifting light rays, and a small ecosystem of
-sea life silhouettes that swim past as you scroll (watch for the submarine).
+Plain HTML, CSS, and JavaScript. No framework or build step. The homepage presents
+fixed-scope website repair and landing-page offers, curated project proof, a
+SALTWRATH case study, agency overflow services, process, FAQ, and direct intake.
+It also includes Cypressline Outdoor Co., an explicitly fictional landscaping
+landing-page concept that demonstrates local-service positioning and conversion
+design without presenting invented client results.
 
 ## Structure
 
 - `docs/index.html` page structure
 - `docs/styles.css` all styling, colors live in `:root`
-- `docs/script.js` project lists (`PROJECTS`, `APPS`), card rendering, and the ocean
+- `docs/script.js` mobile navigation and small progressive enhancements
+- `docs/concepts/cypressline.html` fictional landscaping landing-page concept
+- `docs/concepts/cypressline.css` and `cypressline.js` isolated concept styling and interaction
+- `docs/assets/concepts/cypressline/SOURCES.md` stock-image provenance and license notes
 - `server.py` tiny stdlib static server, Railway ready (binds `0.0.0.0:$PORT`)
 
 ## Run locally
