@@ -1,0 +1,11 @@
+# cfwebdev.net
+# Public pages are open to search engines. Concepts, the legacy
+# dashboard, and archived demos are intentionally kept out of the index.
+
+User-agent: *
+Allow: /
+Disallow: /concepts/
+Disallow: /templates/
+Disallow: /admin.html
+
+Sitemap: https://cfwebdev.net/sitemap.xml
