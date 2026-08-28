@@ -17,7 +17,7 @@
   --radius-sm: 12px;
   --radius: 18px;
   --radius-lg: 28px;
-  --shadow: 0 28px 80px rgba(0, 0, 0, 0.38);
+  --shadow: 0 20px 46px rgba(0, 0, 0, 0.14);
   --font: "Segoe UI Variable", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
   --mono: "Cascadia Mono", Consolas, "SFMono-Regular", monospace;
 }
@@ -193,6 +193,11 @@ section[id] { scroll-margin-top: 92px; }
   font-size: 0.72rem;
   font-weight: 900;
   letter-spacing: -0.12em;
+  /* The anonymous text node was not being centred by place-items, so the
+     glyphs sat flush against the left edge. text-indent cancels the
+     trailing letter-space that the negative tracking leaves behind. */
+  text-align: center;
+  text-indent: -0.12em;
 }
 
 .nav-links {
@@ -317,18 +322,7 @@ section[id] { scroll-margin-top: 92px; }
   background:
     radial-gradient(circle at 95% 0%, rgba(47, 230, 111, 0.13), transparent 44%),
     linear-gradient(145deg, rgba(14, 29, 21, 0.98), rgba(7, 14, 10, 0.98));
-  box-shadow: var(--shadow), 0 0 70px rgba(47, 230, 111, 0.055);
-}
-
-.hero-offer::after {
-  content: "";
-  position: absolute;
-  right: -45px;
-  bottom: -75px;
-  width: 150px;
-  height: 150px;
-  border: 1px solid rgba(47, 230, 111, 0.18);
-  border-radius: 50%;
+  box-shadow: var(--shadow), 0 0 60px rgba(47, 230, 111, 0.05);
 }
 
 .offer-topline {
@@ -536,7 +530,7 @@ section[id] { scroll-margin-top: 92px; }
 .work-card:hover {
   transform: translateY(-4px);
   border-color: var(--border-bright);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.13);
 }
 
 .work-card-featured {
