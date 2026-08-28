@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Chito's Cutz — Barbershop in Apopka, FL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --ink: #0E0F12;
+    --body: #565E68;
+    --line: #E4E7EB;
+    --bg: #FFFFFF;
+    --soft: #F6F7F9;
+    --gold: #C9A227;
+    --gold-dark: #A8871C;
+    --char: #16181D;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--body);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 16px; line-height: 1.65;
+  }
+  h1, h2, h3 { font-family: "Bebas Neue", Impact, sans-serif; color: var(--ink); letter-spacing: 0.02em; font-weight: 400; }
+  a { color: var(--gold-dark); }
+  .wrap { width: min(1100px, 92vw); margin: 0 auto; }
+
+  .demo { background: var(--char); color: #C6CCD4; font-size: 13px; padding: 9px 0; text-align: center; }
+  .demo b { color: #fff; }
+
+  header { border-bottom: 1px solid var(--line); background: #fff; position: sticky; top: 0; z-index: 10; }
+  .bar { display: flex; align-items: center; gap: 22px; padding: 13px 0; }
+  .logo { display: flex; align-items: center; gap: 11px; margin-right: auto; }
+  .mark {
+    width: 44px; height: 44px; flex: none; border-radius: 50%; background: var(--char);
+    display: grid; place-items: center; color: var(--gold);
+    font-family: "Bebas Neue", sans-serif; font-size: 22px; letter-spacing: 0.06em;
+  }
+  .logo .n { font-family: "Bebas Neue", sans-serif; font-size: 25px; color: var(--ink); line-height: 1; letter-spacing: 0.04em; }
+  .logo .t { font-size: 11px; color: var(--body); letter-spacing: 0.13em; text-transform: uppercase; }
+  nav { display: flex; gap: 24px; font-size: 14.5px; font-weight: 500; }
+  nav a { color: var(--body); text-decoration: none; }
+  nav a:hover { color: var(--gold-dark); }
+  .bookbtn {
+    background: var(--gold); color: var(--char); text-decoration: none; font-weight: 700;
+    padding: 11px 21px; border-radius: 4px; font-size: 14.5px; white-space: nowrap; letter-spacing: 0.02em;
+  }
+  .bookbtn:hover { background: var(--gold-dark); color: #fff; }
+  @media (max-width: 860px) { nav { display: none; } }
+
+  .hero { background: var(--char); color: #D3D9E0; padding: 74px 0 66px; position: relative; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; opacity: 0.5;
+    background: repeating-linear-gradient(45deg, rgba(201,162,39,0.035) 0 1px, transparent 1px 14px);
+  }
+  .hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.2fr 1fr; gap: 46px; align-items: center; }
+  .hero h1 { color: #fff; font-size: clamp(46px, 7vw, 82px); line-height: 0.94; margin: 0 0 16px; }
+  .hero h1 em { font-style: normal; color: var(--gold); }
+  .hero p { font-size: 18px; margin: 0 0 26px; max-width: 48ch; color: #A8B2BD; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .ghost { border: 1.5px solid rgba(255,255,255,0.3); color: #fff; text-decoration: none; padding: 11px 22px; border-radius: 4px; font-weight: 600; font-size: 14.5px; }
+  .ghost:hover { border-color: var(--gold); color: var(--gold); }
+  .card { background: #fff; border-radius: 8px; padding: 22px 24px; color: var(--body); box-shadow: 0 20px 48px rgba(0,0,0,0.34); }
+  .card h3 { margin: 0 0 3px; font-size: 26px; }
+  .stars { color: var(--gold); font-size: 17px; letter-spacing: 2px; }
+  .rev { font-size: 13.5px; margin-bottom: 14px; }
+  .hrow { display: flex; justify-content: space-between; padding: 7px 0; border-top: 1px solid var(--line); font-size: 14.5px; }
+  .hrow b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } }
+
+  .trust { background: var(--soft); border-bottom: 1px solid var(--line); }
+  .trust .wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 26px 0; text-align: center; }
+  .trust .v { font-family: "Bebas Neue", sans-serif; font-size: 38px; color: var(--ink); line-height: 1; }
+  .trust .k { font-size: 12px; letter-spacing: 0.05em; margin-top: 2px; }
+  @media (max-width: 760px) { .trust .wrap { grid-template-columns: repeat(2, 1fr); gap: 20px 8px; } }
+
+  section { padding: 62px 0; }
+  .eyebrow { color: var(--gold-dark); font-weight: 700; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px; }
+  h2 { font-size: clamp(34px, 4.4vw, 48px); margin: 0 0 12px; }
+  .lede { font-size: 17px; max-width: 60ch; margin: 0 0 32px; }
+
+  .cuts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 880px) { .cuts { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .cuts { grid-template-columns: 1fr; } }
+  .cut { border: 1px solid var(--line); border-radius: 8px; padding: 20px 22px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; transition: border-color .15s, transform .15s; }
+  .cut:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .cut h3 { margin: 0; font-size: 23px; }
+  .cut .p { font-family: "Bebas Neue", sans-serif; font-size: 24px; color: var(--gold-dark); }
+  .pricenote { font-size: 13px; color: var(--body); margin-top: 16px; }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; align-items: center; }
+  @media (max-width: 880px) { .split { grid-template-columns: 1fr; gap: 28px; } }
+  .crew { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .crew li { display: flex; align-items: center; gap: 14px; border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; }
+  .av { width: 42px; height: 42px; border-radius: 50%; background: var(--char); color: var(--gold); display: grid; place-items: center; font-family: "Bebas Neue", sans-serif; font-size: 19px; flex: none; }
+  .crew b { color: var(--ink); font-weight: 600; }
+
+  .contact { background: var(--soft); }
+  .cgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  @media (max-width: 880px) { .cgrid { grid-template-columns: 1fr; } }
+  .bigphone { font-family: "Bebas Neue", sans-serif; font-size: clamp(44px, 6vw, 62px); color: var(--ink); text-decoration: none; display: inline-block; line-height: 1; letter-spacing: 0.02em; }
+  .bigphone:hover { color: var(--gold-dark); }
+  .info { list-style: none; padding: 0; margin: 18px 0 0; font-size: 15.5px; }
+  .info li { padding: 8px 0; border-top: 1px solid var(--line); display: flex; gap: 12px; }
+  .info b { color: var(--ink); min-width: 74px; }
+  form { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 24px; }
+  label { display: block; font-size: 13px; font-weight: 600; color: var(--ink); margin: 0 0 5px; }
+  input, select, textarea { width: 100%; border: 1px solid var(--line); border-radius: 5px; padding: 10px 12px; font-family: inherit; font-size: 15px; color: var(--ink); margin-bottom: 14px; background: #fff; }
+  input:focus, select:focus, textarea:focus { outline: 2px solid rgba(201,162,39,0.3); border-color: var(--gold); }
+  button { width: 100%; background: var(--gold); color: var(--char); border: 0; border-radius: 5px; padding: 13px; font-family: inherit; font-size: 16px; font-weight: 700; cursor: pointer; }
+  button:hover { background: var(--gold-dark); color: #fff; }
+  .formnote { font-size: 12.5px; margin: 10px 0 0; text-align: center; }
+
+  footer { background: var(--ink); color: #939BA5; padding: 34px 0 26px; font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+  footer b { color: #fff; }
+  .disc { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 22px; padding-top: 16px; font-size: 12.5px; color: #79818C; }
+</style>
+</head>
+<body>
+
+<div class="demo">
+  <b>Concept mockup</b> built by Caleb Pierce at cfwebdev.net &#183; not affiliated with the business &#183; nothing on this page is live
+</div>
+
+<header>
+  <div class="wrap bar">
+    <div class="logo">
+      <div class="mark">CC</div>
+      <div>
+        <div class="n">Chito's Cutz</div>
+        <div class="t">Apopka, Florida</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#cuts">Cuts</a>
+      <a href="#crew">The crew</a>
+      <a href="#contact">Visit</a>
+    </nav>
+    <a class="bookbtn" href="#contact">Book a chair</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Apopka's<br><em>chair of choice.</em></h1>
+      <p>Fades, tapers, beards and line ups on South Central Ave. Two hundred neighbors have rated us 4.9. Walk in, or book your chair in about ten seconds.</p>
+      <div class="cta">
+        <a class="bookbtn" href="#contact">Book online</a>
+        <a class="ghost" href="#contact">Call the shop</a>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Open today</h3>
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="rev">4.9 out of 5 from 200 Google reviews</div>
+      <div class="hrow"><span>Closes</span><b>9:00pm</b></div>
+      <div class="hrow"><span>Walk ins</span><b>Welcome</b></div>
+      <div class="hrow"><span>Booking</span><b>Online, any time</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="trust">
+  <div class="wrap">
+    <div><div class="v">4.9&#9733;</div><div class="k">Google rating</div></div>
+    <div><div class="v">200</div><div class="k">Reviews and counting</div></div>
+    <div><div class="v">7 days</div><div class="k">Open all week</div></div>
+    <div><div class="v">Walk in</div><div class="k">Or book ahead</div></div>
+  </div>
+</div>
+
+<section id="cuts">
+  <div class="wrap">
+    <div class="eyebrow">The menu</div>
+    <h2>Cuts and prices</h2>
+    <p class="lede">Straightforward pricing, no surprises at the chair. Every cut finishes with a line up and a hot towel.</p>
+    <div class="cuts">
+      <div class="cut"><h3>Haircut</h3><span class="p">$__</span></div>
+      <div class="cut"><h3>Skin fade</h3><span class="p">$__</span></div>
+      <div class="cut"><h3>Cut &amp; beard</h3><span class="p">$__</span></div>
+      <div class="cut"><h3>Beard trim</h3><span class="p">$__</span></div>
+      <div class="cut"><h3>Line up</h3><span class="p">$__</span></div>
+      <div class="cut"><h3>Kids cut</h3><span class="p">$__</span></div>
+    </div>
+    <p class="pricenote">Prices left blank on purpose. Caleb has not seen your price list, and this mockup does not invent numbers. Send them over and they drop straight in.</p>
+  </div>
+</section>
+
+<section id="crew" style="background:var(--soft)">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Behind the chairs</div>
+      <h2>Pick your barber</h2>
+      <p class="lede" style="margin-bottom:0">Regulars have a favorite, and new customers want to know who they are sitting with. On the real site each name links straight to that barber's own booking calendar.</p>
+    </div>
+    <ul class="crew">
+      <li><span class="av">1</span><div><b>Barber name</b><div style="font-size:14px">Specialty goes here</div></div></li>
+      <li><span class="av">2</span><div><b>Barber name</b><div style="font-size:14px">Specialty goes here</div></div></li>
+      <li><span class="av">3</span><div><b>Barber name</b><div style="font-size:14px">Specialty goes here</div></div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap cgrid">
+    <div>
+      <div class="eyebrow">Visit the shop</div>
+      <h2>Come through</h2>
+      <a class="bigphone" href="#contact">(407) 703-3434</a>
+      <ul class="info">
+        <li><b>Address</b><span>433 S Central Ave, Apopka, FL 32703</span></li>
+        <li><b>Today</b><span>Open until 9:00pm</span></li>
+        <li><b>Walk ins</b><span>Always welcome</span></li>
+      </ul>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('This is a concept mockup, so the form is not connected. On the real site this would book the chair or text the shop.');">
+      <label for="n">Your name</label>
+      <input id="n" type="text" placeholder="Marcus">
+      <label for="p">Phone</label>
+      <input id="p" type="tel" placeholder="(407) 000-0000">
+      <label for="s">What are you after?</label>
+      <select id="s">
+        <option>Haircut</option>
+        <option>Skin fade</option>
+        <option>Cut and beard</option>
+        <option>Beard trim</option>
+        <option>Line up</option>
+        <option>Kids cut</option>
+      </select>
+      <label for="w">When suits you?</label>
+      <input id="w" type="text" placeholder="Saturday morning, or as soon as you have a chair">
+      <button type="submit">Request my chair</button>
+      <p class="formnote">Demo form. Nothing is sent or stored.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <b>Chito's Cutz</b><br>
+      433 S Central Ave, Apopka, FL 32703<br>
+      (407) 703-3434
+    </div>
+    <div>
+      <b>Open</b><br>
+      Seven days a week<br>
+      Closes 9:00pm
+    </div>
+  </div>
+  <div class="wrap disc">
+    Concept mockup designed and built by Caleb Pierce, cfwebdev.net. This page is an unsolicited design concept, is not affiliated with or endorsed by Chito's Cutz, and is not a live business website. Business name, address, phone, hours, rating and review count are taken from the shop's public Google listing. Prices, barber names and specialties are deliberately left blank rather than invented. No reviews or testimonials have been fabricated.
+  </div>
+</footer>
+
+</body>
+</html>
