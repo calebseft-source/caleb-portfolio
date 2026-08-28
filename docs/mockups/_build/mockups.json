@@ -1,0 +1,1907 @@
+{
+  "_comment": "One entry per speculative mockup. The design standard lives in build.py; this file is only facts and copy. Every number here came from that business's public listings and survived two verification passes. Anything unknown is left out rather than guessed.",
+  "mockups": [
+    {
+      "slug": "south-bay-automotive",
+      "business": "South Bay Automotive",
+      "nav_name": "South Bay Automotive",
+      "initials": "SB",
+      "tagline": "Auto Repair in Eustis, FL",
+      "trade": "auto",
+      "images": {
+        "hero": "hero-bay.jpg",
+        "detail": "engine-detail.jpg",
+        "pin": "tool-wall.jpg"
+      },
+      "hero_alt": "Auto repair service bay",
+      "detail_alt": "Mechanic working on an engine",
+      "pin_alt": "Tool board in the shop",
+      "palette": {
+        "bg": "#0A0A0B",
+        "bg2": "#111113",
+        "accent": "#E2582A",
+        "accent2": "#FF7A4D"
+      },
+      "font": {
+        "google": "Archivo+Black",
+        "css": "Archivo Black",
+        "fallback": "Impact"
+      },
+      "kicker": "Eustis · South Bay Street",
+      "h1": [
+        "Fifteen years",
+        "of <em>straight</em>",
+        "answers."
+      ],
+      "hero_p": "Full service auto repair on South Bay Street. A real quote before the work starts, and the truth about what can wait.",
+      "cta": [
+        "Book a visit",
+        "See what we do"
+      ],
+      "nav": [
+        [
+          "#work",
+          "Services"
+        ],
+        [
+          "#trust",
+          "Why us"
+        ],
+        [
+          "#visit",
+          "Visit"
+        ]
+      ],
+      "nav_cta": "(352) 589-7349",
+      "marquee": [
+        "Brakes",
+        "&#9670;",
+        "Tires",
+        "&#9670;",
+        "Diagnostics",
+        "&#9670;",
+        "Electrical",
+        "&#9670;",
+        "Maintenance",
+        "&#9670;",
+        "Mercedes",
+        "&#9670;"
+      ],
+      "stats": [
+        {
+          "v": "15",
+          "count": 15,
+          "suffix": "+",
+          "l": "Years in Eustis"
+        },
+        {
+          "v": "4.7",
+          "count": 4.7,
+          "suffix": "&#9733;",
+          "l": "Google rating"
+        },
+        {
+          "v": "148",
+          "count": 148,
+          "l": "Reviews"
+        },
+        {
+          "v": "Best",
+          "suffix": ".",
+          "l": "Lake &amp; Sumter Style"
+        }
+      ],
+      "beats": [
+        {
+          "n": "Step one",
+          "h": "You tell us<br>what it is doing",
+          "p": "The noise, the light, the smell. Whatever you noticed. No jargon needed."
+        },
+        {
+          "n": "Step two",
+          "h": "We find<br>the actual cause",
+          "p": "Diagnostics first. We would rather spend an hour finding it than guess at parts."
+        },
+        {
+          "n": "Step three",
+          "h": "You get a quote<br>before we touch it",
+          "p": "Parts and labor up front. Nothing on the final bill is a surprise."
+        },
+        {
+          "n": "Step four",
+          "h": "It is done<br>when we said",
+          "p": "And if something can safely wait until next month, we will tell you that too."
+        }
+      ],
+      "services": {
+        "eyebrow": "What we do",
+        "h2": "If it drives in,<br><em class=\"serif\">we can look at it</em>",
+        "cta": "Ask us",
+        "items": [
+          "General repair",
+          "Brakes",
+          "Tires",
+          "Vehicle electrical",
+          "Scheduled maintenance",
+          "Mercedes service"
+        ]
+      },
+      "trust": {
+        "eyebrow": "Why people come back",
+        "quote": "One hundred and forty eight people rated this shop four point seven. In a town this size, that is most of the street.",
+        "attr": "4.7 average · Google",
+        "lede": "Fifteen years in one town means the reputation walks in the door before the customer does. Voted Best of the Best by Lake and Sumter Style."
+      },
+      "callout": {
+        "h3": "We are hiring<br>a technician",
+        "p": "South Bay Automotive is looking for an experienced full time mechanic. If that is you, call the shop or come in and ask for the owner.",
+        "cta": "Get in touch"
+      },
+      "visit": {
+        "h2": "Bring it<br><em class=\"serif\">by the shop</em>",
+        "phone": "(352) 589-7349",
+        "meta": [
+          [
+            "Address",
+            "785 S Bay St<br>Eustis, FL 32726"
+          ],
+          [
+            "Hours",
+            "Monday to Friday, 7:30am to 5:00pm"
+          ],
+          [
+            "Weekends",
+            "Closed"
+          ]
+        ]
+      },
+      "form": {
+        "button": "Request an appointment",
+        "fields": [
+          {
+            "id": "n",
+            "type": "text",
+            "label": "Your name",
+            "ph": "Jane Doe"
+          },
+          {
+            "id": "p",
+            "type": "tel",
+            "label": "Phone",
+            "ph": "(352) 000-0000"
+          },
+          {
+            "id": "v",
+            "type": "text",
+            "label": "Vehicle",
+            "ph": "2016 Toyota Camry"
+          },
+          {
+            "id": "s",
+            "type": "select",
+            "label": "What do you need",
+            "options": [
+              "General repair or diagnostic",
+              "Brakes",
+              "Tires",
+              "Electrical",
+              "Scheduled maintenance",
+              "Something else"
+            ]
+          },
+          {
+            "id": "m",
+            "type": "textarea",
+            "label": "Anything we should know",
+            "ph": "Noise when braking, started last week..."
+          }
+        ]
+      },
+      "footer": [
+        [
+          "South Bay Automotive",
+          "785 S Bay St, Eustis, FL 32726<br>(352) 589-7349"
+        ],
+        [
+          "Hours",
+          "Monday to Friday<br>7:30am to 5:00pm"
+        ],
+        [
+          "Concept by",
+          "Caleb Pierce<br>cfwebdev.net"
+        ]
+      ],
+      "disclaimer": "Business name, address, phone, hours, rating, review count, award and the current job opening are taken from the shop's public listings."
+    },
+    {
+      "slug": "chitos-cutz",
+      "business": "Chito's Cutz",
+      "nav_name": "Chito's Cutz",
+      "initials": "CC",
+      "tagline": "Barbershop in Apopka, FL",
+      "trade": "barbershop",
+      "images": {
+        "hero": "hero-shop.jpg",
+        "detail": "fade-detail.jpg",
+        "pin": "tools.jpg"
+      },
+      "hero_alt": "Barbershop interior",
+      "detail_alt": "Clippers cutting a fade",
+      "pin_alt": "Barber tools",
+      "palette": {
+        "bg": "#0B0B0C",
+        "bg2": "#121214",
+        "ink": "#F4F1EC",
+        "mut": "#9A968F",
+        "dim": "#5E5A55",
+        "accent": "#D8A63B",
+        "accent2": "#F2C86A"
+      },
+      "font": {
+        "google": "Anton",
+        "css": "Anton",
+        "fallback": "Impact",
+        "track": ".005em",
+        "h1vw": "12.5",
+        "h1max": "186"
+      },
+      "mark_style": "border-radius:50%;border:1.5px solid var(--acc);color:var(--acc);",
+      "kicker": "Apopka · South Central Ave",
+      "h1": [
+        "Sharp",
+        "every <em>single</em>",
+        "time."
+      ],
+      "hero_p": "Fades, tapers, beards and line ups, seven days a week. Two hundred neighbors have rated us four point nine.",
+      "cta": [
+        "Book online",
+        "See the cuts"
+      ],
+      "nav": [
+        [
+          "#work",
+          "Cuts"
+        ],
+        [
+          "#trust",
+          "The craft"
+        ],
+        [
+          "#visit",
+          "Visit"
+        ]
+      ],
+      "nav_cta": "Book a chair",
+      "marquee": [
+        "Fades",
+        "&#9733;",
+        "Tapers",
+        "&#9733;",
+        "Beards",
+        "&#9733;",
+        "Line ups",
+        "&#9733;",
+        "Kids cuts",
+        "&#9733;",
+        "Hot towel",
+        "&#9733;"
+      ],
+      "stats": [
+        {
+          "v": "4.9",
+          "count": 4.9,
+          "suffix": "&#9733;",
+          "l": "Google rating"
+        },
+        {
+          "v": "200",
+          "count": 200,
+          "suffix": "+",
+          "l": "Reviews"
+        },
+        {
+          "v": "7",
+          "count": 7,
+          "l": "Days a week"
+        },
+        {
+          "v": "9",
+          "suffix": "pm",
+          "l": "Open till"
+        }
+      ],
+      "beats": [
+        {
+          "n": "One",
+          "h": "Walk in,<br>or book the chair",
+          "p": "Seven days a week. Booking online takes about ten seconds if you would rather not wait."
+        },
+        {
+          "n": "Two",
+          "h": "Tell us<br>how you want it",
+          "p": "Bring a photo, or just say the usual. Either works, and nobody rushes you through it."
+        },
+        {
+          "n": "Three",
+          "h": "We take<br>our time",
+          "p": "Clippers that never hurry. That is most of why two hundred people came back to leave a review."
+        },
+        {
+          "n": "Four",
+          "h": "Line up,<br>hot towel, done",
+          "p": "Every cut finishes the same way, whether it is your first time in or your hundredth."
+        }
+      ],
+      "services": {
+        "eyebrow": "The menu",
+        "h2": "What we<br><em class=\"serif\">do best</em>",
+        "lede": "Walk in or book ahead. Every cut finishes with a line up and a hot towel.",
+        "cta": "Book",
+        "items": [
+          "Haircut",
+          "Skin fade",
+          "Cut &amp; beard",
+          "Beard trim",
+          "Line up",
+          "Kids cut"
+        ],
+        "note": "Prices are left off this concept on purpose. Caleb has not seen your price list and would rather ask than invent one."
+      },
+      "trust": {
+        "eyebrow": "The craft",
+        "quote": "Two hundred people took the time to leave a review. That is not luck, that is a room full of regulars who keep coming back.",
+        "attr": "4.9 average · Google",
+        "lede": "A chair, a mirror and clippers that never rush. New in town or fifteen years deep, you get the same cut."
+      },
+      "cards": {
+        "eyebrow": "Behind the chairs",
+        "h2": "Pick your<br><em class=\"serif\">barber</em>",
+        "note": "Left blank deliberately. Send the names and photos and each chair becomes its own bookable profile.",
+        "items": [
+          {
+            "n": "CHAIR 01",
+            "h": "Your barber",
+            "p": "Name and specialty drop in here.",
+            "slot": "Own booking link"
+          },
+          {
+            "n": "CHAIR 02",
+            "h": "Your barber",
+            "p": "Name and specialty drop in here.",
+            "slot": "Own booking link"
+          },
+          {
+            "n": "CHAIR 03",
+            "h": "Your barber",
+            "p": "Name and specialty drop in here.",
+            "slot": "Own booking link"
+          }
+        ]
+      },
+      "visit": {
+        "h2": "Come<br><em class=\"serif\">through</em>",
+        "phone": "(407) 703-3434",
+        "meta": [
+          [
+            "Address",
+            "433 S Central Ave<br>Apopka, FL 32703"
+          ],
+          [
+            "Hours",
+            "Seven days a week, open until 9:00pm"
+          ],
+          [
+            "Walk ins",
+            "Always welcome"
+          ]
+        ]
+      },
+      "form": {
+        "button": "Request my chair",
+        "fields": [
+          {
+            "id": "n",
+            "type": "text",
+            "label": "Your name",
+            "ph": "Marcus"
+          },
+          {
+            "id": "p",
+            "type": "tel",
+            "label": "Phone",
+            "ph": "(407) 000-0000"
+          },
+          {
+            "id": "s",
+            "type": "select",
+            "label": "What are you after",
+            "options": [
+              "Haircut",
+              "Skin fade",
+              "Cut and beard",
+              "Beard trim",
+              "Line up",
+              "Kids cut"
+            ]
+          },
+          {
+            "id": "w",
+            "type": "text",
+            "label": "When suits you",
+            "ph": "Saturday morning"
+          }
+        ]
+      },
+      "footer": [
+        [
+          "Chito's Cutz",
+          "433 S Central Ave, Apopka, FL 32703<br>(407) 703-3434"
+        ],
+        [
+          "Open",
+          "Seven days a week<br>Until 9:00pm"
+        ],
+        [
+          "Concept by",
+          "Caleb Pierce<br>cfwebdev.net"
+        ]
+      ],
+      "disclaimer": "Business name, address, phone, hours, rating and review count are taken from the shop's public Google listing. Prices, barber names and specialties are deliberately left blank rather than invented."
+    },
+    {
+      "slug": "happy-home-pro-services",
+      "business": "Happy Home Pro Services",
+      "nav_name": "Happy Home Pro",
+      "initials": "HH",
+      "tagline": "Handyman in Deltona and DeLand, FL",
+      "trade": "handyman",
+      "images": {
+        "hero": "hero-van.jpg",
+        "detail": "detail-drill.jpg",
+        "pin": "tools.jpg"
+      },
+      "hero_alt": "Handyman work van",
+      "detail_alt": "Fixing a door hinge",
+      "pin_alt": "Hand tools on a workbench",
+      "palette": {
+        "bg": "#0A0B0D",
+        "bg2": "#101216",
+        "accent": "#3E86C4",
+        "accent2": "#63A8E0"
+      },
+      "font": {
+        "google": "Archivo+Black",
+        "css": "Archivo Black",
+        "fallback": "Impact"
+      },
+      "kicker": "Deltona · DeLand · Volusia County",
+      "h1": [
+        "Sixty neighbors",
+        "already <em>vouched</em>",
+        "for Tim."
+      ],
+      "hero_p": "One person, one van, and the jobs on your list that never quite get done. Call and you speak to the man doing the work.",
+      "cta": [
+        "Get a quote",
+        "See the jobs"
+      ],
+      "nav": [
+        [
+          "#work",
+          "Jobs"
+        ],
+        [
+          "#trust",
+          "Why me"
+        ],
+        [
+          "#visit",
+          "Contact"
+        ]
+      ],
+      "nav_cta": "(386) 785-5040",
+      "marquee": [
+        "Repairs",
+        "&#9670;",
+        "Gutter guards",
+        "&#9670;",
+        "Doors",
+        "&#9670;",
+        "Mounting",
+        "&#9670;",
+        "Odd jobs",
+        "&#9670;",
+        "Assembly",
+        "&#9670;"
+      ],
+      "stats": [
+        {
+          "v": "60",
+          "count": 60,
+          "suffix": "+",
+          "l": "Neighbor recommendations"
+        },
+        {
+          "v": "1",
+          "l": "Person on the job"
+        },
+        {
+          "v": "Open",
+          "suffix": ".",
+          "l": "Until 8pm"
+        },
+        {
+          "v": "Local",
+          "suffix": ".",
+          "l": "Volusia County"
+        }
+      ],
+      "beats": [
+        {
+          "n": "One",
+          "h": "Send me<br>the list",
+          "p": "The three things that have been bugging you for a year. All of it, not just the big one."
+        },
+        {
+          "n": "Two",
+          "h": "I tell you<br>what it takes",
+          "p": "A straight price and how long it will take, before I start anything."
+        },
+        {
+          "n": "Three",
+          "h": "One trip,<br>not three",
+          "p": "The van carries most of what a house needs, so small jobs get finished the same day."
+        },
+        {
+          "n": "Four",
+          "h": "You get<br>your Saturday back",
+          "p": "That is really what you are paying for, and it is worth more than the invoice."
+        }
+      ],
+      "services": {
+        "eyebrow": "What I do",
+        "h2": "The jobs that<br><em class=\"serif\">never get done</em>",
+        "cta": "Ask me",
+        "items": [
+          "General repairs",
+          "Gutter guards",
+          "Doors and locks",
+          "TV and shelf mounting",
+          "Furniture assembly",
+          "The odd job list"
+        ],
+        "note": "Send your list and I will tell you honestly which ones I am the right person for."
+      },
+      "trust": {
+        "eyebrow": "Why me",
+        "quote": "Sixty neighbors recommended this business by name on Nextdoor. Nobody buys that, you earn it one job at a time.",
+        "attr": "Nextdoor recommendations",
+        "lede": "You are not calling a call center. You are calling Tim, and Tim is the one who shows up."
+      },
+      "visit": {
+        "h2": "Tell me<br><em class=\"serif\">what needs doing</em>",
+        "phone": "(386) 785-5040",
+        "meta": [
+          [
+            "Area",
+            "Deltona, DeLand and<br>surrounding Volusia County"
+          ],
+          [
+            "Hours",
+            "Open until 8:00pm"
+          ],
+          [
+            "Email",
+            "happyhomeproservices@gmail.com"
+          ]
+        ]
+      },
+      "form": {
+        "button": "Send my list",
+        "fields": [
+          {
+            "id": "n",
+            "type": "text",
+            "label": "Your name",
+            "ph": "Jane Doe"
+          },
+          {
+            "id": "p",
+            "type": "tel",
+            "label": "Phone",
+            "ph": "(386) 000-0000"
+          },
+          {
+            "id": "a",
+            "type": "text",
+            "label": "Where are you",
+            "ph": "Deltona"
+          },
+          {
+            "id": "m",
+            "type": "textarea",
+            "label": "What needs doing",
+            "ph": "Two doors sticking, gutter guard on the back of the house..."
+          }
+        ]
+      },
+      "footer": [
+        [
+          "Happy Home Pro Services",
+          "Deltona, FL<br>(386) 785-5040"
+        ],
+        [
+          "Hours",
+          "Open until 8:00pm<br>Volusia County"
+        ],
+        [
+          "Concept by",
+          "Caleb Pierce<br>cfwebdev.net"
+        ]
+      ],
+      "disclaimer": "Business name, service area, phone, email, hours and recommendation count are taken from the business's public listings and Florida corporate record.",
+      "veil": "strong"
+    },
+    {
+      "slug": "anthony-ferrer-barbershop",
+      "business": "Anthony Ferrer Hairsalon & Barbershop",
+      "nav_name": "Anthony Ferrer",
+      "initials": "AF",
+      "tagline": "Barbershop in Clermont, FL",
+      "trade": "barbershop",
+      "images": {
+        "hero": "hero-shop.jpg",
+        "detail": "fade-detail.jpg",
+        "pin": "tools.jpg"
+      },
+      "hero_alt": "Barbershop interior",
+      "detail_alt": "Clippers cutting a fade",
+      "pin_alt": "Barber tools",
+      "palette": {
+        "bg": "#0C0A0A",
+        "bg2": "#141010",
+        "accent": "#B0603A",
+        "accent2": "#D88355"
+      },
+      "font": {
+        "google": "Bebas+Neue",
+        "css": "Bebas Neue",
+        "fallback": "Impact",
+        "track": ".01em",
+        "h1vw": "12",
+        "h1max": "176"
+      },
+      "mark_style": "border-radius:50%;border:1.5px solid var(--acc);color:var(--acc);",
+      "kicker": "Clermont · Citrus Tower Boulevard",
+      "h1": [
+        "Five barbers.",
+        "<em>One</em> standard.",
+        "Every chair."
+      ],
+      "hero_p": "A hundred and sixty nine people have rated this shop. Book the chair you want, with the barber you want.",
+      "cta": [
+        "Book a chair",
+        "See the cuts"
+      ],
+      "nav": [
+        [
+          "#work",
+          "Cuts"
+        ],
+        [
+          "#trust",
+          "The shop"
+        ],
+        [
+          "#visit",
+          "Visit"
+        ]
+      ],
+      "nav_cta": "(352) 227-3597",
+      "marquee": [
+        "Fades",
+        "&#9733;",
+        "Beards",
+        "&#9733;",
+        "Line ups",
+        "&#9733;",
+        "Color",
+        "&#9733;",
+        "Kids cuts",
+        "&#9733;",
+        "Styling",
+        "&#9733;"
+      ],
+      "stats": [
+        {
+          "v": "169",
+          "count": 169,
+          "l": "Reviews"
+        },
+        {
+          "v": "4.7",
+          "count": 4.7,
+          "suffix": "&#9733;",
+          "l": "Google rating"
+        },
+        {
+          "v": "5",
+          "count": 5,
+          "l": "Barbers on staff"
+        },
+        {
+          "v": "5",
+          "count": 5,
+          "suffix": "yrs",
+          "l": "In Clermont"
+        }
+      ],
+      "beats": [
+        {
+          "n": "One",
+          "h": "Pick your<br>barber",
+          "p": "Five of them, each with their own chair and their own regulars. You choose."
+        },
+        {
+          "n": "Two",
+          "h": "Book the time<br>that suits you",
+          "p": "Online, in a few taps, without ringing during someone else's cut."
+        },
+        {
+          "n": "Three",
+          "h": "Sit down<br>and relax",
+          "p": "Nobody is watching the clock. The cut takes as long as the cut takes."
+        },
+        {
+          "n": "Four",
+          "h": "Walk out<br>looking right",
+          "p": "Then book the next one on the way out, so the chair is always waiting."
+        }
+      ],
+      "services": {
+        "eyebrow": "The menu",
+        "h2": "Cuts, beards<br><em class=\"serif\">and color</em>",
+        "cta": "Book",
+        "items": [
+          "Haircut",
+          "Skin fade",
+          "Beard trim",
+          "Cut and beard",
+          "Kids cut",
+          "Styling"
+        ],
+        "note": "Prices left off this concept deliberately. Send the price list and it drops straight in."
+      },
+      "trust": {
+        "eyebrow": "The shop",
+        "quote": "One hundred and sixty nine reviews and a chamber membership. This is a shop that already does the work properly, it just does not own the place people find it.",
+        "attr": "4.7 average · Google",
+        "lede": "Five years on Citrus Tower Boulevard, five barbers, and a 2026 Best of South Lake nomination."
+      },
+      "cards": {
+        "eyebrow": "The chairs",
+        "h2": "Five barbers,<br><em class=\"serif\">five regulars lists</em>",
+        "note": "Names and photos left blank on purpose. Send them and each barber gets a bookable profile of their own.",
+        "items": [
+          {
+            "n": "CHAIR 01",
+            "h": "Your barber",
+            "p": "Name and specialty drop in here.",
+            "slot": "Own booking link"
+          },
+          {
+            "n": "CHAIR 02",
+            "h": "Your barber",
+            "p": "Name and specialty drop in here.",
+            "slot": "Own booking link"
+          },
+          {
+            "n": "CHAIR 03",
+            "h": "Your barber",
+            "p": "Name and specialty drop in here.",
+            "slot": "Own booking link"
+          }
+        ]
+      },
+      "visit": {
+        "h2": "Find us on<br><em class=\"serif\">Citrus Tower</em>",
+        "phone": "(352) 227-3597",
+        "meta": [
+          [
+            "Address",
+            "2920 Citrus Tower Blvd, Unit B<br>Clermont, FL 34711"
+          ],
+          [
+            "Email",
+            "anthonyferrersalon@gmail.com"
+          ],
+          [
+            "Booking",
+            "Online, any time"
+          ]
+        ]
+      },
+      "form": {
+        "button": "Request my chair",
+        "fields": [
+          {
+            "id": "n",
+            "type": "text",
+            "label": "Your name",
+            "ph": "Marcus"
+          },
+          {
+            "id": "p",
+            "type": "tel",
+            "label": "Phone",
+            "ph": "(352) 000-0000"
+          },
+          {
+            "id": "b",
+            "type": "text",
+            "label": "Barber, if you have a favorite",
+            "ph": "No preference is fine"
+          },
+          {
+            "id": "s",
+            "type": "select",
+            "label": "What are you after",
+            "options": [
+              "Haircut",
+              "Skin fade",
+              "Beard trim",
+              "Cut and beard",
+              "Kids cut",
+              "Styling"
+            ]
+          }
+        ]
+      },
+      "footer": [
+        [
+          "Anthony Ferrer",
+          "2920 Citrus Tower Blvd, Unit B<br>Clermont, FL 34711"
+        ],
+        [
+          "Contact",
+          "(352) 227-3597<br>anthonyferrersalon@gmail.com"
+        ],
+        [
+          "Concept by",
+          "Caleb Pierce<br>cfwebdev.net"
+        ]
+      ],
+      "disclaimer": "Business name, address, phone, email, rating, review count, staff count and chamber membership are taken from the shop's public listings and Florida corporate record. Prices and barber names are deliberately left blank rather than invented."
+    },
+    {
+      "slug": "southpaw-dog-spa",
+      "business": "Southpaw Dog Spa & Pet Sitting",
+      "nav_name": "Southpaw",
+      "initials": "SP",
+      "tagline": "Dog Grooming and Pet Sitting in Leesburg, FL",
+      "trade": "pets",
+      "images": {
+        "hero": "hero-grooming.jpg",
+        "detail": "detail-groom.jpg",
+        "pin": "home-sitting.jpg"
+      },
+      "hero_alt": "Dog grooming room",
+      "detail_alt": "Grooming a small dog",
+      "pin_alt": "A dog bed in a living room",
+      "palette": {
+        "bg": "#080B0B",
+        "bg2": "#0E1414",
+        "accent": "#4C9A96",
+        "accent2": "#6FC4BF"
+      },
+      "font": {
+        "google": "Bebas+Neue",
+        "css": "Bebas Neue",
+        "fallback": "Impact",
+        "track": ".01em",
+        "h1vw": "12",
+        "h1max": "172"
+      },
+      "mark_style": "border-radius:50%;border:1.5px solid var(--acc);color:var(--acc);",
+      "kicker": "Leesburg · Lake County",
+      "h1": [
+        "Your dog's",
+        "<em>second</em> favorite",
+        "person."
+      ],
+      "hero_p": "Twelve years of grooming and sitting in Leesburg. One dog family at a time, so yours gets the whole appointment.",
+      "cta": [
+        "Book a groom",
+        "How it works"
+      ],
+      "nav": [
+        [
+          "#work",
+          "Services"
+        ],
+        [
+          "#trust",
+          "About Vicki"
+        ],
+        [
+          "#visit",
+          "Contact"
+        ]
+      ],
+      "nav_cta": "(352) 476-2631",
+      "marquee": [
+        "Grooming",
+        "&#10052;",
+        "Bathing",
+        "&#10052;",
+        "Nails",
+        "&#10052;",
+        "Pet sitting",
+        "&#10052;",
+        "Overnights",
+        "&#10052;",
+        "Day care",
+        "&#10052;"
+      ],
+      "stats": [
+        {
+          "v": "12",
+          "count": 12,
+          "suffix": "+",
+          "l": "Years in Leesburg"
+        },
+        {
+          "v": "2",
+          "count": 2,
+          "suffix": "x",
+          "l": "Neighborhood Fave"
+        },
+        {
+          "v": "1",
+          "count": 1,
+          "l": "Dog family at a time"
+        },
+        {
+          "v": "30",
+          "count": 30,
+          "l": "Neighbors faved"
+        }
+      ],
+      "beats": [
+        {
+          "n": "One",
+          "h": "Tell me<br>about your dog",
+          "p": "Breed, coat, temperament, and whatever they hate. That last one matters most."
+        },
+        {
+          "n": "Two",
+          "h": "One booking,<br>one dog family",
+          "p": "No crowded room, no waiting in a crate. Yours gets the whole appointment."
+        },
+        {
+          "n": "Three",
+          "h": "Groomed<br>at their pace",
+          "p": "Nervous dogs get more time, not less. That is the whole point of a small setup."
+        },
+        {
+          "n": "Four",
+          "h": "Home again,<br>tired and happy",
+          "p": "And if you are traveling, they can stay with me instead of a kennel."
+        }
+      ],
+      "services": {
+        "eyebrow": "What I do",
+        "h2": "Grooming and<br><em class=\"serif\">sitting, both</em>",
+        "cta": "Ask me",
+        "items": [
+          "Full groom",
+          "Bath and tidy",
+          "Nails and ears",
+          "Day sitting",
+          "Overnight stays",
+          "Holiday care"
+        ],
+        "note": "Prices left off this concept on purpose. They depend on the dog, and I would rather ask than guess."
+      },
+      "trust": {
+        "eyebrow": "About Vicki",
+        "quote": "Twelve years, two Neighborhood Fave awards, and one dog family at a time. That last part is the reason for the first two.",
+        "attr": "Neighborhood Fave 2023 and 2024",
+        "lede": "A small setup by choice. Fewer dogs, more attention, and the same person every visit so your dog is not meeting a stranger."
+      },
+      "visit": {
+        "h2": "Book<br><em class=\"serif\">your dog in</em>",
+        "phone": "(352) 476-2631",
+        "meta": [
+          [
+            "Area",
+            "Leesburg and<br>surrounding Lake County"
+          ],
+          [
+            "Email",
+            "rocknrollagerl77@gmail.com"
+          ],
+          [
+            "Booking",
+            "Call or message"
+          ]
+        ]
+      },
+      "form": {
+        "button": "Ask about a booking",
+        "fields": [
+          {
+            "id": "n",
+            "type": "text",
+            "label": "Your name",
+            "ph": "Jane Doe"
+          },
+          {
+            "id": "p",
+            "type": "tel",
+            "label": "Phone",
+            "ph": "(352) 000-0000"
+          },
+          {
+            "id": "d",
+            "type": "text",
+            "label": "Your dog",
+            "ph": "Breed and age"
+          },
+          {
+            "id": "s",
+            "type": "select",
+            "label": "What do you need",
+            "options": [
+              "Full groom",
+              "Bath and tidy",
+              "Nails and ears",
+              "Day sitting",
+              "Overnight stay",
+              "Not sure yet"
+            ]
+          },
+          {
+            "id": "m",
+            "type": "textarea",
+            "label": "Anything I should know",
+            "ph": "Nervous about the dryer, hates having paws touched..."
+          }
+        ]
+      },
+      "footer": [
+        [
+          "Southpaw Dog Spa",
+          "Leesburg, FL<br>(352) 476-2631"
+        ],
+        [
+          "Grooming and sitting",
+          "Lake County<br>One dog family at a time"
+        ],
+        [
+          "Concept by",
+          "Caleb Pierce<br>cfwebdev.net"
+        ]
+      ],
+      "disclaimer": "Business name, service area, phone, email, years trading and Neighborhood Fave awards are taken from the business's public listings.",
+      "veil": "strong"
+    },
+    {
+      "slug": "arte-dal-vivo-tattoo",
+      "business": "Arte Dal Vivo Tattoo Studio",
+      "nav_name": "Arte Dal Vivo",
+      "initials": "AV",
+      "tagline": "Private Tattoo Studio in Longwood, FL",
+      "trade": "tattoo",
+      "images": {
+        "hero": "hero-studio.jpg",
+        "detail": "detail-ink.jpg",
+        "pin": "tools.jpg"
+      },
+      "hero_alt": "Tattoo studio room",
+      "detail_alt": "Tattoo machine at work",
+      "pin_alt": "Tattoo workspace",
+      "palette": {
+        "bg": "#08080A",
+        "bg2": "#0F0F12",
+        "accent": "#A63A3A",
+        "accent2": "#D45C5C"
+      },
+      "font": {
+        "google": "Anton",
+        "css": "Anton",
+        "fallback": "Impact",
+        "track": ".005em",
+        "h1vw": "12",
+        "h1max": "176"
+      },
+      "kicker": "Longwood · By appointment only",
+      "h1": [
+        "Private studio.",
+        "<em>Permanent</em>",
+        "work."
+      ],
+      "hero_p": "One artist, one client, one room. Full day sessions with the door closed and nobody watching over your shoulder.",
+      "cta": [
+        "Start a booking",
+        "See the process"
+      ],
+      "nav": [
+        [
+          "#work",
+          "Work"
+        ],
+        [
+          "#trust",
+          "The studio"
+        ],
+        [
+          "#visit",
+          "Book"
+        ]
+      ],
+      "nav_cta": "Book a consult",
+      "marquee": [
+        "Custom",
+        "&#9670;",
+        "Fine line",
+        "&#9670;",
+        "Black work",
+        "&#9670;",
+        "Cover ups",
+        "&#9670;",
+        "Full days",
+        "&#9670;",
+        "By appointment",
+        "&#9670;"
+      ],
+      "stats": [
+        {
+          "v": "5.0",
+          "count": 5,
+          "suffix": "&#9733;",
+          "l": "Google rating"
+        },
+        {
+          "v": "7",
+          "count": 7,
+          "suffix": "yrs",
+          "l": "Studio open"
+        },
+        {
+          "v": "1",
+          "count": 1,
+          "l": "Client at a time"
+        },
+        {
+          "v": "8",
+          "count": 8,
+          "suffix": "hr",
+          "l": "Full day sessions"
+        }
+      ],
+      "beats": [
+        {
+          "n": "One",
+          "h": "Send<br>the idea",
+          "p": "References, placement, rough size. Half an idea is enough to start from."
+        },
+        {
+          "n": "Two",
+          "h": "We design<br>it together",
+          "p": "Custom work only. Nothing off a wall, nothing anybody else is wearing."
+        },
+        {
+          "n": "Three",
+          "h": "Deposit<br>holds the day",
+          "p": "A booking fee reserves the studio for you, and it comes off the final price."
+        },
+        {
+          "n": "Four",
+          "h": "One room,<br>one client",
+          "p": "A full session with the door shut. No walk ins, no audience, no rushing."
+        }
+      ],
+      "services": {
+        "eyebrow": "The work",
+        "h2": "Custom only,<br><em class=\"serif\">start to finish</em>",
+        "cta": "Enquire",
+        "items": [
+          "Custom design",
+          "Fine line",
+          "Black and gray",
+          "Cover ups",
+          "Full day sessions",
+          "Consultations"
+        ],
+        "note": "Session pricing left off this concept deliberately. It belongs in a conversation, not on a homepage."
+      },
+      "trust": {
+        "eyebrow": "The studio",
+        "quote": "A private room, one client at a time, and a booking process that starts with a conversation instead of a queue.",
+        "attr": "5.0 average · Google",
+        "lede": "Seven years in Longwood, by appointment only. The work lives on Instagram, which is exactly the problem a real portfolio site would solve."
+      },
+      "visit": {
+        "h2": "Start<br><em class=\"serif\">a booking</em>",
+        "phone": "By appointment only",
+        "meta": [
+          [
+            "Studio",
+            "2625 W State Rd 434, Suite B<br>Longwood, FL 32779"
+          ],
+          [
+            "Booking",
+            "Consultation first, then a deposit holds the date"
+          ],
+          [
+            "Portfolio",
+            "Instagram @artedalvivo.studio"
+          ]
+        ]
+      },
+      "form": {
+        "button": "Send my idea",
+        "fields": [
+          {
+            "id": "n",
+            "type": "text",
+            "label": "Your name",
+            "ph": "Alex"
+          },
+          {
+            "id": "c",
+            "type": "text",
+            "label": "Best way to reach you",
+            "ph": "Phone or email"
+          },
+          {
+            "id": "pl",
+            "type": "text",
+            "label": "Placement",
+            "ph": "Forearm, ribs, shoulder..."
+          },
+          {
+            "id": "sz",
+            "type": "select",
+            "label": "Rough size",
+            "options": [
+              "Small, a few inches",
+              "Medium, palm sized",
+              "Large, half sleeve or bigger",
+              "Full day piece",
+              "Not sure yet"
+            ]
+          },
+          {
+            "id": "m",
+            "type": "textarea",
+            "label": "The idea",
+            "ph": "What you have in mind, and any references..."
+          }
+        ]
+      },
+      "footer": [
+        [
+          "Arte Dal Vivo",
+          "2625 W State Rd 434, Suite B<br>Longwood, FL 32779"
+        ],
+        [
+          "Booking",
+          "By appointment only<br>Consultation first"
+        ],
+        [
+          "Concept by",
+          "Caleb Pierce<br>cfwebdev.net"
+        ]
+      ],
+      "disclaimer": "Business name, address, rating, review count, years trading and appointment-only booking model are taken from the studio's public listings and Florida corporate record. No phone number is shown because none could be verified as belonging to the studio.",
+      "veil": "strong"
+    },
+    {
+      "slug": "hunt-club-cleaners",
+      "business": "Hunt Club Cleaners",
+      "nav_name": "Hunt Club Cleaners",
+      "initials": "HC",
+      "tagline": "Dry Cleaning in Apopka, FL",
+      "trade": "drycleaning",
+      "images": {
+        "hero": "hero-shop.jpg",
+        "detail": "detail-press.jpg",
+        "pin": "rail.jpg"
+      },
+      "hero_alt": "Dry cleaning shop interior",
+      "detail_alt": "Pressing a shirt collar",
+      "pin_alt": "Pressed garments on a rail",
+      "palette": {
+        "bg": "#080A0C",
+        "bg2": "#0E1216",
+        "accent": "#4E86A8",
+        "accent2": "#74AECF"
+      },
+      "font": {
+        "google": "Oswald:wght@600",
+        "css": "Oswald",
+        "fallback": "Impact",
+        "track": "0",
+        "h1vw": "10.6",
+        "h1max": "158",
+        "weight": 600
+      },
+      "kicker": "Apopka · Hunt Club Boulevard",
+      "h1": [
+        "Twenty three years",
+        "of <em>pressed</em>",
+        "collars."
+      ],
+      "hero_p": "The same family run counter on Hunt Club Boulevard since 2002. Dry cleaning, pressing and alterations, done properly.",
+      "cta": [
+        "Find our hours",
+        "What we clean"
+      ],
+      "nav": [
+        [
+          "#work",
+          "Services"
+        ],
+        [
+          "#trust",
+          "Since 2002"
+        ],
+        [
+          "#visit",
+          "Visit"
+        ]
+      ],
+      "nav_cta": "(407) 774-2898",
+      "marquee": [
+        "Dry cleaning",
+        "&#9670;",
+        "Pressing",
+        "&#9670;",
+        "Alterations",
+        "&#9670;",
+        "Shirts",
+        "&#9670;",
+        "Suits",
+        "&#9670;",
+        "Household",
+        "&#9670;"
+      ],
+      "stats": [
+        {
+          "v": "23",
+          "count": 23,
+          "l": "Years on Hunt Club"
+        },
+        {
+          "v": "2002",
+          "l": "Family run since"
+        },
+        {
+          "v": "27",
+          "count": 27,
+          "l": "Reviews"
+        },
+        {
+          "v": "6",
+          "count": 6,
+          "l": "Days a week"
+        }
+      ],
+      "beats": [
+        {
+          "n": "One",
+          "h": "Drop it<br>at the counter",
+          "p": "No app, no account, no minimum. Bring it in and tell us what you need."
+        },
+        {
+          "n": "Two",
+          "h": "We tell you<br>when it is ready",
+          "p": "A real date, not an estimate, so you can plan around it."
+        },
+        {
+          "n": "Three",
+          "h": "Cleaned,<br>pressed, bagged",
+          "p": "The same way it has been done at this counter since 2002."
+        },
+        {
+          "n": "Four",
+          "h": "Ready when<br>we said",
+          "p": "Twenty three years of annual filings without a single lapse. We are not going anywhere."
+        }
+      ],
+      "services": {
+        "eyebrow": "What we clean",
+        "h2": "Dry cleaning,<br><em class=\"serif\">pressing, alterations</em>",
+        "cta": "Ask us",
+        "items": [
+          "Dry cleaning",
+          "Shirt service",
+          "Pressing",
+          "Basic alterations",
+          "Suits and formalwear",
+          "Household items"
+        ],
+        "note": "Prices and turnaround left off this concept on purpose. Send them over and they drop straight in."
+      },
+      "trust": {
+        "eyebrow": "Since 2002",
+        "quote": "Twenty three years at the same counter, and an annual filing every single year without one missed. That is not a business that disappears on you.",
+        "attr": "Family run since 2002",
+        "lede": "Right now the hours listed for this shop disagree across three different websites. A page you own is the one that settles it."
+      },
+      "visit": {
+        "h2": "Come by<br><em class=\"serif\">the counter</em>",
+        "phone": "(407) 774-2898",
+        "meta": [
+          [
+            "Address",
+            "454 S Hunt Club Blvd<br>Apopka, FL 32703"
+          ],
+          [
+            "Weekdays",
+            "Monday to Friday"
+          ],
+          [
+            "Saturday",
+            "Open, closed Sunday"
+          ]
+        ]
+      },
+      "form": {
+        "button": "Ask a question",
+        "fields": [
+          {
+            "id": "n",
+            "type": "text",
+            "label": "Your name",
+            "ph": "Jane Doe"
+          },
+          {
+            "id": "p",
+            "type": "tel",
+            "label": "Phone",
+            "ph": "(407) 000-0000"
+          },
+          {
+            "id": "s",
+            "type": "select",
+            "label": "What do you need",
+            "options": [
+              "Dry cleaning",
+              "Shirt service",
+              "Pressing",
+              "Alterations",
+              "Suits or formalwear",
+              "Something else"
+            ]
+          },
+          {
+            "id": "m",
+            "type": "textarea",
+            "label": "Anything else",
+            "ph": "Needed by Friday, delicate fabric..."
+          }
+        ]
+      },
+      "footer": [
+        [
+          "Hunt Club Cleaners",
+          "454 S Hunt Club Blvd<br>Apopka, FL 32703"
+        ],
+        [
+          "Contact",
+          "(407) 774-2898<br>Closed Sundays"
+        ],
+        [
+          "Concept by",
+          "Caleb Pierce<br>cfwebdev.net"
+        ]
+      ],
+      "disclaimer": "Business name, address, phone, review count and the 2002 incorporation date are taken from the shop's public listings and Florida corporate record. Exact opening hours are left general because published hours currently conflict between sources.",
+      "veil": "strong"
+    },
+    {
+      "slug": "petes-handyman",
+      "business": "Pete's Handyman Service",
+      "nav_name": "Pete's Handyman",
+      "initials": "PH",
+      "tagline": "Handyman in Sorrento, FL",
+      "trade": "handyman",
+      "images": {
+        "hero": "hero-van.jpg",
+        "detail": "detail-drill.jpg",
+        "pin": "tools.jpg"
+      },
+      "hero_alt": "Handyman work van",
+      "detail_alt": "Fixing a door hinge",
+      "pin_alt": "Hand tools on a workbench",
+      "palette": {
+        "bg": "#0B0A08",
+        "bg2": "#131110",
+        "accent": "#D9922B",
+        "accent2": "#F2B455"
+      },
+      "font": {
+        "google": "Oswald:wght@600",
+        "css": "Oswald",
+        "fallback": "Impact",
+        "track": "0",
+        "h1vw": "10.6",
+        "h1max": "158",
+        "weight": 600
+      },
+      "kicker": "Sorrento · Mount Dora · Eustis",
+      "h1": [
+        "One call.",
+        "<em>Most</em> of",
+        "the list."
+      ],
+      "hero_p": "Plumbing, electrical, tile, mounting, locks and the computer that will not connect. One person who does all of it.",
+      "cta": [
+        "Get a quote",
+        "See the list"
+      ],
+      "nav": [
+        [
+          "#work",
+          "What I do"
+        ],
+        [
+          "#trust",
+          "Why me"
+        ],
+        [
+          "#visit",
+          "Contact"
+        ]
+      ],
+      "nav_cta": "(352) 888-0215",
+      "marquee": [
+        "Plumbing",
+        "&#9670;",
+        "Electrical",
+        "&#9670;",
+        "Tile",
+        "&#9670;",
+        "Mounting",
+        "&#9670;",
+        "Locks",
+        "&#9670;",
+        "Networks",
+        "&#9670;"
+      ],
+      "stats": [
+        {
+          "v": "1",
+          "count": 1,
+          "l": "Person, every job"
+        },
+        {
+          "v": "6",
+          "count": 6,
+          "suffix": "+",
+          "l": "Trades covered"
+        },
+        {
+          "v": "Local",
+          "suffix": ".",
+          "l": "Sorrento based"
+        },
+        {
+          "v": "Free",
+          "suffix": ".",
+          "l": "Quotes"
+        }
+      ],
+      "beats": [
+        {
+          "n": "One",
+          "h": "Read me<br>the whole list",
+          "p": "The leaking tap, the dead socket, the shelf, the router. All of it, one call."
+        },
+        {
+          "n": "Two",
+          "h": "I tell you<br>what I can do",
+          "p": "Straight about what is mine and what needs a licensed specialist. Both save you money."
+        },
+        {
+          "n": "Three",
+          "h": "One visit,<br>not four",
+          "p": "Most of that list is one afternoon for someone who carries the right tools."
+        },
+        {
+          "n": "Four",
+          "h": "Done,<br>and tidied up",
+          "p": "Nothing left in the hallway, nothing for you to finish after I leave."
+        }
+      ],
+      "services": {
+        "eyebrow": "What I do",
+        "h2": "Most of it,<br><em class=\"serif\">honestly</em>",
+        "cta": "Ask me",
+        "items": [
+          "Plumbing repairs",
+          "Electrical repairs",
+          "Tile and flooring",
+          "TV and shelf mounting",
+          "Locks and doors",
+          "Computers and networks"
+        ],
+        "note": "This list comes from Pete's own flyer. Right now that flyer only exists as a photo, which is exactly the problem."
+      },
+      "trust": {
+        "eyebrow": "Why me",
+        "quote": "Neighbors recommend this business by name, tagged for professionalism, value, quality and would hire again. That is the whole advert.",
+        "attr": "Nextdoor recommendations",
+        "lede": "One person, a wide skill set, and a service list long enough that most households only need to make one call."
+      },
+      "visit": {
+        "h2": "Tell me<br><em class=\"serif\">what is broken</em>",
+        "phone": "(352) 888-0215",
+        "meta": [
+          [
+            "Area",
+            "Sorrento, Mount Dora, Eustis<br>and around Lake County"
+          ],
+          [
+            "Email",
+            "1handypete@gmail.com"
+          ],
+          [
+            "Quotes",
+            "Free, before any work starts"
+          ]
+        ]
+      },
+      "form": {
+        "button": "Send my list",
+        "fields": [
+          {
+            "id": "n",
+            "type": "text",
+            "label": "Your name",
+            "ph": "Jane Doe"
+          },
+          {
+            "id": "p",
+            "type": "tel",
+            "label": "Phone",
+            "ph": "(352) 000-0000"
+          },
+          {
+            "id": "a",
+            "type": "text",
+            "label": "Where are you",
+            "ph": "Sorrento"
+          },
+          {
+            "id": "m",
+            "type": "textarea",
+            "label": "What needs doing",
+            "ph": "Dripping tap, socket not working, TV to mount..."
+          }
+        ]
+      },
+      "footer": [
+        [
+          "Pete's Handyman Service",
+          "Sorrento, FL<br>(352) 888-0215"
+        ],
+        [
+          "Contact",
+          "1handypete@gmail.com<br>Free quotes"
+        ],
+        [
+          "Concept by",
+          "Caleb Pierce<br>cfwebdev.net"
+        ]
+      ],
+      "disclaimer": "Business name, service area, phone and email are taken from the business's public listings. The service list is transcribed from the business's own published flyer.",
+      "veil": "strong"
+    },
+    {
+      "slug": "hayleys-pet-sitting",
+      "business": "Hayley's Pet Sitting Services",
+      "nav_name": "Hayley's Pet Sitting",
+      "initials": "HP",
+      "tagline": "Pet Sitting in Tavares, FL",
+      "trade": "pets",
+      "images": {
+        "hero": "home-sitting.jpg",
+        "detail": "detail-groom.jpg",
+        "pin": "hero-grooming.jpg"
+      },
+      "hero_alt": "A dog bed in a living room",
+      "detail_alt": "Caring for a small dog",
+      "pin_alt": "Pet care setup",
+      "palette": {
+        "bg": "#0B0908",
+        "bg2": "#131010",
+        "accent": "#C97A55",
+        "accent2": "#E39B78"
+      },
+      "font": {
+        "google": "Anton",
+        "css": "Anton",
+        "fallback": "Impact",
+        "track": ".005em",
+        "h1vw": "11.5",
+        "h1max": "168"
+      },
+      "mark_style": "border-radius:50%;border:1.5px solid var(--acc);color:var(--acc);",
+      "kicker": "Tavares · Lake County",
+      "h1": [
+        "They stay home.",
+        "<em>You</em> stop",
+        "worrying."
+      ],
+      "hero_p": "Pet sitting in your own house, so your animals keep their routine, their bed and their garden while you are away.",
+      "cta": [
+        "Ask about dates",
+        "How it works"
+      ],
+      "nav": [
+        [
+          "#work",
+          "What I do"
+        ],
+        [
+          "#trust",
+          "About Hayley"
+        ],
+        [
+          "#visit",
+          "Contact"
+        ]
+      ],
+      "nav_cta": "(352) 455-8502",
+      "marquee": [
+        "Pet sitting",
+        "&#10052;",
+        "Drop ins",
+        "&#10052;",
+        "Overnights",
+        "&#10052;",
+        "Feeding",
+        "&#10052;",
+        "Medication",
+        "&#10052;",
+        "Holidays",
+        "&#10052;"
+      ],
+      "stats": [
+        {
+          "v": "Home",
+          "suffix": ".",
+          "l": "Not a kennel"
+        },
+        {
+          "v": "Tavares",
+          "l": "And Lake County"
+        },
+        {
+          "v": "1",
+          "count": 1,
+          "l": "Sitter, every visit"
+        },
+        {
+          "v": "10",
+          "count": 10,
+          "l": "Neighbors faved"
+        }
+      ],
+      "beats": [
+        {
+          "n": "One",
+          "h": "Tell me<br>your dates",
+          "p": "A weekend away or two weeks abroad. Both work, the planning is the same."
+        },
+        {
+          "n": "Two",
+          "h": "We meet<br>before you go",
+          "p": "Your animals meet me while you are still there, so nobody is meeting a stranger."
+        },
+        {
+          "n": "Three",
+          "h": "Same routine,<br>same house",
+          "p": "Their bed, their garden, their feeding times. Nothing about their day changes."
+        },
+        {
+          "n": "Four",
+          "h": "You get<br>updates",
+          "p": "Photos and a message so you actually relax instead of wondering."
+        }
+      ],
+      "services": {
+        "eyebrow": "What I do",
+        "h2": "Care in<br><em class=\"serif\">your own home</em>",
+        "cta": "Ask me",
+        "items": [
+          "Daily drop ins",
+          "Overnight stays",
+          "Feeding and water",
+          "Medication",
+          "Garden and litter",
+          "Holiday cover"
+        ],
+        "note": "Rates left off this concept on purpose. They depend on the animals and the dates, and I would rather ask."
+      },
+      "trust": {
+        "eyebrow": "About Hayley",
+        "quote": "Neighbors in Tavares recommend her by name when somebody asks who to trust with their dog. That is the only advertising that has ever worked.",
+        "attr": "Nextdoor recommendations",
+        "lede": "One sitter, not a rota. The same person every visit, so your animals know exactly who is walking through the door."
+      },
+      "visit": {
+        "h2": "Ask about<br><em class=\"serif\">your dates</em>",
+        "phone": "(352) 455-8502",
+        "meta": [
+          [
+            "Area",
+            "Tavares and<br>surrounding Lake County"
+          ],
+          [
+            "Email",
+            "hayleyhetherley@yahoo.com"
+          ],
+          [
+            "Booking",
+            "Message with your dates"
+          ]
+        ]
+      },
+      "form": {
+        "button": "Ask about my dates",
+        "fields": [
+          {
+            "id": "n",
+            "type": "text",
+            "label": "Your name",
+            "ph": "Jane Doe"
+          },
+          {
+            "id": "p",
+            "type": "tel",
+            "label": "Phone",
+            "ph": "(352) 000-0000"
+          },
+          {
+            "id": "a",
+            "type": "text",
+            "label": "Your animals",
+            "ph": "Two dogs, one cat"
+          },
+          {
+            "id": "d",
+            "type": "text",
+            "label": "Dates you need cover",
+            "ph": "12th to 19th"
+          },
+          {
+            "id": "m",
+            "type": "textarea",
+            "label": "Anything I should know",
+            "ph": "Medication, routines, nervous around strangers..."
+          }
+        ]
+      },
+      "footer": [
+        [
+          "Hayley's Pet Sitting",
+          "Tavares, FL<br>(352) 455-8502"
+        ],
+        [
+          "Contact",
+          "hayleyhetherley@yahoo.com<br>Lake County"
+        ],
+        [
+          "Concept by",
+          "Caleb Pierce<br>cfwebdev.net"
+        ]
+      ],
+      "disclaimer": "Business name, service area, phone and email are taken from the business's public listings."
+    }
+  ]
+}

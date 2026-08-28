@@ -4,19 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>South Bay Automotive — Auto Repair in Eustis, FL</title>
+<title>South Bay Automotive &#8212; Auto Repair in Eustis, FL</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
 <style>
   :root{
-    --bg:#0A0A0B; --bg2:#111113; --ink:#F2F0ED; --mut:#96938E; --dim:#5B5854;
-    --hot:#E2582A; --hot2:#FF7A4D; --line:rgba(242,240,237,.11);
+    --bg:#0A0A0B; --bg2:#111113; --ink:#F2F0ED; --mut:#96938E;
+    --dim:#5B5854; --acc:#E2582A; --acc2:#FF7A4D;
+    --line:rgba(242,240,237,.11);
   }
   *{box-sizing:border-box}
   html{-webkit-font-smoothing:antialiased}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
-  h1,h2,h3,.blk{font-family:"Archivo Black",Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:-.015em;line-height:.95;margin:0}
+  h1,h2,h3,.disp{font-family:"Archivo Black",Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:-.015em;line-height:.95;margin:0}
   .serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;text-transform:none;letter-spacing:0}
   a{color:inherit}
   .wrap{width:min(1240px,90vw);margin:0 auto}
@@ -26,45 +27,40 @@
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
     animation:g 1.2s steps(3) infinite}
   @keyframes g{0%{transform:translate(0,0)}33%{transform:translate(-3%,2%)}66%{transform:translate(2%,-3%)}}
-
-  /* scroll progress, borrowed from the scrollytelling pattern */
-  .prog{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--hot),var(--hot2));z-index:70;box-shadow:0 0 12px rgba(226,88,42,.7)}
+  .prog{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--acc),var(--acc2));z-index:70;box-shadow:0 0 12px #E2582Ab3}
 
   .demo{position:relative;z-index:50;background:#000;color:#B5B1AA;font-size:12.5px;padding:9px 0;text-align:center}
-  .demo b{color:var(--hot2)}
+  .demo b{color:var(--acc2)}
 
   nav{position:fixed;top:38px;left:0;right:0;z-index:45;transition:background .35s,backdrop-filter .35s,border-color .35s;border-bottom:1px solid transparent}
-  nav.stuck{background:rgba(10,10,11,.84);backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+  nav.stuck{background:#0A0A0Bd6;backdrop-filter:blur(14px);border-bottom-color:var(--line)}
   .nb{display:flex;align-items:center;gap:26px;padding:16px 0}
   .brand{display:flex;align-items:center;gap:12px;margin-right:auto;text-decoration:none}
-  .bmark{width:40px;height:40px;background:var(--hot);color:#0A0A0B;display:grid;place-items:center;font-family:"Archivo Black",sans-serif;font-size:15px}
+  .bmark{width:40px;height:40px;flex:none;background:var(--acc);color:#0A0A0B;display:grid;place-items:center;font-family:"Archivo Black",sans-serif;font-size:15px}
   .bname{font-family:"Archivo Black",sans-serif;font-size:17px;letter-spacing:-.01em}
   .nlinks{display:flex;gap:26px;font-size:12.5px;letter-spacing:.13em;text-transform:uppercase}
   .nlinks a{text-decoration:none;color:var(--mut);transition:color .2s}
   .nlinks a:hover{color:var(--ink)}
-  .btn{display:inline-block;background:var(--hot);color:#fff;text-decoration:none;font-weight:700;font-size:13px;
+  .btn{display:inline-block;background:var(--acc);color:#fff;text-decoration:none;font-weight:700;font-size:13px;
     letter-spacing:.08em;text-transform:uppercase;padding:14px 24px;border:0;cursor:pointer;font-family:inherit;transition:transform .25s,background .25s}
-  .btn:hover{transform:translateY(-2px);background:var(--hot2)}
+  .btn:hover{transform:translateY(-2px);background:var(--acc2)}
   .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-  .btn.ghost:hover{border-color:var(--hot);color:var(--hot2);background:transparent}
+  .btn.ghost:hover{border-color:var(--acc);color:var(--acc2);background:transparent}
   @media(max-width:900px){.nlinks{display:none}}
 
-  /* ---------- hero ---------- */
   .hero{position:relative;height:100svh;min-height:620px;overflow:hidden;display:flex;align-items:flex-end}
   .heroimg{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover;will-change:transform}
-  /* this bay shot is daylit and bright, so the veil carries more weight than the
-     barbershop one: the headline has to stay readable over a lit garage door */
   .heroveil{position:absolute;inset:0;background:
-    linear-gradient(180deg,rgba(10,10,11,.82) 0%,rgba(10,10,11,.55) 38%,rgba(10,10,11,.93) 78%,var(--bg) 100%),
-    linear-gradient(90deg,rgba(10,10,11,.55) 0%,rgba(10,10,11,.15) 55%,transparent 100%),
-    radial-gradient(65% 50% at 18% 72%,rgba(226,88,42,.15),transparent 72%)}
+    linear-gradient(180deg,#0A0A0Bd1 0%,#0A0A0B8c 38%,#0A0A0Bed 78%,var(--bg) 100%),
+    linear-gradient(90deg,#0A0A0B8c 0%,#0A0A0B26 55%,transparent 100%),
+    radial-gradient(65% 50% at 18% 72%,#E2582A26,transparent 72%)}
   .herobody{position:relative;z-index:2;padding-bottom:7vh;width:100%}
-  .kick{display:flex;align-items:center;gap:12px;color:var(--hot2);font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;margin-bottom:20px}
-  .kick::before{content:"";width:44px;height:1px;background:var(--hot)}
-  h1{font-size:clamp(50px,10.6vw,158px)}
+  .kick{display:flex;align-items:center;gap:12px;color:var(--acc2);font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;margin-bottom:20px}
+  .kick::before{content:"";width:44px;height:1px;background:var(--acc)}
+  h1{font-size:clamp(46px,10.6vw,158px)}
   h1 .ln{display:block;overflow:hidden}
   h1 .ln>span{display:block;transform:translateY(110%)}
-  h1 em{font-family:"Instrument Serif",serif;font-style:italic;text-transform:none;color:var(--hot2);letter-spacing:-.02em}
+  h1 em{font-family:"Instrument Serif",serif;font-style:italic;text-transform:none;color:var(--acc2);letter-spacing:-.02em}
   .herofoot{display:flex;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:28px}
   .herofoot p{max-width:44ch;color:#C6C2BB;margin:0;font-size:17px}
   .heroacts{display:flex;gap:11px;margin-left:auto}
@@ -73,65 +69,75 @@
   .mq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;background:var(--bg2)}
   .mqin{display:flex;gap:42px;padding:15px 0;white-space:nowrap;width:max-content;animation:mv 30s linear infinite}
   .mqin span{font-family:"Archivo Black",sans-serif;font-size:23px;color:var(--dim);text-transform:uppercase;letter-spacing:-.01em}
-  .mqin span:nth-child(even){color:var(--hot);opacity:.9}
+  .mqin span:nth-child(even){color:var(--acc);opacity:.9}
   @keyframes mv{to{transform:translateX(-50%)}}
 
   .stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
   .stat{padding:42px 24px;border-right:1px solid var(--line)}
   .stat:last-child{border-right:0}
-  .stat .n{font-family:"Archivo Black",sans-serif;font-size:clamp(34px,4.2vw,58px);line-height:1}
-  .stat .n i{font-style:normal;color:var(--hot)}
+  .stat .n{font-family:"Archivo Black",sans-serif;font-size:clamp(30px,4.2vw,58px);line-height:1}
+  .stat .n i{font-style:normal;color:var(--acc)}
   .stat .l{color:var(--mut);font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-top:8px}
   @media(max-width:820px){.stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
 
   section{padding:118px 0;position:relative}
-  .eye{color:var(--hot2);font-size:11px;letter-spacing:.26em;text-transform:uppercase;margin-bottom:18px}
-  h2{font-size:clamp(38px,5.8vw,80px)}
+  .eye{color:var(--acc2);font-size:11px;letter-spacing:.26em;text-transform:uppercase;margin-bottom:18px}
+  h2{font-size:clamp(36px,5.8vw,80px)}
   .lede{color:var(--mut);font-size:17.5px;max-width:52ch;margin:22px 0 0}
 
-  /* ---------- pinned scrollytelling, the technique worth taking ---------- */
   .pinwrap{height:340vh;position:relative}
   .pin{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;place-items:center}
-  .pinimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform;opacity:.34}
-  /* the veil colour is exactly --bg so the photo dissolves into the page, no seam */
-  .pinveil{position:absolute;inset:0;background:radial-gradient(58% 58% at 50% 50%,transparent 0%,rgba(10,10,11,.72) 58%,var(--bg) 100%)}
+  .pinimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform;opacity:.32}
+  /* the veil resolves to exactly --bg so the photo dissolves into the page */
+  .pinveil{position:absolute;inset:0;background:radial-gradient(58% 58% at 50% 50%,transparent 0%,#0A0A0Bb8 58%,var(--bg) 100%)}
   .beats{position:relative;z-index:2;text-align:center;width:min(880px,88vw)}
-  .beat{position:absolute;inset:0;display:grid;place-content:center;gap:16px;opacity:0;pointer-events:none;transition:opacity .28s ease,transform .28s ease;transform:translateY(12px)}
+  .beat{position:absolute;inset:0;display:grid;place-content:center;gap:16px;opacity:0;pointer-events:none;
+    transition:opacity .28s ease,transform .28s ease;transform:translateY(12px)}
   .beat.on{opacity:1;transform:none;pointer-events:auto}
-  .beat h3{font-size:clamp(30px,5vw,66px)}
+  .beat h3{font-size:clamp(28px,5vw,66px)}
   .beat p{color:var(--mut);font-size:17px;max-width:46ch;margin:0 auto}
-  .beat .bn{color:var(--hot);font-size:11px;letter-spacing:.3em;text-transform:uppercase}
+  .beat .bn{color:var(--acc);font-size:11px;letter-spacing:.3em;text-transform:uppercase}
   .pinhint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);color:var(--dim);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase}
 
   .svcs{margin-top:52px;border-top:1px solid var(--line)}
   .svc{display:grid;grid-template-columns:66px 1fr auto;gap:24px;align-items:center;padding:25px 8px;border-bottom:1px solid var(--line);
     text-decoration:none;position:relative;transition:padding .35s}
-  .svc::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(226,88,42,.10),transparent 62%);opacity:0;transition:opacity .35s}
+  .svc::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#E2582A1a,transparent 62%);opacity:0;transition:opacity .35s}
   .svc:hover::before{opacity:1}
   .svc:hover{padding-left:24px}
   .svc .num{font-family:"Archivo Black",sans-serif;color:var(--dim);font-size:13px}
-  .svc h3{font-size:clamp(22px,2.8vw,36px);transition:color .3s}
-  .svc:hover h3{color:var(--hot2)}
-  .svc .go{color:var(--dim);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:color .3s,transform .3s}
-  .svc:hover .go{color:var(--hot);transform:translateX(6px)}
+  .svc h3{font-size:clamp(21px,2.8vw,36px);transition:color .3s}
+  .svc:hover h3{color:var(--acc2)}
+  .svc .go{color:var(--dim);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:color .3s,transform .3s;white-space:nowrap}
+  .svc:hover .go{color:var(--acc);transform:translateX(6px)}
+  .note{margin-top:26px;color:var(--dim);font-size:13px}
 
   .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
   @media(max-width:940px){.split{grid-template-columns:1fr;gap:36px}}
   .shot{position:relative;overflow:hidden}
   .shot img{width:100%;height:100%;object-fit:cover;will-change:transform}
-  .quotebig{font-family:"Instrument Serif",serif;font-style:italic;font-size:clamp(25px,3.3vw,42px);line-height:1.24}
+  .quotebig{font-family:"Instrument Serif",serif;font-style:italic;font-size:clamp(24px,3.3vw,42px);line-height:1.24}
   .qattr{color:var(--dim);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;margin-top:18px}
 
-  .hiring{border:1px solid var(--line);padding:44px;display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center;background:var(--bg2)}
-  .hiring h3{font-size:clamp(26px,3.4vw,42px)}
-  .hiring p{color:var(--mut);margin:10px 0 0;max-width:52ch}
-  @media(max-width:820px){.hiring{grid-template-columns:1fr}}
+  .callout{border:1px solid var(--line);padding:44px;display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center;background:var(--bg2)}
+  .callout h3{font-size:clamp(24px,3.4vw,42px)}
+  .callout p{color:var(--mut);margin:10px 0 0;max-width:52ch}
+  @media(max-width:820px){.callout{grid-template-columns:1fr}}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+  @media(max-width:860px){.cards{grid-template-columns:1fr}}
+  .card{border:1px solid var(--line);padding:30px 26px;transition:border-color .3s,transform .3s}
+  .card:hover{border-color:#E2582A80;transform:translateY(-4px)}
+  .card .cn{font-family:"Archivo Black",sans-serif;font-size:13px;color:var(--acc);letter-spacing:.16em}
+  .card h3{font-size:26px;margin:14px 0 6px}
+  .card p{color:var(--mut);font-size:14px;margin:0}
+  .card .slot{margin-top:20px;color:var(--dim);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
 
   .visit{background:var(--bg2);border-top:1px solid var(--line)}
   .vgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px}
   @media(max-width:940px){.vgrid{grid-template-columns:1fr;gap:38px}}
-  .phone{font-family:"Archivo Black",sans-serif;font-size:clamp(34px,5.2vw,66px);text-decoration:none;display:inline-block;line-height:1;transition:color .3s}
-  .phone:hover{color:var(--hot2)}
+  .phone{font-family:"Archivo Black",sans-serif;font-size:clamp(30px,5.2vw,66px);text-decoration:none;display:inline-block;line-height:1;transition:color .3s}
+  .phone:hover{color:var(--acc2)}
   .meta{list-style:none;padding:0;margin:32px 0 0}
   .meta li{display:flex;gap:20px;padding:15px 0;border-top:1px solid var(--line);font-size:15px}
   .meta b{color:var(--mut);font-weight:500;min-width:92px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding-top:3px}
@@ -139,8 +145,8 @@
   label{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin:0 0 8px}
   input,select,textarea{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--ink);
     font-family:inherit;font-size:16px;padding:10px 0 12px;margin-bottom:22px;outline:none;transition:border-color .25s;resize:vertical}
-  input:focus,select:focus,textarea:focus{border-bottom-color:var(--hot)}
-  select option{background:#141416;color:var(--ink)}
+  input:focus,select:focus,textarea:focus{border-bottom-color:var(--acc)}
+  select option{background:#111113;color:var(--ink)}
   form .btn{width:100%;text-align:center;padding:16px}
   .fnote{color:var(--dim);font-size:12px;text-align:center;margin:14px 0 0}
 
@@ -155,7 +161,7 @@
     .grain,.mqin{animation:none}
     h1 .ln>span{transform:none}
     .pinwrap{height:auto}.pin{position:relative;height:auto;padding:80px 0}
-    .beat{position:relative;opacity:1;margin-bottom:44px}
+    .beat{position:relative;opacity:1;transform:none;margin-bottom:44px}
   }
 </style>
 </head>
@@ -170,7 +176,7 @@
 <nav id="nav">
   <div class="wrap nb">
     <a class="brand" href="#top"><span class="bmark">SB</span><span class="bname">South Bay Automotive</span></a>
-    <div class="nlinks"><a href="#work">Services</a><a href="#trust">Why us</a><a href="#careers">Careers</a><a href="#visit">Visit</a></div>
+    <div class="nlinks"><a href="#work">Services</a><a href="#trust">Why us</a><a href="#visit">Visit</a></div>
     <a class="btn" href="#visit">(352) 589-7349</a>
   </div>
 </nav>
@@ -180,7 +186,7 @@
   <div class="heroveil"></div>
   <div class="herobody">
     <div class="wrap">
-      <div class="kick" id="kick">Eustis &#183; South Bay Street</div>
+      <div class="kick" id="kick">Eustis · South Bay Street</div>
       <h1>
         <span class="ln"><span>Fifteen years</span></span>
         <span class="ln"><span>of <em>straight</em></span></span>
@@ -204,36 +210,19 @@
     <div class="stat rev"><div class="n"><span data-count="15">0</span><i>+</i></div><div class="l">Years in Eustis</div></div>
     <div class="stat rev"><div class="n"><span data-count="4.7">0</span><i>&#9733;</i></div><div class="l">Google rating</div></div>
     <div class="stat rev"><div class="n"><span data-count="148">0</span></div><div class="l">Reviews</div></div>
-    <div class="stat rev"><div class="n">Best<i>.</i></div><div class="l">Lake &amp; Sumter Style</div></div>
+    <div class="stat rev"><div class="n">Best<i>.</i></div><div class="l">Lake &amp;amp; Sumter Style</div></div>
   </div>
 </div>
 
-<!-- pinned scrollytelling: one sticky frame, text beats driven by scroll -->
 <div class="pinwrap" id="pinwrap">
   <div class="pin">
     <img class="pinimg" id="pinimg" src="../_assets/auto/tool-wall.jpg" alt="Tool board in the shop">
     <div class="pinveil"></div>
     <div class="beats">
-      <div class="beat" data-beat="0">
-        <div class="bn">Step one</div>
-        <h3>You tell us<br>what it is doing</h3>
-        <p>The noise, the light, the smell. Whatever you noticed. No jargon needed.</p>
-      </div>
-      <div class="beat" data-beat="1">
-        <div class="bn">Step two</div>
-        <h3>We find<br>the actual cause</h3>
-        <p>Diagnostics first. We would rather spend an hour finding it than guess at parts.</p>
-      </div>
-      <div class="beat" data-beat="2">
-        <div class="bn">Step three</div>
-        <h3>You get a quote<br>before we touch it</h3>
-        <p>Parts and labor up front. Nothing on the final bill is a surprise.</p>
-      </div>
-      <div class="beat" data-beat="3">
-        <div class="bn">Step four</div>
-        <h3>It is done<br>when we said</h3>
-        <p>And if something can safely wait until next month, we will tell you that too.</p>
-      </div>
+      <div class="beat"><div class="bn">Step one</div><h3>You tell us<br>what it is doing</h3><p>The noise, the light, the smell. Whatever you noticed. No jargon needed.</p></div>
+      <div class="beat"><div class="bn">Step two</div><h3>We find<br>the actual cause</h3><p>Diagnostics first. We would rather spend an hour finding it than guess at parts.</p></div>
+      <div class="beat"><div class="bn">Step three</div><h3>You get a quote<br>before we touch it</h3><p>Parts and labor up front. Nothing on the final bill is a surprise.</p></div>
+      <div class="beat"><div class="bn">Step four</div><h3>It is done<br>when we said</h3><p>And if something can safely wait until next month, we will tell you that too.</p></div>
     </div>
     <div class="pinhint">Keep scrolling</div>
   </div>
@@ -243,6 +232,7 @@
   <div class="wrap">
     <div class="eye rev">What we do</div>
     <h2 class="rev">If it drives in,<br><em class="serif">we can look at it</em></h2>
+    
     <div class="svcs">
       <a class="svc rev" href="#visit"><span class="num">01</span><h3>General repair</h3><span class="go">Ask us &#8594;</span></a>
       <a class="svc rev" href="#visit"><span class="num">02</span><h3>Brakes</h3><span class="go">Ask us &#8594;</span></a>
@@ -251,6 +241,7 @@
       <a class="svc rev" href="#visit"><span class="num">05</span><h3>Scheduled maintenance</h3><span class="go">Ask us &#8594;</span></a>
       <a class="svc rev" href="#visit"><span class="num">06</span><h3>Mercedes service</h3><span class="go">Ask us &#8594;</span></a>
     </div>
+    
   </div>
 </section>
 
@@ -260,19 +251,16 @@
     <div>
       <div class="eye rev">Why people come back</div>
       <p class="quotebig rev">One hundred and forty eight people rated this shop four point seven. In a town this size, that is most of the street.</p>
-      <div class="qattr rev">4.7 average &#183; Google</div>
+      <div class="qattr rev">4.7 average · Google</div>
       <p class="lede rev">Fifteen years in one town means the reputation walks in the door before the customer does. Voted Best of the Best by Lake and Sumter Style.</p>
     </div>
   </div>
 </section>
 
-<section id="careers" style="padding-top:0">
+<section style="padding-top:0">
   <div class="wrap">
-    <div class="hiring rev">
-      <div>
-        <h3>We are hiring<br>a technician</h3>
-        <p>South Bay Automotive is looking for an experienced full time mechanic. If that is you, call the shop or come in and ask for the owner.</p>
-      </div>
+    <div class="callout rev">
+      <div><h3>We are hiring<br>a technician</h3><p>South Bay Automotive is looking for an experienced full time mechanic. If that is you, call the shop or come in and ask for the owner.</p></div>
       <a class="btn" href="#visit">Get in touch</a>
     </div>
   </div>
@@ -294,8 +282,7 @@
       <label for="n">Your name</label><input id="n" type="text" placeholder="Jane Doe">
       <label for="p">Phone</label><input id="p" type="tel" placeholder="(352) 000-0000">
       <label for="v">Vehicle</label><input id="v" type="text" placeholder="2016 Toyota Camry">
-      <label for="s">What do you need</label>
-      <select id="s"><option>General repair or diagnostic</option><option>Brakes</option><option>Tires</option><option>Electrical</option><option>Scheduled maintenance</option><option>Something else</option></select>
+      <label for="s">What do you need</label><select id="s"><option>General repair or diagnostic</option><option>Brakes</option><option>Tires</option><option>Electrical</option><option>Scheduled maintenance</option><option>Something else</option></select>
       <label for="m">Anything we should know</label><textarea id="m" rows="2" placeholder="Noise when braking, started last week..."></textarea>
       <button class="btn" type="submit">Request an appointment</button>
       <p class="fnote">Demo form. Nothing is sent or stored.</p>
@@ -311,7 +298,7 @@
       <div><b>Concept by</b><br>Caleb Pierce<br>cfwebdev.net</div>
     </div>
     <div class="disc">
-      Concept mockup designed and built by Caleb Pierce, cfwebdev.net. This is an unsolicited design concept, not affiliated with or endorsed by South Bay Automotive, and not a live business website. Business name, address, phone, hours, rating, review count, award and the current job opening are taken from the shop's public listings. Photography is placeholder imagery for the concept and does not show this shop. No reviews or testimonials have been invented.
+      Concept mockup designed and built by Caleb Pierce, cfwebdev.net. This is an unsolicited design concept, not affiliated with or endorsed by South Bay Automotive, and not a live business website. Business name, address, phone, hours, rating, review count, award and the current job opening are taken from the shop's public listings. Photography is placeholder imagery for the concept and does not show this business. No reviews or testimonials have been invented.
     </div>
   </div>
 </footer>
@@ -321,7 +308,7 @@
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script>
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const words = ["Brakes","&#9670;","Tires","&#9670;","Diagnostics","&#9670;","Electrical","&#9670;","Maintenance","&#9670;","Mercedes","&#9670;"];
+const words = ["Brakes","&#9670;","Tires","&#9670;","Diagnostics","&#9670;","Electrical","&#9670;","Maintenance","&#9670;","Mercedes","&#9670;",];
 document.getElementById("mq").innerHTML = [...words, ...words].map(w => `<span>${w}</span>`).join("");
 
 if (!reduced && window.gsap) {
@@ -335,27 +322,27 @@ if (!reduced && window.gsap) {
 
   gsap.to("h1 .ln > span", { y: 0, duration: 1.15, ease: "power4.out", stagger: 0.09, delay: 0.15 });
   gsap.from("#kick", { opacity: 0, x: -20, duration: 0.9, delay: 0.1 });
-
   gsap.to("#heroimg", { yPercent: 14, ease: "none",
     scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
   gsap.to("#detailimg", { yPercent: -9, ease: "none",
     scrollTrigger: { trigger: "#trust", start: "top bottom", end: "bottom top", scrub: true } });
 
-  /* the pinned section: scroll drives which beat is showing, and the frame
-     slowly pushes in behind them so the hold never feels static */
+  /* pinned section: scroll picks the beat, the frame pushes in behind it. One
+     class swap per change, so CSS runs a single clean crossfade rather than
+     stacked tweens fighting each other while the scrub catches up. */
   const beats = gsap.utils.toArray(".beat");
-  beats[0].classList.add("on");
-  ScrollTrigger.create({
-    trigger: "#pinwrap", start: "top top", end: "bottom bottom", scrub: 0.6,
-    onUpdate(self) {
-      const i = Math.min(beats.length - 1, Math.floor(self.progress * beats.length));
-      // one class swap, so CSS runs a single clean crossfade instead of
-      // stacked tweens fighting each other while the scrub catches up
-      beats.forEach((b, n) => b.classList.toggle("on", n === i));
-    }
-  });
-  gsap.to("#pinimg", { scale: 1.16, ease: "none",
-    scrollTrigger: { trigger: "#pinwrap", start: "top top", end: "bottom bottom", scrub: true } });
+  if (beats.length) {
+    beats[0].classList.add("on");
+    ScrollTrigger.create({
+      trigger: "#pinwrap", start: "top top", end: "bottom bottom", scrub: 0.6,
+      onUpdate(self) {
+        const i = Math.min(beats.length - 1, Math.floor(self.progress * beats.length));
+        beats.forEach((b, n) => b.classList.toggle("on", n === i));
+      }
+    });
+    gsap.to("#pinimg", { scale: 1.16, ease: "none",
+      scrollTrigger: { trigger: "#pinwrap", start: "top top", end: "bottom bottom", scrub: true } });
+  }
 
   gsap.utils.toArray(".rev").forEach((el) => {
     gsap.to(el, { opacity: 1, y: 0, duration: 0.85, ease: "power3.out",
@@ -369,7 +356,6 @@ if (!reduced && window.gsap) {
         onUpdate() { el.textContent = dec ? this.targets()[0].v.toFixed(1) : Math.round(this.targets()[0].v); } }) });
   });
 
-  /* scroll progress bar */
   ScrollTrigger.create({ start: 0, end: "max",
     onUpdate: (self) => { document.getElementById("prog").style.width = (self.progress * 100) + "%"; } });
 } else {
