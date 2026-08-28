@@ -1247,3 +1247,24 @@ body > footer { position: relative; z-index: 1; }
   }
   .scroll-progress { display: none; }
 }
+
+/* ---- Lenis smooth scroll ----
+   Required by the library. The .lenis classes are added to <html> by
+   Lenis itself, so none of this applies unless the script actually runs. */
+html.lenis,
+html.lenis body { height: auto; }
+
+/* Lenis only adds .lenis-smooth while a scroll is in flight, so the native
+   smooth behaviour would still fight it at rest (keyboard paging especially).
+   This class is set once by our own code and stays. It deliberately avoids
+   the substring "lenis", because Lenis strips /lenis(-\w+)?/ from the root
+   element on every class update and would erase it. */
+html.smooth-active { scroll-behavior: auto; }
+
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+
+.lenis.lenis-stopped { overflow: hidden; }
+
+.lenis.lenis-smooth iframe { pointer-events: none; }
