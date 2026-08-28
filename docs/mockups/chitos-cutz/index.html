@@ -6,257 +6,345 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Chito's Cutz — Barbershop in Apopka, FL</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
 <style>
-  :root {
-    --ink: #0E0F12;
-    --body: #565E68;
-    --line: #E4E7EB;
-    --bg: #FFFFFF;
-    --soft: #F6F7F9;
-    --gold: #C9A227;
-    --gold-dark: #A8871C;
-    --char: #16181D;
+  :root{
+    --bg:#0B0B0C; --bg2:#121214; --ink:#F4F1EC; --mut:#9A968F; --dim:#5E5A55;
+    --gold:#D8A63B; --gold2:#F2C86A; --line:rgba(244,241,236,.12);
   }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--bg); color: var(--body);
-    font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
-    font-size: 16px; line-height: 1.65;
+  *{box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+  h1,h2,h3,.anton{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.005em;line-height:.92;margin:0}
+  .serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;text-transform:none;letter-spacing:0}
+  a{color:inherit}
+  .wrap{width:min(1240px,90vw);margin:0 auto}
+  img{display:block;max-width:100%}
+
+  /* film grain over everything, the thing that stops a dark page looking flat */
+  .grain{position:fixed;inset:-50%;z-index:60;pointer-events:none;opacity:.16;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+    animation:g 1.2s steps(3) infinite}
+  @keyframes g{0%{transform:translate(0,0)}33%{transform:translate(-3%,2%)}66%{transform:translate(2%,-3%)}}
+
+  .demo{position:relative;z-index:50;background:#000;color:#B9B4AC;font-size:12.5px;padding:9px 0;text-align:center;letter-spacing:.01em}
+  .demo b{color:var(--gold2)}
+
+  /* ---------- nav ---------- */
+  nav{position:fixed;top:38px;left:0;right:0;z-index:45;transition:background .35s,backdrop-filter .35s,border-color .35s;border-bottom:1px solid transparent}
+  nav.stuck{background:rgba(11,11,12,.82);backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+  .nb{display:flex;align-items:center;gap:26px;padding:16px 0}
+  .brand{display:flex;align-items:center;gap:11px;margin-right:auto;text-decoration:none}
+  .bmark{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--gold);display:grid;place-items:center;font-family:Anton,sans-serif;color:var(--gold);font-size:17px}
+  .bname{font-family:Anton,sans-serif;font-size:20px;letter-spacing:.03em}
+  .nlinks{display:flex;gap:26px;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+  .nlinks a{text-decoration:none;color:var(--mut);transition:color .2s}
+  .nlinks a:hover{color:var(--ink)}
+  .btn{position:relative;display:inline-block;background:var(--gold);color:#0B0B0C;text-decoration:none;font-weight:700;
+    font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:13px 24px;border-radius:2px;overflow:hidden;transition:transform .25s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+  @media(max-width:900px){.nlinks{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;height:100svh;min-height:620px;overflow:hidden;display:flex;align-items:flex-end}
+  .heroimg{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover;will-change:transform}
+  .heroveil{position:absolute;inset:0;background:
+     linear-gradient(180deg,rgba(11,11,12,.72) 0%,rgba(11,11,12,.3) 35%,rgba(11,11,12,.85) 78%,var(--bg) 100%),
+     radial-gradient(70% 55% at 20% 70%,rgba(216,166,59,.16),transparent 70%)}
+  .herobody{position:relative;z-index:2;padding-bottom:7vh;width:100%}
+  .kicker{display:flex;align-items:center;gap:12px;color:var(--gold);font-size:12px;letter-spacing:.26em;text-transform:uppercase;margin-bottom:20px}
+  .kicker::before{content:"";width:46px;height:1px;background:var(--gold)}
+  h1{font-size:clamp(58px,12.5vw,186px)}
+  h1 .ln{display:block;overflow:hidden}
+  h1 .ln>span{display:block;transform:translateY(110%)}
+  h1 em{font-family:"Instrument Serif",serif;font-style:italic;text-transform:none;color:var(--gold2);letter-spacing:-.01em}
+  .herofoot{display:flex;align-items:flex-end;gap:38px;flex-wrap:wrap;margin-top:30px}
+  .herofoot p{max-width:44ch;color:#CFCAC2;margin:0;font-size:17px}
+  .heroacts{display:flex;gap:11px;margin-left:auto}
+  @media(max-width:760px){.heroacts{margin-left:0}}
+
+  /* ---------- marquee ---------- */
+  .mq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;background:var(--bg2)}
+  .mqin{display:flex;gap:44px;padding:16px 0;white-space:nowrap;width:max-content;animation:mv 32s linear infinite}
+  .mqin span{font-family:Anton,sans-serif;font-size:26px;letter-spacing:.03em;color:var(--dim);text-transform:uppercase}
+  .mqin span:nth-child(even){color:var(--gold);opacity:.85}
+  @keyframes mv{to{transform:translateX(-50%)}}
+
+  /* ---------- stats ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-bottom:1px solid var(--line)}
+  .stat{padding:44px 26px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat .n{font-family:Anton,sans-serif;font-size:clamp(38px,4.4vw,62px);color:var(--ink);line-height:1}
+  .stat .n i{font-style:normal;color:var(--gold)}
+  .stat .l{color:var(--mut);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;margin-top:8px}
+  @media(max-width:820px){.stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}}
+
+  section{padding:118px 0;position:relative}
+  .eye{color:var(--gold);font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;margin-bottom:18px}
+  h2{font-size:clamp(40px,6.4vw,88px)}
+  .lede{color:var(--mut);font-size:17.5px;max-width:52ch;margin:22px 0 0}
+
+  /* ---------- services ---------- */
+  .svcs{margin-top:56px;border-top:1px solid var(--line)}
+  .svc{display:grid;grid-template-columns:70px 1fr auto;gap:26px;align-items:center;padding:26px 8px;border-bottom:1px solid var(--line);
+    text-decoration:none;position:relative;transition:padding .35s}
+  .svc::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(216,166,59,.09),transparent 65%);opacity:0;transition:opacity .35s}
+  .svc:hover::before{opacity:1}
+  .svc:hover{padding-left:26px}
+  .svc .num{font-family:Anton,sans-serif;color:var(--dim);font-size:15px;letter-spacing:.1em}
+  .svc h3{font-size:clamp(24px,3vw,38px);transition:color .3s}
+  .svc:hover h3{color:var(--gold2)}
+  .svc .go{color:var(--dim);font-size:12px;letter-spacing:.16em;text-transform:uppercase;transition:color .3s,transform .3s}
+  .svc:hover .go{color:var(--gold);transform:translateX(6px)}
+  .svcnote{margin-top:26px;color:var(--dim);font-size:13px}
+
+  /* ---------- split feature ---------- */
+  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+  @media(max-width:940px){.split{grid-template-columns:1fr;gap:38px}}
+  .shot{position:relative;overflow:hidden;border-radius:3px}
+  .shot img{width:100%;height:100%;object-fit:cover;will-change:transform}
+  .shot::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 90px rgba(0,0,0,.55)}
+  .quotebig{font-family:"Instrument Serif",serif;font-style:italic;font-size:clamp(26px,3.4vw,44px);line-height:1.22;color:var(--ink)}
+  .qattr{color:var(--dim);font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-top:20px}
+
+  /* ---------- crew ---------- */
+  .crew{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
+  @media(max-width:860px){.crew{grid-template-columns:1fr}}
+  .chair{border:1px solid var(--line);padding:30px 26px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s}
+  .chair:hover{border-color:rgba(216,166,59,.5);transform:translateY(-4px)}
+  .chair .cn{font-family:Anton,sans-serif;font-size:13px;color:var(--gold);letter-spacing:.16em}
+  .chair h3{font-size:27px;margin:14px 0 6px}
+  .chair p{color:var(--mut);font-size:14px;margin:0}
+  .chair .slot{margin-top:20px;color:var(--dim);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+
+  /* ---------- visit ---------- */
+  .visit{background:var(--bg2);border-top:1px solid var(--line)}
+  .vgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px}
+  @media(max-width:940px){.vgrid{grid-template-columns:1fr;gap:38px}}
+  .phone{font-family:Anton,sans-serif;font-size:clamp(40px,6vw,74px);color:var(--ink);text-decoration:none;display:inline-block;line-height:1;transition:color .3s}
+  .phone:hover{color:var(--gold2)}
+  .meta{list-style:none;padding:0;margin:34px 0 0}
+  .meta li{display:flex;gap:20px;padding:15px 0;border-top:1px solid var(--line);font-size:15px}
+  .meta b{color:var(--mut);font-weight:500;min-width:92px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;padding-top:3px}
+  form{border:1px solid var(--line);padding:32px;background:rgba(255,255,255,.015)}
+  label{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin:0 0 8px}
+  input,select{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--ink);
+    font-family:inherit;font-size:16px;padding:10px 0 12px;margin-bottom:24px;outline:none;transition:border-color .25s}
+  input:focus,select:focus{border-bottom-color:var(--gold)}
+  select option{background:#141416;color:var(--ink)}
+  form .btn{width:100%;border:0;cursor:pointer;font-family:inherit;text-align:center;padding:16px}
+  .fnote{color:var(--dim);font-size:12px;text-align:center;margin:14px 0 0}
+
+  footer{border-top:1px solid var(--line);padding:52px 0 34px;color:var(--dim);font-size:14px}
+  .fgrid{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap}
+  footer b{color:var(--ink);font-family:Anton,sans-serif;letter-spacing:.04em;font-weight:400;font-size:18px}
+  .disc{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;line-height:1.7;color:#4E4A46}
+
+  .rev{opacity:0;transform:translateY(30px)}
+  @media (prefers-reduced-motion:reduce){
+    .rev{opacity:1;transform:none}
+    .grain,.mqin{animation:none}
+    h1 .ln>span{transform:none}
   }
-  h1, h2, h3 { font-family: "Bebas Neue", Impact, sans-serif; color: var(--ink); letter-spacing: 0.02em; font-weight: 400; }
-  a { color: var(--gold-dark); }
-  .wrap { width: min(1100px, 92vw); margin: 0 auto; }
-
-  .demo { background: var(--char); color: #C6CCD4; font-size: 13px; padding: 9px 0; text-align: center; }
-  .demo b { color: #fff; }
-
-  header { border-bottom: 1px solid var(--line); background: #fff; position: sticky; top: 0; z-index: 10; }
-  .bar { display: flex; align-items: center; gap: 22px; padding: 13px 0; }
-  .logo { display: flex; align-items: center; gap: 11px; margin-right: auto; }
-  .mark {
-    width: 44px; height: 44px; flex: none; border-radius: 50%; background: var(--char);
-    display: grid; place-items: center; color: var(--gold);
-    font-family: "Bebas Neue", sans-serif; font-size: 22px; letter-spacing: 0.06em;
-  }
-  .logo .n { font-family: "Bebas Neue", sans-serif; font-size: 25px; color: var(--ink); line-height: 1; letter-spacing: 0.04em; }
-  .logo .t { font-size: 11px; color: var(--body); letter-spacing: 0.13em; text-transform: uppercase; }
-  nav { display: flex; gap: 24px; font-size: 14.5px; font-weight: 500; }
-  nav a { color: var(--body); text-decoration: none; }
-  nav a:hover { color: var(--gold-dark); }
-  .bookbtn {
-    background: var(--gold); color: var(--char); text-decoration: none; font-weight: 700;
-    padding: 11px 21px; border-radius: 4px; font-size: 14.5px; white-space: nowrap; letter-spacing: 0.02em;
-  }
-  .bookbtn:hover { background: var(--gold-dark); color: #fff; }
-  @media (max-width: 860px) { nav { display: none; } }
-
-  .hero { background: var(--char); color: #D3D9E0; padding: 74px 0 66px; position: relative; overflow: hidden; }
-  .hero::before {
-    content: ""; position: absolute; inset: 0; opacity: 0.5;
-    background: repeating-linear-gradient(45deg, rgba(201,162,39,0.035) 0 1px, transparent 1px 14px);
-  }
-  .hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.2fr 1fr; gap: 46px; align-items: center; }
-  .hero h1 { color: #fff; font-size: clamp(46px, 7vw, 82px); line-height: 0.94; margin: 0 0 16px; }
-  .hero h1 em { font-style: normal; color: var(--gold); }
-  .hero p { font-size: 18px; margin: 0 0 26px; max-width: 48ch; color: #A8B2BD; }
-  .cta { display: flex; gap: 12px; flex-wrap: wrap; }
-  .ghost { border: 1.5px solid rgba(255,255,255,0.3); color: #fff; text-decoration: none; padding: 11px 22px; border-radius: 4px; font-weight: 600; font-size: 14.5px; }
-  .ghost:hover { border-color: var(--gold); color: var(--gold); }
-  .card { background: #fff; border-radius: 8px; padding: 22px 24px; color: var(--body); box-shadow: 0 20px 48px rgba(0,0,0,0.34); }
-  .card h3 { margin: 0 0 3px; font-size: 26px; }
-  .stars { color: var(--gold); font-size: 17px; letter-spacing: 2px; }
-  .rev { font-size: 13.5px; margin-bottom: 14px; }
-  .hrow { display: flex; justify-content: space-between; padding: 7px 0; border-top: 1px solid var(--line); font-size: 14.5px; }
-  .hrow b { color: var(--ink); font-weight: 600; }
-  @media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } }
-
-  .trust { background: var(--soft); border-bottom: 1px solid var(--line); }
-  .trust .wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 26px 0; text-align: center; }
-  .trust .v { font-family: "Bebas Neue", sans-serif; font-size: 38px; color: var(--ink); line-height: 1; }
-  .trust .k { font-size: 12px; letter-spacing: 0.05em; margin-top: 2px; }
-  @media (max-width: 760px) { .trust .wrap { grid-template-columns: repeat(2, 1fr); gap: 20px 8px; } }
-
-  section { padding: 62px 0; }
-  .eyebrow { color: var(--gold-dark); font-weight: 700; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px; }
-  h2 { font-size: clamp(34px, 4.4vw, 48px); margin: 0 0 12px; }
-  .lede { font-size: 17px; max-width: 60ch; margin: 0 0 32px; }
-
-  .cuts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  @media (max-width: 880px) { .cuts { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 560px) { .cuts { grid-template-columns: 1fr; } }
-  .cut { border: 1px solid var(--line); border-radius: 8px; padding: 20px 22px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; transition: border-color .15s, transform .15s; }
-  .cut:hover { border-color: var(--gold); transform: translateY(-2px); }
-  .cut h3 { margin: 0; font-size: 23px; }
-  .cut .p { font-family: "Bebas Neue", sans-serif; font-size: 24px; color: var(--gold-dark); }
-  .pricenote { font-size: 13px; color: var(--body); margin-top: 16px; }
-
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; align-items: center; }
-  @media (max-width: 880px) { .split { grid-template-columns: 1fr; gap: 28px; } }
-  .crew { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-  .crew li { display: flex; align-items: center; gap: 14px; border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; }
-  .av { width: 42px; height: 42px; border-radius: 50%; background: var(--char); color: var(--gold); display: grid; place-items: center; font-family: "Bebas Neue", sans-serif; font-size: 19px; flex: none; }
-  .crew b { color: var(--ink); font-weight: 600; }
-
-  .contact { background: var(--soft); }
-  .cgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-  @media (max-width: 880px) { .cgrid { grid-template-columns: 1fr; } }
-  .bigphone { font-family: "Bebas Neue", sans-serif; font-size: clamp(44px, 6vw, 62px); color: var(--ink); text-decoration: none; display: inline-block; line-height: 1; letter-spacing: 0.02em; }
-  .bigphone:hover { color: var(--gold-dark); }
-  .info { list-style: none; padding: 0; margin: 18px 0 0; font-size: 15.5px; }
-  .info li { padding: 8px 0; border-top: 1px solid var(--line); display: flex; gap: 12px; }
-  .info b { color: var(--ink); min-width: 74px; }
-  form { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 24px; }
-  label { display: block; font-size: 13px; font-weight: 600; color: var(--ink); margin: 0 0 5px; }
-  input, select, textarea { width: 100%; border: 1px solid var(--line); border-radius: 5px; padding: 10px 12px; font-family: inherit; font-size: 15px; color: var(--ink); margin-bottom: 14px; background: #fff; }
-  input:focus, select:focus, textarea:focus { outline: 2px solid rgba(201,162,39,0.3); border-color: var(--gold); }
-  button { width: 100%; background: var(--gold); color: var(--char); border: 0; border-radius: 5px; padding: 13px; font-family: inherit; font-size: 16px; font-weight: 700; cursor: pointer; }
-  button:hover { background: var(--gold-dark); color: #fff; }
-  .formnote { font-size: 12.5px; margin: 10px 0 0; text-align: center; }
-
-  footer { background: var(--ink); color: #939BA5; padding: 34px 0 26px; font-size: 14px; }
-  footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
-  footer b { color: #fff; }
-  .disc { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 22px; padding-top: 16px; font-size: 12.5px; color: #79818C; }
 </style>
 </head>
 <body>
+<div class="grain"></div>
 
 <div class="demo">
-  <b>Concept mockup</b> built by Caleb Pierce at cfwebdev.net &#183; not affiliated with the business &#183; nothing on this page is live
+  <b>Concept mockup</b> &#183; built by Caleb Pierce at cfwebdev.net &#183; not affiliated with the business &#183; nothing here is live
 </div>
 
-<header>
-  <div class="wrap bar">
-    <div class="logo">
-      <div class="mark">CC</div>
-      <div>
-        <div class="n">Chito's Cutz</div>
-        <div class="t">Apopka, Florida</div>
+<nav id="nav">
+  <div class="wrap nb">
+    <a class="brand" href="#top"><span class="bmark">CC</span><span class="bname">Chito's Cutz</span></a>
+    <div class="nlinks">
+      <a href="#cuts">Cuts</a><a href="#craft">The craft</a><a href="#chairs">Chairs</a><a href="#visit">Visit</a>
+    </div>
+    <a class="btn" href="#visit">Book a chair</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <img class="heroimg" id="heroimg" src="../_assets/barbershop/hero-shop.jpg" alt="Barbershop interior">
+  <div class="heroveil"></div>
+  <div class="herobody">
+    <div class="wrap">
+      <div class="kicker" id="kick">Apopka &#183; South Central Ave</div>
+      <h1>
+        <span class="ln"><span>Sharp</span></span>
+        <span class="ln"><span>every <em>single</em></span></span>
+        <span class="ln"><span>time.</span></span>
+      </h1>
+      <div class="herofoot">
+        <p class="rev">Fades, tapers, beards and line ups, seven days a week. Two hundred neighbors have rated us four point nine.</p>
+        <div class="heroacts rev">
+          <a class="btn" href="#visit">Book online</a>
+          <a class="btn ghost" href="#visit">Call the shop</a>
+        </div>
       </div>
     </div>
-    <nav>
-      <a href="#cuts">Cuts</a>
-      <a href="#crew">The crew</a>
-      <a href="#contact">Visit</a>
-    </nav>
-    <a class="bookbtn" href="#contact">Book a chair</a>
   </div>
 </header>
 
-<div class="hero">
-  <div class="wrap">
-    <div>
-      <h1>Apopka's<br><em>chair of choice.</em></h1>
-      <p>Fades, tapers, beards and line ups on South Central Ave. Two hundred neighbors have rated us 4.9. Walk in, or book your chair in about ten seconds.</p>
-      <div class="cta">
-        <a class="bookbtn" href="#contact">Book online</a>
-        <a class="ghost" href="#contact">Call the shop</a>
-      </div>
-    </div>
-    <div class="card">
-      <h3>Open today</h3>
-      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <div class="rev">4.9 out of 5 from 200 Google reviews</div>
-      <div class="hrow"><span>Closes</span><b>9:00pm</b></div>
-      <div class="hrow"><span>Walk ins</span><b>Welcome</b></div>
-      <div class="hrow"><span>Booking</span><b>Online, any time</b></div>
-    </div>
-  </div>
+<div class="mq">
+  <div class="mqin" id="mq"></div>
 </div>
 
-<div class="trust">
-  <div class="wrap">
-    <div><div class="v">4.9&#9733;</div><div class="k">Google rating</div></div>
-    <div><div class="v">200</div><div class="k">Reviews and counting</div></div>
-    <div><div class="v">7 days</div><div class="k">Open all week</div></div>
-    <div><div class="v">Walk in</div><div class="k">Or book ahead</div></div>
+<div class="wrap">
+  <div class="stats">
+    <div class="stat rev"><div class="n"><span data-count="4.9">0</span><i>&#9733;</i></div><div class="l">Google rating</div></div>
+    <div class="stat rev"><div class="n"><span data-count="200">0</span><i>+</i></div><div class="l">Reviews</div></div>
+    <div class="stat rev"><div class="n"><span data-count="7">0</span></div><div class="l">Days a week</div></div>
+    <div class="stat rev"><div class="n">9<i>pm</i></div><div class="l">Open till</div></div>
   </div>
 </div>
 
 <section id="cuts">
   <div class="wrap">
-    <div class="eyebrow">The menu</div>
-    <h2>Cuts and prices</h2>
-    <p class="lede">Straightforward pricing, no surprises at the chair. Every cut finishes with a line up and a hot towel.</p>
-    <div class="cuts">
-      <div class="cut"><h3>Haircut</h3><span class="p">$__</span></div>
-      <div class="cut"><h3>Skin fade</h3><span class="p">$__</span></div>
-      <div class="cut"><h3>Cut &amp; beard</h3><span class="p">$__</span></div>
-      <div class="cut"><h3>Beard trim</h3><span class="p">$__</span></div>
-      <div class="cut"><h3>Line up</h3><span class="p">$__</span></div>
-      <div class="cut"><h3>Kids cut</h3><span class="p">$__</span></div>
+    <div class="eye rev">The menu</div>
+    <h2 class="rev">What we<br><em class="serif">do best</em></h2>
+    <p class="lede rev">Walk in or book ahead. Every cut finishes with a line up and a hot towel.</p>
+    <div class="svcs">
+      <a class="svc rev" href="#visit"><span class="num">01</span><h3>Haircut</h3><span class="go">Book &#8594;</span></a>
+      <a class="svc rev" href="#visit"><span class="num">02</span><h3>Skin fade</h3><span class="go">Book &#8594;</span></a>
+      <a class="svc rev" href="#visit"><span class="num">03</span><h3>Cut &amp; beard</h3><span class="go">Book &#8594;</span></a>
+      <a class="svc rev" href="#visit"><span class="num">04</span><h3>Beard trim</h3><span class="go">Book &#8594;</span></a>
+      <a class="svc rev" href="#visit"><span class="num">05</span><h3>Line up</h3><span class="go">Book &#8594;</span></a>
+      <a class="svc rev" href="#visit"><span class="num">06</span><h3>Kids cut</h3><span class="go">Book &#8594;</span></a>
     </div>
-    <p class="pricenote">Prices left blank on purpose. Caleb has not seen your price list, and this mockup does not invent numbers. Send them over and they drop straight in.</p>
+    <p class="svcnote rev">Prices are left off this concept on purpose. Caleb has not seen your price list and would rather ask than invent one.</p>
   </div>
 </section>
 
-<section id="crew" style="background:var(--soft)">
+<section id="craft" style="padding-top:0">
   <div class="wrap split">
-    <div>
-      <div class="eyebrow">Behind the chairs</div>
-      <h2>Pick your barber</h2>
-      <p class="lede" style="margin-bottom:0">Regulars have a favorite, and new customers want to know who they are sitting with. On the real site each name links straight to that barber's own booking calendar.</p>
+    <div class="shot rev" style="aspect-ratio:3/2">
+      <img id="craftimg" src="../_assets/barbershop/fade-detail.jpg" alt="Clippers cutting a fade">
     </div>
-    <ul class="crew">
-      <li><span class="av">1</span><div><b>Barber name</b><div style="font-size:14px">Specialty goes here</div></div></li>
-      <li><span class="av">2</span><div><b>Barber name</b><div style="font-size:14px">Specialty goes here</div></div></li>
-      <li><span class="av">3</span><div><b>Barber name</b><div style="font-size:14px">Specialty goes here</div></div></li>
-    </ul>
+    <div>
+      <div class="eye rev">The craft</div>
+      <p class="quotebig rev">Two hundred people took the time to leave a review. That is not luck, that is a room full of regulars who keep coming back.</p>
+      <div class="qattr rev">4.9 average &#183; Google</div>
+      <p class="lede rev">A chair, a mirror and clippers that never rush. New in town or fifteen years deep, you get the same cut.</p>
+    </div>
   </div>
 </section>
 
-<section id="contact" class="contact">
-  <div class="wrap cgrid">
+<section id="chairs" style="padding-top:0">
+  <div class="wrap">
+    <div class="eye rev">Behind the chairs</div>
+    <h2 class="rev">Pick your<br><em class="serif">barber</em></h2>
+    <div class="crew">
+      <div class="chair rev"><div class="cn">CHAIR 01</div><h3>Your barber</h3><p>Name and specialty drop in here.</p><div class="slot">Own booking link</div></div>
+      <div class="chair rev"><div class="cn">CHAIR 02</div><h3>Your barber</h3><p>Name and specialty drop in here.</p><div class="slot">Own booking link</div></div>
+      <div class="chair rev"><div class="cn">CHAIR 03</div><h3>Your barber</h3><p>Name and specialty drop in here.</p><div class="slot">Own booking link</div></div>
+    </div>
+    <p class="svcnote rev">Left blank deliberately. Send the names and photos and each chair becomes its own bookable profile.</p>
+  </div>
+</section>
+
+<section id="visit" class="visit">
+  <div class="wrap vgrid">
     <div>
-      <div class="eyebrow">Visit the shop</div>
-      <h2>Come through</h2>
-      <a class="bigphone" href="#contact">(407) 703-3434</a>
-      <ul class="info">
-        <li><b>Address</b><span>433 S Central Ave, Apopka, FL 32703</span></li>
-        <li><b>Today</b><span>Open until 9:00pm</span></li>
-        <li><b>Walk ins</b><span>Always welcome</span></li>
+      <div class="eye rev">Visit</div>
+      <h2 class="rev" style="margin-bottom:26px">Come<br><em class="serif">through</em></h2>
+      <a class="phone rev" href="#visit">(407) 703-3434</a>
+      <ul class="meta">
+        <li class="rev"><b>Address</b><span>433 S Central Ave<br>Apopka, FL 32703</span></li>
+        <li class="rev"><b>Hours</b><span>Seven days a week, open until 9:00pm</span></li>
+        <li class="rev"><b>Walk ins</b><span>Always welcome</span></li>
       </ul>
     </div>
-    <form onsubmit="event.preventDefault(); alert('This is a concept mockup, so the form is not connected. On the real site this would book the chair or text the shop.');">
-      <label for="n">Your name</label>
-      <input id="n" type="text" placeholder="Marcus">
-      <label for="p">Phone</label>
-      <input id="p" type="tel" placeholder="(407) 000-0000">
-      <label for="s">What are you after?</label>
-      <select id="s">
-        <option>Haircut</option>
-        <option>Skin fade</option>
-        <option>Cut and beard</option>
-        <option>Beard trim</option>
-        <option>Line up</option>
-        <option>Kids cut</option>
-      </select>
-      <label for="w">When suits you?</label>
-      <input id="w" type="text" placeholder="Saturday morning, or as soon as you have a chair">
-      <button type="submit">Request my chair</button>
-      <p class="formnote">Demo form. Nothing is sent or stored.</p>
+    <form class="rev" onsubmit="event.preventDefault();this.querySelector('.btn').textContent='Concept only, nothing sent';">
+      <label for="n">Your name</label><input id="n" type="text" placeholder="Marcus">
+      <label for="p">Phone</label><input id="p" type="tel" placeholder="(407) 000-0000">
+      <label for="s">What are you after</label>
+      <select id="s"><option>Haircut</option><option>Skin fade</option><option>Cut and beard</option><option>Beard trim</option><option>Line up</option><option>Kids cut</option></select>
+      <label for="w">When suits you</label><input id="w" type="text" placeholder="Saturday morning">
+      <button class="btn" type="submit">Request my chair</button>
+      <p class="fnote">Demo form. Nothing is sent or stored.</p>
     </form>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <div>
-      <b>Chito's Cutz</b><br>
-      433 S Central Ave, Apopka, FL 32703<br>
-      (407) 703-3434
+    <div class="fgrid">
+      <div><b>Chito's Cutz</b><br>433 S Central Ave, Apopka, FL 32703<br>(407) 703-3434</div>
+      <div><b>Open</b><br>Seven days a week<br>Until 9:00pm</div>
+      <div><b>Concept by</b><br>Caleb Pierce<br>cfwebdev.net</div>
     </div>
-    <div>
-      <b>Open</b><br>
-      Seven days a week<br>
-      Closes 9:00pm
+    <div class="wrap disc" style="width:100%">
+      Concept mockup designed and built by Caleb Pierce, cfwebdev.net. This is an unsolicited design concept, not affiliated with or endorsed by Chito's Cutz, and not a live business website. Business name, address, phone, hours, rating and review count are taken from the shop's public Google listing. Photography is placeholder imagery for the concept and does not show this shop. Prices, barber names and specialties are deliberately left blank rather than invented, and no reviews or testimonials have been fabricated.
     </div>
-  </div>
-  <div class="wrap disc">
-    Concept mockup designed and built by Caleb Pierce, cfwebdev.net. This page is an unsolicited design concept, is not affiliated with or endorsed by Chito's Cutz, and is not a live business website. Business name, address, phone, hours, rating and review count are taken from the shop's public Google listing. Prices, barber names and specialties are deliberately left blank rather than invented. No reviews or testimonials have been fabricated.
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script>
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* marquee content, doubled so the loop is seamless */
+const words = ["Fades","&#9733;","Tapers","&#9733;","Beards","&#9733;","Line ups","&#9733;","Kids cuts","&#9733;","Hot towel","&#9733;"];
+document.getElementById("mq").innerHTML = [...words, ...words].map(w => `<span>${w}</span>`).join("");
+
+if (!reduced && window.gsap) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* buttery scroll, the thing that makes a page feel expensive */
+  if (window.Lenis) {
+    const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add((t) => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  /* hero headline lifts in line by line */
+  gsap.to("h1 .ln > span", { y: 0, duration: 1.15, ease: "power4.out", stagger: 0.09, delay: 0.15 });
+  gsap.from("#kick", { opacity: 0, x: -20, duration: 0.9, delay: 0.1 });
+
+  /* hero image drifts slower than the page */
+  gsap.to("#heroimg", {
+    yPercent: 14, ease: "none",
+    scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }
+  });
+  gsap.to("#craftimg", {
+    yPercent: -9, ease: "none",
+    scrollTrigger: { trigger: "#craft", start: "top bottom", end: "bottom top", scrub: true }
+  });
+
+  /* everything marked .rev arrives on scroll */
+  gsap.utils.toArray(".rev").forEach((el) => {
+    gsap.to(el, {
+      opacity: 1, y: 0, duration: 0.85, ease: "power3.out",
+      scrollTrigger: { trigger: el, start: "top 88%", once: true }
+    });
+  });
+
+  /* the numbers count up when the strip arrives */
+  gsap.utils.toArray("[data-count]").forEach((el) => {
+    const target = parseFloat(el.dataset.count), dec = target % 1 !== 0;
+    ScrollTrigger.create({
+      trigger: el, start: "top 92%", once: true,
+      onEnter: () => gsap.to({ v: 0 }, {
+        v: target, duration: 1.5, ease: "power2.out",
+        onUpdate() { el.textContent = dec ? this.targets()[0].v.toFixed(1) : Math.round(this.targets()[0].v); }
+      })
+    });
+  });
+} else {
+  document.querySelectorAll("[data-count]").forEach(el => { el.textContent = el.dataset.count; });
+}
+
+/* nav gains a background once you leave the hero */
+const nav = document.getElementById("nav");
+addEventListener("scroll", () => nav.classList.toggle("stuck", scrollY > innerHeight * 0.75), { passive: true });
+</script>
 </body>
 </html>
