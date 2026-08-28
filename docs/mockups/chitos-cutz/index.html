@@ -28,6 +28,24 @@
     animation:g 1.2s steps(3) infinite}
   @keyframes g{0%{transform:translate(0,0)}33%{transform:translate(-3%,2%)}66%{transform:translate(2%,-3%)}}
 
+  /* scroll progress */
+  .prog{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold2));z-index:70;box-shadow:0 0 12px rgba(216,166,59,.7)}
+
+  /* pinned scrollytelling: one sticky frame, text beats driven by scroll */
+  .pinwrap{height:340vh;position:relative}
+  .pin{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;place-items:center}
+  .pinimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform;opacity:.3}
+  /* the veil resolves to exactly --bg so the photo dissolves into the page */
+  .pinveil{position:absolute;inset:0;background:radial-gradient(58% 58% at 50% 50%,transparent 0%,rgba(11,11,12,.74) 58%,var(--bg) 100%)}
+  .beats{position:relative;z-index:2;text-align:center;width:min(880px,88vw)}
+  .beat{position:absolute;inset:0;display:grid;place-content:center;gap:16px;opacity:0;pointer-events:none;
+    transition:opacity .28s ease,transform .28s ease;transform:translateY(12px)}
+  .beat.on{opacity:1;transform:none;pointer-events:auto}
+  .beat h3{font-size:clamp(30px,5vw,66px)}
+  .beat p{color:var(--mut);font-size:17px;max-width:46ch;margin:0 auto}
+  .beat .bn{color:var(--gold);font-size:11px;letter-spacing:.3em;text-transform:uppercase}
+  .pinhint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);color:var(--dim);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase}
+
   .demo{position:relative;z-index:50;background:#000;color:#B9B4AC;font-size:12.5px;padding:9px 0;text-align:center;letter-spacing:.01em}
   .demo b{color:var(--gold2)}
 
@@ -148,11 +166,14 @@
     .rev{opacity:1;transform:none}
     .grain,.mqin{animation:none}
     h1 .ln>span{transform:none}
+    .pinwrap{height:auto}.pin{position:relative;height:auto;padding:80px 0}
+    .beat{position:relative;opacity:1;transform:none;margin-bottom:44px}
   }
 </style>
 </head>
 <body>
 <div class="grain"></div>
+<div class="prog" id="prog"></div>
 
 <div class="demo">
   <b>Concept mockup</b> &#183; built by Caleb Pierce at cfwebdev.net &#183; not affiliated with the business &#183; nothing here is live
@@ -200,6 +221,37 @@
     <div class="stat rev"><div class="n"><span data-count="200">0</span><i>+</i></div><div class="l">Reviews</div></div>
     <div class="stat rev"><div class="n"><span data-count="7">0</span></div><div class="l">Days a week</div></div>
     <div class="stat rev"><div class="n">9<i>pm</i></div><div class="l">Open till</div></div>
+  </div>
+</div>
+
+<!-- pinned scrollytelling: sticky frame, beats driven by scroll -->
+<div class="pinwrap" id="pinwrap">
+  <div class="pin">
+    <img class="pinimg" id="pinimg" src="../_assets/barbershop/tools.jpg" alt="Barber tools">
+    <div class="pinveil"></div>
+    <div class="beats">
+      <div class="beat" data-beat="0">
+        <div class="bn">One</div>
+        <h3>Walk in,<br>or book the chair</h3>
+        <p>Seven days a week. Booking online takes about ten seconds if you would rather not wait.</p>
+      </div>
+      <div class="beat" data-beat="1">
+        <div class="bn">Two</div>
+        <h3>Tell us<br>how you want it</h3>
+        <p>Bring a photo, or just say the usual. Either works, and nobody rushes you through it.</p>
+      </div>
+      <div class="beat" data-beat="2">
+        <div class="bn">Three</div>
+        <h3>We take<br>our time</h3>
+        <p>Clippers that never hurry. That is most of why two hundred people came back to leave a review.</p>
+      </div>
+      <div class="beat" data-beat="3">
+        <div class="bn">Four</div>
+        <h3>Line up,<br>hot towel, done</h3>
+        <p>Every cut finishes the same way, whether it is your first time in or your hundredth.</p>
+      </div>
+    </div>
+    <div class="pinhint">Keep scrolling</div>
   </div>
 </div>
 
@@ -318,6 +370,27 @@ if (!reduced && window.gsap) {
     yPercent: -9, ease: "none",
     scrollTrigger: { trigger: "#craft", start: "top bottom", end: "bottom top", scrub: true }
   });
+
+  /* pinned section: scroll picks the beat, the frame pushes in behind it so
+     the hold never feels static. One class swap per change, so CSS runs a
+     single clean crossfade instead of stacked tweens fighting each other. */
+  const beats = gsap.utils.toArray(".beat");
+  if (beats.length) {
+    beats[0].classList.add("on");
+    ScrollTrigger.create({
+      trigger: "#pinwrap", start: "top top", end: "bottom bottom", scrub: 0.6,
+      onUpdate(self) {
+        const i = Math.min(beats.length - 1, Math.floor(self.progress * beats.length));
+        beats.forEach((b, n) => b.classList.toggle("on", n === i));
+      }
+    });
+    gsap.to("#pinimg", { scale: 1.16, ease: "none",
+      scrollTrigger: { trigger: "#pinwrap", start: "top top", end: "bottom bottom", scrub: true } });
+  }
+
+  /* scroll progress bar */
+  ScrollTrigger.create({ start: 0, end: "max",
+    onUpdate: (self) => { document.getElementById("prog").style.width = (self.progress * 100) + "%"; } });
 
   /* everything marked .rev arrives on scroll */
   gsap.utils.toArray(".rev").forEach((el) => {
