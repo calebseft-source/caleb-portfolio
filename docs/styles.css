@@ -1268,3 +1268,98 @@ html.smooth-active { scroll-behavior: auto; }
 .lenis.lenis-stopped { overflow: hidden; }
 
 .lenis.lenis-smooth iframe { pointer-events: none; }
+
+
+/* ============================================================
+   MATRIX IDENTITY, RESTORED 2026-08-27
+   The circuit traces, travelling pulses, and code rain from the
+   original cfwebdev theme. Removed by the launch rewrite as part
+   of a JavaScript cleanup; the visuals were never the problem.
+   Both layers sit behind everything and are purely decorative.
+   ============================================================ */
+/* ============ CIRCUIT LAYER ============ */
+/* Faint green circuit traces with glowing pulses that travel along
+   the paths. Sits furthest back, behind the code rain. */
+#circuit {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* Not negative: body carries an opaque gradient background, and a
+     negative z-index child paints behind it and disappears entirely.
+     Site content is lifted to z-index 1, so 0 sits correctly between. */
+  z-index: 0;
+}
+
+#circuit .traces path {
+  fill: none;
+  stroke: rgba(47, 230, 111, 0.10);
+  stroke-width: 1.4;
+}
+
+#circuit .nodes circle { fill: rgba(47, 230, 111, 0.16); }
+
+#circuit .pulses circle {
+  fill: #9dffc6;
+  filter: drop-shadow(0 0 5px rgba(47, 230, 111, 0.95));
+}
+
+/* ============ CODE RAIN LAYER ============ */
+/* Columns of green glyphs streaming downward. Depth comes from three
+   size/speed/opacity tiers. The whole layer is masked so it fades at
+   the very top and bottom of the viewport. Only transform animates,
+   so it stays smooth. */
+#coderain {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 88%, transparent 100%);
+}
+
+/* Each drop is transient: it fades in at a random spot, drifts down
+   slowly, then fades out and is removed. Transform + opacity only. */
+.mcol {
+  position: absolute;
+  top: 0;
+  font-family: var(--mono);
+  line-height: 1.4;
+  color: var(--accent);
+  white-space: pre;
+  text-align: center;
+  user-select: none;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation:
+    mcol-fall var(--life) linear forwards,
+    mcol-fade var(--life) ease-in-out forwards;
+}
+
+.mcol.near { text-shadow: 0 0 6px rgba(47, 230, 111, 0.55); }
+
+@keyframes mcol-fall {
+  from { transform: translate3d(0, var(--y0), 0); }
+  to { transform: translate3d(0, var(--y1), 0); }
+}
+
+@keyframes mcol-fade {
+  0% { opacity: 0; }
+  7% { opacity: var(--op); }
+  88% { opacity: var(--op); }
+  100% { opacity: 0; }
+}
+
+
+/* Matrix decode text. The real characters are written into the DOM
+   first and only then animated, so the text is always readable to
+   assistive technology and to anyone with motion reduced. */
+.sc { display: inline-block; }
+.sc.sp { width: 0.35em; }
+
+.sc.glitch {
+  color: var(--accent);
+  opacity: 0.85;
+}

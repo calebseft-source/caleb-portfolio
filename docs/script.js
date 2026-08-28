@@ -232,3 +232,184 @@ if (year) year.textContent = String(new Date().getFullYear());
   window.addEventListener("beforeprint", function () { lenis.stop(); });
   window.addEventListener("afterprint", function () { lenis.start(); });
 })();
+
+/* ============================================================
+   CODE RAIN: sparse green glyph drops. Each one fades in at a
+   random spot, drifts slowly down, then fades out and is removed.
+   A spawner keeps a small number alive at once so the screen never
+   feels cluttered. Three depth tiers vary size, speed, and opacity.
+   Transform + opacity only, so it stays smooth. Pairs with the
+   circuit SVG in index.html. Delete this section (and #coderain /
+   #circuit) to turn it off.
+   ============================================================ */
+const RAIN_GLYPHS = "01<>[]{}=+*/#$%&?ABCDEF0123456789";
+const rainEl = document.getElementById("coderain");
+const rainCalm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Slow fall, gentle opacity. near = closest/brightest/fastest.
+// life and drift are scaled together, so the fall SPEED (drift/life)
+// is unchanged from before — only the lifespan is shorter, which
+// makes drops fade in and out quicker.
+const RAIN_TIERS = [
+  { cls: "far", size: 12, op: 0.10, life: [10, 15], drift: [80, 150] },
+  { cls: "mid", size: 15, op: 0.15, life: [8, 12], drift: [120, 200] },
+  { cls: "near", size: 18, op: 0.20, life: [6, 10], drift: [170, 270] },
+];
+const RAIN_MAX = 11; // how many drops may be on screen at once
+
+const rainRand = (a, b) => a + Math.random() * (b - a);
+const randGlyphR = () => RAIN_GLYPHS[Math.floor(Math.random() * RAIN_GLYPHS.length)];
+
+function spawnDrop() {
+  if (!rainEl) return;
+  if (rainEl.children.length >= RAIN_MAX) return;
+
+  const tier = RAIN_TIERS[Math.floor(Math.random() * RAIN_TIERS.length)];
+  const col = document.createElement("div");
+  col.className = "mcol " + tier.cls;
+
+  const glyphs = Math.round(rainRand(7, 16));
+  let strip = "";
+  for (let g = 0; g < glyphs; g++) strip += randGlyphR() + "\n";
+  col.textContent = strip;
+
+  // Random point on screen to appear, then a slow downward drift.
+  const startY = rainRand(-60, window.innerHeight * 0.55);
+  const drift = rainRand(tier.drift[0], tier.drift[1]);
+  const life = rainRand(tier.life[0], tier.life[1]);
+
+  col.style.left = rainRand(0, window.innerWidth - 20) + "px";
+  col.style.fontSize = tier.size + "px";
+  col.style.setProperty("--y0", startY + "px");
+  col.style.setProperty("--y1", startY + drift + "px");
+  col.style.setProperty("--op", tier.op);
+  col.style.setProperty("--life", life + "s");
+
+  col.dataset.glyphs = glyphs;
+  col.addEventListener("animationend", (e) => {
+    if (e.animationName === "mcol-fade") col.remove();
+  });
+  rainEl.appendChild(col);
+}
+
+function rainLoop() {
+  spawnDrop();
+  setTimeout(rainLoop, rainRand(700, 1700));
+}
+
+// Every live drop cycles its glyphs rapidly as it falls — close to the
+// speed of the "Coming Soon" scramble. This only rewrites text content;
+// the fall/fade animations are untouched, so the scroll speed stays
+// exactly the same.
+function flickerRain() {
+  const cols = rainEl ? rainEl.children : [];
+  for (let c = 0; c < cols.length; c++) {
+    const col = cols[c];
+    const chars = col.textContent.split("\n");
+    for (let i = 0; i < chars.length; i++) {
+      if (chars[i] && Math.random() < 0.7) chars[i] = randGlyphR();
+    }
+    col.textContent = chars.join("\n");
+  }
+  setTimeout(flickerRain, 40);
+}
+
+if (!rainCalm && rainEl) {
+  // Seed a few so the page does not start empty.
+  for (let i = 0; i < 5; i++) setTimeout(spawnDrop, i * 400);
+  setTimeout(rainLoop, 1200);
+  setTimeout(flickerRain, 800);
+}
+
+
+/* ============================================================
+   MATRIX DECODE TEXT, restored 2026-08-27
+   Characters boot up as flickering glyphs and resolve into the
+   real text. The real characters are written into the DOM first,
+   so the text is correct for screen readers and for anyone with
+   reduced motion, who simply sees it plain.
+
+   Changed from the original: it decodes ONCE instead of looping
+   every few seconds. Endless re-scrambling reads as a broken page
+   on a sales site rather than as a flourish.
+   ============================================================ */
+var SCRAMBLE_GLYPHS = "!<>-_\/[]{}=+*^?#@$%&0123456789ABCDEF";
+
+function startScramble(host, text) {
+  var chars = Array.prototype.slice.call(text);
+  var spans = chars.map(function (ch) {
+    var el = document.createElement("span");
+    el.className = "sc";
+    if (ch === " ") { el.classList.add("sp"); el.textContent = " "; }
+    else { el.textContent = ch; }
+    host.appendChild(el);
+    return el;
+  });
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  var randGlyph = function () {
+    return SCRAMBLE_GLYPHS[Math.floor(Math.random() * SCRAMBLE_GLYPHS.length)];
+  };
+
+  var frame = 0;
+  var maxEnd = 0;
+  var plan = chars.map(function (ch, i) {
+    var start = i * 2.5 + Math.random() * 6;
+    var end = start + 10 + Math.random() * 14;
+    if (end > maxEnd) maxEnd = end;
+    return { start: start, end: end };
+  });
+
+  function settle() {
+    spans.forEach(function (el, i) {
+      if (chars[i] === " ") return;
+      el.textContent = chars[i];
+      el.classList.remove("glitch");
+    });
+  }
+
+  function tick() {
+    spans.forEach(function (el, i) {
+      if (chars[i] === " ") return;
+      if (frame >= plan[i].end) {
+        el.textContent = chars[i];
+        el.classList.remove("glitch");
+      } else if (frame >= plan[i].start && frame % 2 === 0) {
+        el.textContent = randGlyph();
+        el.classList.add("glitch");
+      }
+    });
+    frame++;
+    if (frame <= maxEnd) window.requestAnimationFrame(tick);
+    else settle();
+  }
+
+  // Never leave text mid-scramble if rAF is paused (background tab).
+  window.setTimeout(settle, 3000);
+  window.requestAnimationFrame(tick);
+}
+
+/* Decode the small eyebrow labels as they scroll into view. The H1 is
+   deliberately left alone: scrambling the main value proposition
+   delays comprehension on a page whose job is converting a visitor. */
+(function () {
+  var eyebrows = document.querySelectorAll(".eyebrow");
+  if (!eyebrows.length || !("IntersectionObserver" in window)) return;
+
+  var seen = new WeakSet();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      var el = entry.target;
+      var text = (el.textContent || "").trim();
+      if (!text || text.length > 60) return;
+      el.textContent = "";
+      startScramble(el, text);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+
+  eyebrows.forEach(function (el) { io.observe(el); });
+})();
