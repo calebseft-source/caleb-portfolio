@@ -40,7 +40,7 @@ body {
   overflow-x: hidden;
   color: var(--text);
   background:
-    radial-gradient(circle at 74% 9%, rgba(47, 230, 111, 0.075), transparent 24rem),
+    radial-gradient(circle at 74% 9%, rgba(47, 230, 111, 0.035), transparent 30rem),
     linear-gradient(180deg, #07110c 0%, var(--bg) 28%, var(--bg-deep) 100%);
   font-family: var(--font);
   line-height: 1.6;
