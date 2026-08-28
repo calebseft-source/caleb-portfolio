@@ -1135,3 +1135,136 @@ summary:focus-visible {
 }
 
 .error-shell .btn { margin-top: 30px; }
+
+/* ============================================================
+   MOTION AND EDITORIAL POLISH
+   Progressive enhancement only. Every effect below degrades to
+   plain, fully visible content when JavaScript or motion is off.
+   ============================================================ */
+
+/* ---- Full-bleed hero atmosphere ----
+   A full-width ambient wash behind the hero. Uses width 100% on a
+   body-level layer rather than 100vw, so a visible scrollbar can
+   never push the page into horizontal scroll. */
+.page-glow {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: clamp(620px, 78vh, 1000px);
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(120% 68% at 18% 0%, rgba(47, 230, 111, 0.09), transparent 62%),
+    radial-gradient(90% 60% at 88% 6%, rgba(99, 241, 150, 0.055), transparent 66%),
+    linear-gradient(180deg, rgba(10, 19, 16, 0.55), transparent 78%);
+}
+
+.page-glow::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-bright), transparent);
+  opacity: 0.5;
+}
+
+body > main,
+body > .nav,
+body > footer { position: relative; z-index: 1; }
+
+/* ---- Editorial type hierarchy ----
+   Tightens display headings and gives body copy a settled second
+   tier, so the page reads as edited rather than uniform. */
+.hero h1,
+.section-head h2,
+.case-study h2 {
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+
+.hero-tagline,
+.section-head p,
+.section-sub {
+  text-wrap: pretty;
+}
+
+/* ---- Scroll reveals ----
+   The hidden state is applied only when JS adds .has-reveal to
+   <html>, so a no-JS visitor sees everything immediately. */
+.has-reveal [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  will-change: opacity, transform;
+}
+
+.has-reveal [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 620ms cubic-bezier(0.22, 0.75, 0.25, 1),
+    transform 620ms cubic-bezier(0.22, 0.75, 0.25, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: auto;
+}
+
+/* ---- Scroll progress ----
+   A hairline accent bar showing how far through the page you are.
+   Driven by a CSS variable the script updates. */
+.scroll-progress {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  height: 2px;
+  z-index: 60;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+  transform: scaleX(var(--progress, 0));
+  transform-origin: 0 50%;
+  opacity: 0.85;
+}
+
+/* ---- Active section in the nav ---- */
+.nav-menu a[aria-current="true"] {
+  color: var(--text);
+}
+
+.nav-menu a[aria-current="true"]::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: 3px;
+  background: var(--accent);
+  opacity: 0.75;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .has-reveal [data-reveal],
+  .has-reveal [data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .scroll-progress { display: none; }
+}
+
+/* ---- Lenis smooth scroll ----
+   Required by the library. The .lenis classes are added to <html> by
+   Lenis itself, so none of this applies unless the script actually runs. */
+html.lenis,
+html.lenis body { height: auto; }
+
+/* Lenis only adds .lenis-smooth while a scroll is in flight, so the native
+   smooth behaviour would still fight it at rest (keyboard paging especially).
+   This class is set once by our own code and stays. It deliberately avoids
+   the substring "lenis", because Lenis strips /lenis(-\w+)?/ from the root
+   element on every class update and would erase it. */
+html.smooth-active { scroll-behavior: auto; }
+
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+
+.lenis.lenis-stopped { overflow: hidden; }
+
+.lenis.lenis-smooth iframe { pointer-events: none; }
