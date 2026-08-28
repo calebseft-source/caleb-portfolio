@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>South Bay Automotive — Auto Repair in Eustis, FL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --ink: #14181D;
+    --body: #4A545F;
+    --line: #E2E7EC;
+    --bg: #FFFFFF;
+    --soft: #F5F7F9;
+    --brand: #C4471F;
+    --brand-dark: #9E3717;
+    --steel: #1E2A38;
+    --star: #E8A33D;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--body);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 16px; line-height: 1.65;
+  }
+  h1, h2, h3, .display { font-family: "Barlow Condensed", Inter, sans-serif; color: var(--ink); letter-spacing: 0.01em; }
+  a { color: var(--brand); }
+  .wrap { width: min(1120px, 92vw); margin: 0 auto; }
+
+  /* ---- mockup banner ---- */
+  .demo {
+    background: var(--steel); color: #C8D4E0; font-size: 13px;
+    padding: 9px 0; text-align: center; letter-spacing: 0.01em;
+  }
+  .demo b { color: #fff; }
+
+  /* ---- header ---- */
+  header { border-bottom: 1px solid var(--line); background: #fff; position: sticky; top: 0; z-index: 10; }
+  .bar { display: flex; align-items: center; gap: 22px; padding: 14px 0; }
+  .logo { display: flex; align-items: center; gap: 11px; margin-right: auto; }
+  .mark {
+    width: 42px; height: 42px; flex: none; border-radius: 7px; background: var(--steel);
+    display: grid; place-items: center; color: #fff;
+    font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 19px; letter-spacing: 0.04em;
+  }
+  .logo .n { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 21px; color: var(--ink); line-height: 1.1; }
+  .logo .t { font-size: 11.5px; color: var(--body); letter-spacing: 0.09em; text-transform: uppercase; }
+  nav { display: flex; gap: 24px; font-size: 14.5px; font-weight: 500; }
+  nav a { color: var(--body); text-decoration: none; }
+  nav a:hover { color: var(--brand); }
+  .callbtn {
+    background: var(--brand); color: #fff; text-decoration: none; font-weight: 700;
+    padding: 11px 20px; border-radius: 6px; font-size: 15px; white-space: nowrap;
+  }
+  .callbtn:hover { background: var(--brand-dark); }
+  @media (max-width: 860px) { nav { display: none; } }
+
+  /* ---- hero ---- */
+  .hero { background: var(--steel); color: #DCE4EC; padding: 68px 0 60px; position: relative; overflow: hidden; }
+  .hero::after {
+    content: ""; position: absolute; inset: 0;
+    background: repeating-linear-gradient(115deg, rgba(255,255,255,0.022) 0 2px, transparent 2px 9px);
+    pointer-events: none;
+  }
+  .hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.25fr 1fr; gap: 44px; align-items: center; }
+  .hero h1 { color: #fff; font-size: clamp(38px, 5.4vw, 62px); line-height: 1.02; margin: 0 0 16px; text-transform: uppercase; }
+  .hero h1 span { color: var(--brand); }
+  .hero p { font-size: 18px; margin: 0 0 26px; max-width: 52ch; color: #B9C6D4; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .ghost {
+    border: 1.5px solid rgba(255,255,255,0.32); color: #fff; text-decoration: none;
+    padding: 11px 22px; border-radius: 6px; font-weight: 600; font-size: 15px;
+  }
+  .ghost:hover { border-color: #fff; }
+  .card {
+    background: #fff; border-radius: 10px; padding: 22px 24px; color: var(--body);
+    box-shadow: 0 18px 44px rgba(0,0,0,0.28);
+  }
+  .card h3 { margin: 0 0 4px; font-size: 22px; }
+  .stars { color: var(--star); font-size: 17px; letter-spacing: 2px; }
+  .rev { font-size: 13.5px; color: var(--body); margin-bottom: 14px; }
+  .hrow { display: flex; justify-content: space-between; padding: 7px 0; border-top: 1px solid var(--line); font-size: 14.5px; }
+  .hrow b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } }
+
+  /* ---- trust strip ---- */
+  .trust { background: var(--soft); border-bottom: 1px solid var(--line); }
+  .trust .wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 26px 0; text-align: center; }
+  .trust .v { font-family: "Barlow Condensed", sans-serif; font-size: 32px; font-weight: 700; color: var(--ink); line-height: 1; }
+  .trust .k { font-size: 12.5px; letter-spacing: 0.05em; margin-top: 4px; }
+  @media (max-width: 760px) { .trust .wrap { grid-template-columns: repeat(2, 1fr); gap: 20px 8px; } }
+
+  section { padding: 62px 0; }
+  .eyebrow { color: var(--brand); font-weight: 700; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 9px; }
+  h2 { font-size: clamp(29px, 3.6vw, 40px); margin: 0 0 12px; text-transform: uppercase; }
+  .lede { font-size: 17px; max-width: 62ch; margin: 0 0 34px; }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+  .svc { border: 1px solid var(--line); border-radius: 9px; padding: 22px; transition: border-color .15s, transform .15s; }
+  .svc:hover { border-color: var(--brand); transform: translateY(-2px); }
+  .svc .ic { width: 38px; height: 38px; border-radius: 8px; background: var(--soft); display: grid; place-items: center; margin-bottom: 13px; }
+  .svc h3 { font-size: 20px; margin: 0 0 5px; }
+  .svc p { margin: 0; font-size: 14.5px; }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; align-items: center; }
+  @media (max-width: 880px) { .split { grid-template-columns: 1fr; gap: 30px; } }
+  .why { list-style: none; margin: 0; padding: 0; }
+  .why li { display: flex; gap: 13px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+  .why b { color: var(--ink); display: block; font-size: 16px; }
+  .why span { font-size: 14.5px; }
+  .tick { color: var(--brand); font-weight: 700; flex: none; }
+
+  .hiring { background: var(--steel); color: #C9D5E1; border-radius: 11px; padding: 34px 38px; display: grid; grid-template-columns: 1fr auto; gap: 22px; align-items: center; }
+  .hiring h3 { color: #fff; font-size: 27px; margin: 0 0 6px; text-transform: uppercase; }
+  .hiring p { margin: 0; font-size: 15px; }
+  @media (max-width: 760px) { .hiring { grid-template-columns: 1fr; } }
+
+  .contact { background: var(--soft); }
+  .cgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  @media (max-width: 880px) { .cgrid { grid-template-columns: 1fr; } }
+  .bigphone {
+    font-family: "Barlow Condensed", sans-serif; font-size: clamp(38px, 5vw, 54px);
+    font-weight: 700; color: var(--ink); text-decoration: none; display: inline-block; line-height: 1.05;
+  }
+  .bigphone:hover { color: var(--brand); }
+  .info { list-style: none; padding: 0; margin: 18px 0 0; font-size: 15.5px; }
+  .info li { padding: 8px 0; border-top: 1px solid var(--line); display: flex; gap: 12px; }
+  .info b { color: var(--ink); min-width: 78px; }
+  form { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 24px; }
+  label { display: block; font-size: 13px; font-weight: 600; color: var(--ink); margin: 0 0 5px; }
+  input, textarea, select {
+    width: 100%; border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px;
+    font-family: inherit; font-size: 15px; color: var(--ink); margin-bottom: 14px; background: #fff;
+  }
+  input:focus, textarea:focus, select:focus { outline: 2px solid rgba(196,71,31,0.28); border-color: var(--brand); }
+  button {
+    width: 100%; background: var(--brand); color: #fff; border: 0; border-radius: 6px;
+    padding: 13px; font-family: inherit; font-size: 16px; font-weight: 700; cursor: pointer;
+  }
+  button:hover { background: var(--brand-dark); }
+  .formnote { font-size: 12.5px; color: var(--body); margin: 10px 0 0; text-align: center; }
+
+  footer { background: var(--ink); color: #97A3AF; padding: 34px 0 26px; font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+  footer b { color: #fff; }
+  .disc { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 22px; padding-top: 16px; font-size: 12.5px; color: #7C8894; }
+</style>
+</head>
+<body>
+
+<div class="demo">
+  <b>Concept mockup</b> built by Caleb Pierce at cfwebdev.net &#183; not affiliated with the business &#183; nothing on this page is live
+</div>
+
+<header>
+  <div class="wrap bar">
+    <div class="logo">
+      <div class="mark">SB</div>
+      <div>
+        <div class="n">South Bay Automotive</div>
+        <div class="t">Eustis, Florida</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#why">Why us</a>
+      <a href="#careers">Careers</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="callbtn" href="#contact">(352) 589-7349</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Eustis trusts us<br><span>with the family car.</span></h1>
+      <p>Full service auto repair on South Bay Street for over fifteen years. Honest quotes, straight answers, and work that holds up.</p>
+      <div class="cta">
+        <a class="callbtn" href="#contact">Call the shop</a>
+        <a class="ghost" href="#contact">Request an appointment</a>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Open today</h3>
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="rev">4.7 out of 5 from 148 Google reviews</div>
+      <div class="hrow"><span>Monday to Friday</span><b>7:30am &#8211; 5:00pm</b></div>
+      <div class="hrow"><span>Saturday &amp; Sunday</span><b>Closed</b></div>
+      <div class="hrow"><span>Walk in or call ahead</span><b>Both welcome</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="trust">
+  <div class="wrap">
+    <div><div class="v">15+</div><div class="k">Years in Eustis</div></div>
+    <div><div class="v">4.7&#9733;</div><div class="k">148 Google reviews</div></div>
+    <div><div class="v">Best</div><div class="k">of the Best, Lake &amp; Sumter Style</div></div>
+    <div><div class="v">Full</div><div class="k">Service &amp; body shop</div></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="eyebrow">What we do</div>
+    <h2>Repairs, maintenance and everything between</h2>
+    <p class="lede">If it drives in, we can look at it. Diagnostics first, then a real quote on parts and labor before any work starts.</p>
+    <div class="grid">
+      <div class="svc"><div class="ic">&#128663;</div><h3>General repair</h3><p>Engine, suspension, cooling and the awkward noises nobody else can place.</p></div>
+      <div class="svc"><div class="ic">&#128137;</div><h3>Brakes</h3><p>Pads, rotors and full brake service, checked properly before we quote.</p></div>
+      <div class="svc"><div class="ic">&#9881;</div><h3>Tires</h3><p>Fitting, balancing and replacement, with honest advice on what can wait.</p></div>
+      <div class="svc"><div class="ic">&#9889;</div><h3>Vehicle electrical</h3><p>Starting, charging and electrical faults traced to the actual cause.</p></div>
+      <div class="svc"><div class="ic">&#128295;</div><h3>Scheduled maintenance</h3><p>Oil, fluids and service intervals kept on track so small things stay small.</p></div>
+      <div class="svc"><div class="ic">&#127942;</div><h3>Mercedes service</h3><p>European work handled in house rather than sent up the road.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why" style="background:var(--soft)">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Why people keep coming back</div>
+      <h2>The same shop, the same answer, every time</h2>
+      <p class="lede" style="margin-bottom:0">Fifteen years in one town means our reputation walks in the door before the customer does. We would rather tell you a repair can wait than sell you one you do not need.</p>
+    </div>
+    <ul class="why">
+      <li><span class="tick">&#10003;</span><div><b>A quote before the work</b><span>Parts and labor up front, so nothing on the final bill is a surprise.</span></div></li>
+      <li><span class="tick">&#10003;</span><div><b>Straight about what is urgent</b><span>If it can safely wait until next month, we will say so.</span></div></li>
+      <li><span class="tick">&#10003;</span><div><b>Done when we said</b><span>Customers regularly mention repairs finished inside the promised window.</span></div></li>
+      <li><span class="tick">&#10003;</span><div><b>Local, not a chain</b><span>Voted Best of the Best by Lake and Sumter Style.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="careers">
+  <div class="wrap">
+    <div class="hiring">
+      <div>
+        <h3>We are hiring a technician</h3>
+        <p>South Bay Automotive is looking for an experienced full time auto mechanic to join the team. If that is you, call the shop or come in and ask for the owner.</p>
+      </div>
+      <a class="callbtn" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap cgrid">
+    <div>
+      <div class="eyebrow">Contact</div>
+      <h2>Call the shop</h2>
+      <a class="bigphone" href="#contact">(352) 589-7349</a>
+      <ul class="info">
+        <li><b>Address</b><span>785 S Bay St, Eustis, FL 32726</span></li>
+        <li><b>Hours</b><span>Monday to Friday, 7:30am to 5:00pm</span></li>
+        <li><b>Weekends</b><span>Closed</span></li>
+      </ul>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('This is a concept mockup, so the form is not connected. On the real site this would email the shop.');">
+      <label for="n">Your name</label>
+      <input id="n" type="text" placeholder="Jane Doe">
+      <label for="p">Phone</label>
+      <input id="p" type="tel" placeholder="(352) 000-0000">
+      <label for="v">Vehicle</label>
+      <input id="v" type="text" placeholder="2016 Toyota Camry">
+      <label for="s">What do you need?</label>
+      <select id="s">
+        <option>General repair or diagnostic</option>
+        <option>Brakes</option>
+        <option>Tires</option>
+        <option>Electrical</option>
+        <option>Scheduled maintenance</option>
+        <option>Something else</option>
+      </select>
+      <label for="m">Anything we should know</label>
+      <textarea id="m" rows="3" placeholder="Noise when braking, started last week..."></textarea>
+      <button type="submit">Request an appointment</button>
+      <p class="formnote">Demo form. Nothing is sent or stored.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <b>South Bay Automotive</b><br>
+      785 S Bay St, Eustis, FL 32726<br>
+      (352) 589-7349
+    </div>
+    <div>
+      <b>Hours</b><br>
+      Monday to Friday 7:30am to 5:00pm<br>
+      Closed weekends
+    </div>
+  </div>
+  <div class="wrap disc">
+    Concept mockup designed and built by Caleb Pierce, cfwebdev.net. This page is an unsolicited design concept, is not affiliated with or endorsed by South Bay Automotive, and is not a live business website. Business name, address, phone, hours, rating and review count are taken from the shop's public listings. No reviews, testimonials or claims have been invented.
+  </div>
+</footer>
+
+</body>
+</html>
