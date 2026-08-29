@@ -277,7 +277,7 @@ def render(c):
 <div class="prog" id="prog"></div>
 
 <div class="demo">
-  <b>Concept mockup</b> &#183; built by Caleb Pierce at cfwebdev.net &#183; not affiliated with the business &#183; nothing here is live
+  <b>{"Fictional concept" if c.get("fictional") else "Concept mockup"}</b> &#183; built by Caleb Pierce at cfwebdev.net &#183; {"this business does not exist" if c.get("fictional") else "not affiliated with the business"} &#183; nothing here is live
 </div>
 
 <nav id="nav">
@@ -369,7 +369,7 @@ def render(c):
     <div class="fgrid">{fcols}
     </div>
     <div class="disc">
-      Concept mockup designed and built by Caleb Pierce, cfwebdev.net. This is an unsolicited design concept, not affiliated with or endorsed by {esc(c['business'])}, and not a live business website. {esc(c['disclaimer'])} Photography is placeholder imagery for the concept and does not show this business. No reviews or testimonials have been invented.
+      {"Fictional design concept" if c.get('fictional') else "Concept mockup"} designed and built by Caleb Pierce, cfwebdev.net. {"This is a portfolio piece for a business that does not exist, and is not a live website." if c.get('fictional') else f"This is an unsolicited design concept, not affiliated with or endorsed by {esc(c['business'])}, and not a live business website."} {esc(c['disclaimer'])} Photography is placeholder stock imagery for the concept. No reviews or testimonials have been invented.
     </div>
   </div>
 </footer>

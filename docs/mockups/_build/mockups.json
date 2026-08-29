@@ -1902,6 +1902,427 @@
         ]
       ],
       "disclaimer": "Business name, service area, phone and email are taken from the business's public listings."
+    },
+    {
+      "slug": "concept-ironwood-auto",
+      "business": "Ironwood Auto Works",
+      "nav_name": "Ironwood Auto",
+      "initials": "IA",
+      "tagline": "Independent Auto Repair (design concept)",
+      "trade": "auto",
+      "images": {
+        "hero": "hero-bay.jpg",
+        "detail": "engine-detail.jpg",
+        "pin": "tool-wall.jpg"
+      },
+      "hero_alt": "Auto repair service bay",
+      "detail_alt": "Mechanic working on an engine",
+      "pin_alt": "Tool board in the shop",
+      "palette": {
+        "bg": "#0A0A0B",
+        "bg2": "#111113",
+        "accent": "#E2582A",
+        "accent2": "#FF7A4D"
+      },
+      "font": {
+        "google": "Archivo+Black",
+        "css": "Archivo Black",
+        "fallback": "Impact"
+      },
+      "kicker": "Fictional concept · Independent shop",
+      "h1": [
+        "A shop that",
+        "gives <em>straight</em>",
+        "answers."
+      ],
+      "hero_p": "An independent repair shop concept. A real quote before the work starts, and the truth about what can safely wait.",
+      "cta": [
+        "Book a visit",
+        "See what we do"
+      ],
+      "nav": [
+        [
+          "#work",
+          "Services"
+        ],
+        [
+          "#trust",
+          "Why us"
+        ],
+        [
+          "#visit",
+          "Visit"
+        ]
+      ],
+      "nav_cta": "Book a visit",
+      "marquee": [
+        "Brakes",
+        "&#9670;",
+        "Tires",
+        "&#9670;",
+        "Diagnostics",
+        "&#9670;",
+        "Electrical",
+        "&#9670;",
+        "Maintenance",
+        "&#9670;",
+        "Mercedes",
+        "&#9670;"
+      ],
+      "stats": [
+        {
+          "v": "Quote",
+          "suffix": " first",
+          "l": "Before any work starts"
+        },
+        {
+          "v": "Same",
+          "suffix": " day",
+          "l": "Most diagnostics"
+        },
+        {
+          "v": "6",
+          "count": 6,
+          "l": "Service areas"
+        },
+        {
+          "v": "1",
+          "count": 1,
+          "l": "Shop, one owner"
+        }
+      ],
+      "beats": [
+        {
+          "n": "Step one",
+          "h": "You tell us<br>what it is doing",
+          "p": "The noise, the light, the smell. Whatever you noticed. No jargon needed."
+        },
+        {
+          "n": "Step two",
+          "h": "We find<br>the actual cause",
+          "p": "Diagnostics first. We would rather spend an hour finding it than guess at parts."
+        },
+        {
+          "n": "Step three",
+          "h": "You get a quote<br>before we touch it",
+          "p": "Parts and labor up front. Nothing on the final bill is a surprise."
+        },
+        {
+          "n": "Step four",
+          "h": "It is done<br>when we said",
+          "p": "And if something can safely wait until next month, we will tell you that too."
+        }
+      ],
+      "services": {
+        "eyebrow": "What we do",
+        "h2": "If it drives in,<br><em class=\"serif\">we can look at it</em>",
+        "cta": "Ask us",
+        "items": [
+          "General repair",
+          "Brakes",
+          "Tires",
+          "Vehicle electrical",
+          "Scheduled maintenance",
+          "Mercedes service"
+        ]
+      },
+      "trust": {
+        "eyebrow": "The idea behind the page",
+        "quote": "Most independent shops lose the job before the phone rings, because nothing online says what they actually do or what it will cost.",
+        "attr": "Concept positioning",
+        "lede": "This concept leads with the one thing a driver wants first: a quote before the work starts. No reviews, ratings or awards appear anywhere, because this business does not exist."
+      },
+      "callout": {
+        "h3": "Not sure if it<br>can wait?",
+        "p": "A concept page needs one clear secondary action. Here that is a quick question about whether a repair is urgent, answered before any work is booked.",
+        "cta": "Ask a question"
+      },
+      "visit": {
+        "h2": "Bring it<br><em class=\"serif\">by the shop</em>",
+        "phone": "Not a real business",
+        "meta": [
+          [
+            "Address",
+            "Address would go here<br>once a real shop supplied it"
+          ],
+          [
+            "Hours",
+            "Monday to Friday, 7:30am to 5:00pm"
+          ],
+          [
+            "Weekends",
+            "Closed"
+          ]
+        ]
+      },
+      "form": {
+        "button": "Request an appointment",
+        "fields": [
+          {
+            "id": "n",
+            "type": "text",
+            "label": "Your name",
+            "ph": "Jane Doe"
+          },
+          {
+            "id": "p",
+            "type": "tel",
+            "label": "Phone",
+            "ph": "(000) 000-0000"
+          },
+          {
+            "id": "v",
+            "type": "text",
+            "label": "Vehicle",
+            "ph": "2016 Toyota Camry"
+          },
+          {
+            "id": "s",
+            "type": "select",
+            "label": "What do you need",
+            "options": [
+              "General repair or diagnostic",
+              "Brakes",
+              "Tires",
+              "Electrical",
+              "Scheduled maintenance",
+              "Something else"
+            ]
+          },
+          {
+            "id": "m",
+            "type": "textarea",
+            "label": "Anything we should know",
+            "ph": "Noise when braking, started last week..."
+          }
+        ]
+      },
+      "footer": [
+        [
+          "Ironwood Auto Works",
+          "A fictional business<br>created to demonstrate a layout"
+        ],
+        [
+          "Hours",
+          "Monday to Friday<br>7:30am to 5:00pm"
+        ],
+        [
+          "Concept by",
+          "Caleb Pierce<br>cfwebdev.net"
+        ]
+      ],
+      "disclaimer": "Ironwood Auto Works is a fictional business invented for this concept. The name, address, hours and every detail on the page are illustrative. No ratings, review counts, awards or customer quotes appear anywhere, because there is no business to have earned them.",
+      "fictional": true
+    },
+    {
+      "slug": "concept-vellum-tattoo",
+      "business": "Vellum Tattoo Studio",
+      "nav_name": "Vellum",
+      "initials": "VT",
+      "tagline": "Private Tattoo Studio (design concept)",
+      "trade": "tattoo",
+      "images": {
+        "hero": "hero-studio.jpg",
+        "detail": "detail-ink.jpg",
+        "pin": "tools.jpg"
+      },
+      "hero_alt": "Tattoo studio room",
+      "detail_alt": "Tattoo machine at work",
+      "pin_alt": "Tattoo workspace",
+      "palette": {
+        "bg": "#08080A",
+        "bg2": "#0F0F12",
+        "accent": "#A63A3A",
+        "accent2": "#D45C5C"
+      },
+      "font": {
+        "google": "Anton",
+        "css": "Anton",
+        "fallback": "Impact",
+        "track": ".005em",
+        "h1vw": "12",
+        "h1max": "176"
+      },
+      "kicker": "Fictional concept · By appointment only",
+      "h1": [
+        "Private studio.",
+        "<em>Permanent</em>",
+        "work."
+      ],
+      "hero_p": "One artist, one client, one room. A booking flow that starts with a conversation instead of a queue.",
+      "cta": [
+        "Start a booking",
+        "See the process"
+      ],
+      "nav": [
+        [
+          "#work",
+          "Work"
+        ],
+        [
+          "#trust",
+          "The studio"
+        ],
+        [
+          "#visit",
+          "Book"
+        ]
+      ],
+      "nav_cta": "Book a consult",
+      "marquee": [
+        "Custom",
+        "&#9670;",
+        "Fine line",
+        "&#9670;",
+        "Black work",
+        "&#9670;",
+        "Cover ups",
+        "&#9670;",
+        "Full days",
+        "&#9670;",
+        "By appointment",
+        "&#9670;"
+      ],
+      "stats": [
+        {
+          "v": "1",
+          "count": 1,
+          "l": "Client at a time"
+        },
+        {
+          "v": "8",
+          "count": 8,
+          "suffix": "hr",
+          "l": "Full day sessions"
+        },
+        {
+          "v": "By",
+          "suffix": " appt",
+          "l": "Booking only"
+        },
+        {
+          "v": "Private",
+          "l": "Single room studio"
+        }
+      ],
+      "beats": [
+        {
+          "n": "One",
+          "h": "Send<br>the idea",
+          "p": "References, placement, rough size. Half an idea is enough to start from."
+        },
+        {
+          "n": "Two",
+          "h": "We design<br>it together",
+          "p": "Custom work only. Nothing off a wall, nothing anybody else is wearing."
+        },
+        {
+          "n": "Three",
+          "h": "Deposit<br>holds the day",
+          "p": "A booking fee reserves the studio for you, and it comes off the final price."
+        },
+        {
+          "n": "Four",
+          "h": "One room,<br>one client",
+          "p": "A full session with the door shut. No walk ins, no audience, no rushing."
+        }
+      ],
+      "services": {
+        "eyebrow": "The work",
+        "h2": "Custom only,<br><em class=\"serif\">start to finish</em>",
+        "cta": "Enquire",
+        "items": [
+          "Custom design",
+          "Fine line",
+          "Black and gray",
+          "Cover ups",
+          "Full day sessions",
+          "Consultations"
+        ],
+        "note": "Session pricing left off this concept deliberately. It belongs in a conversation, not on a homepage."
+      },
+      "trust": {
+        "eyebrow": "The idea behind the page",
+        "quote": "A tattoo artist's work usually lives on Instagram, where it is impossible to browse by style and impossible to book without a DM.",
+        "attr": "Concept positioning",
+        "lede": "This concept gives the work a real home and turns browsing into a booking. No ratings, review counts or client quotes appear anywhere, because this studio does not exist."
+      },
+      "visit": {
+        "h2": "Start<br><em class=\"serif\">a booking</em>",
+        "phone": "Not a real studio",
+        "meta": [
+          [
+            "Studio",
+            "Address would go here<br>once a real studio supplied it"
+          ],
+          [
+            "Booking",
+            "Consultation first, then a deposit holds the date"
+          ],
+          [
+            "Portfolio",
+            "Gallery would replace the social feed"
+          ]
+        ]
+      },
+      "form": {
+        "button": "Send my idea",
+        "fields": [
+          {
+            "id": "n",
+            "type": "text",
+            "label": "Your name",
+            "ph": "Alex"
+          },
+          {
+            "id": "c",
+            "type": "text",
+            "label": "Best way to reach you",
+            "ph": "Phone or email"
+          },
+          {
+            "id": "pl",
+            "type": "text",
+            "label": "Placement",
+            "ph": "Forearm, ribs, shoulder..."
+          },
+          {
+            "id": "sz",
+            "type": "select",
+            "label": "Rough size",
+            "options": [
+              "Small, a few inches",
+              "Medium, palm sized",
+              "Large, half sleeve or bigger",
+              "Full day piece",
+              "Not sure yet"
+            ]
+          },
+          {
+            "id": "m",
+            "type": "textarea",
+            "label": "The idea",
+            "ph": "What you have in mind, and any references..."
+          }
+        ]
+      },
+      "footer": [
+        [
+          "Vellum Tattoo Studio",
+          "A fictional business<br>created to demonstrate a layout"
+        ],
+        [
+          "Booking",
+          "By appointment only<br>Consultation first"
+        ],
+        [
+          "Concept by",
+          "Caleb Pierce<br>cfwebdev.net"
+        ]
+      ],
+      "disclaimer": "Vellum Tattoo Studio is a fictional business invented for this concept. The name, address, booking model and every detail on the page are illustrative. No ratings, review counts or client quotes appear anywhere, because there is no studio to have earned them.",
+      "veil": "strong",
+      "fictional": true
     }
   ]
 }
