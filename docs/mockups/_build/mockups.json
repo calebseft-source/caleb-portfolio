@@ -2323,6 +2323,217 @@
       "disclaimer": "Vellum Tattoo Studio is a fictional business invented for this concept. The name, address, booking model and every detail on the page are illustrative. No ratings, review counts or client quotes appear anywhere, because there is no studio to have earned them.",
       "veil": "strong",
       "fictional": true
+    },
+    {
+      "slug": "old-time-diner",
+      "business": "Old Time Diner",
+      "nav_name": "Old Time Diner",
+      "initials": "OT",
+      "tagline": "50s Diner in Leesburg, FL",
+      "trade": "diner",
+      "images": {
+        "hero": "hero-counter.jpg",
+        "detail": "breakfast-plate.jpg",
+        "pin": "counter-row.jpg"
+      },
+      "hero_alt": "Classic diner counter and stools",
+      "detail_alt": "Diner breakfast at a window booth",
+      "pin_alt": "Looking down the diner counter",
+      "palette": {
+        "bg": "#0C0A09",
+        "bg2": "#141110",
+        "ink": "#F4EFE8",
+        "mut": "#9C948A",
+        "dim": "#5F5850",
+        "accent": "#C8412F",
+        "accent2": "#E86A52"
+      },
+      "font": {
+        "google": "Alfa+Slab+One",
+        "css": "Alfa Slab One",
+        "fallback": "Georgia",
+        "track": "0",
+        "h1vw": "9.6",
+        "h1max": "138"
+      },
+      "mark_style": "border-radius:50%;border:1.5px solid var(--acc);color:var(--acc);",
+      "veil": "strong",
+      "kicker": "Leesburg · West North Boulevard",
+      "h1": [
+        "Like it",
+        "<em>used</em> to",
+        "taste."
+      ],
+      "hero_p": "A 50s theme diner serving breakfast, lunch and dinner in Leesburg. Over fifteen hundred neighbors have left a review.",
+      "cta": [
+        "Find us",
+        "See the menu idea"
+      ],
+      "nav": [
+        [
+          "#work",
+          "The diner"
+        ],
+        [
+          "#trust",
+          "Regulars"
+        ],
+        [
+          "#visit",
+          "Visit"
+        ]
+      ],
+      "nav_cta": "(352) 805-4250",
+      "marquee": [
+        "Breakfast",
+        "&#9670;",
+        "Lunch",
+        "&#9670;",
+        "Dinner",
+        "&#9670;",
+        "Booths",
+        "&#9670;",
+        "Counter stools",
+        "&#9670;",
+        "Takeout",
+        "&#9670;"
+      ],
+      "stats": [
+        {
+          "v": "1547",
+          "count": 1547,
+          "l": "Google reviews"
+        },
+        {
+          "v": "4.1",
+          "count": 4.1,
+          "suffix": "&#9733;",
+          "l": "Rating"
+        },
+        {
+          "v": "3",
+          "count": 3,
+          "l": "Meals a day"
+        },
+        {
+          "v": "50s",
+          "l": "Theme, all the way"
+        }
+      ],
+      "beats": [
+        {
+          "n": "One",
+          "h": "Slide into<br>a booth",
+          "p": "Or take a stool at the counter. Either way somebody brings coffee before you ask."
+        },
+        {
+          "n": "Two",
+          "h": "Order breakfast<br>at any hour you like",
+          "p": "Breakfast, lunch and dinner, all day service, no judgment either way."
+        },
+        {
+          "n": "Three",
+          "h": "Eat like<br>it is 1955",
+          "p": "The theme is not a gimmick. It is the whole point of the place."
+        },
+        {
+          "n": "Four",
+          "h": "Come back<br>Tuesday",
+          "p": "Fifteen hundred reviews are mostly regulars. That is how diners are supposed to work."
+        }
+      ],
+      "services": {
+        "eyebrow": "The diner",
+        "h2": "Three meals,<br><em class=\"serif\">one counter</em>",
+        "cta": "Ask us",
+        "items": [
+          "Breakfast",
+          "Lunch",
+          "Dinner",
+          "Dine in",
+          "Outdoor tables",
+          "Call-ahead pickup"
+        ],
+        "note": "Menu and prices are left off this concept on purpose. Send the menu over and it drops straight in as a real page people can browse before they visit."
+      },
+      "trust": {
+        "eyebrow": "The regulars",
+        "quote": "One thousand five hundred and forty seven people took the time to review this diner. You do not get numbers like that from passing trade.",
+        "attr": "Google reviews",
+        "lede": "A 50s theme diner on West North Boulevard, with dine in, outdoor seating and pickup. The kind of place people bring visiting family to."
+      },
+      "callout": {
+        "h3": "You already own<br>the web address",
+        "p": "oldtimediner.com is registered and pointing at an empty page. This concept shows what could be living there instead: the menu, the hours, and a phone number people can actually find.",
+        "cta": "See it live"
+      },
+      "visit": {
+        "h2": "Come<br><em class=\"serif\">hungry</em>",
+        "phone": "(352) 805-4250",
+        "meta": [
+          [
+            "Address",
+            "1350 W North Blvd<br>Leesburg, FL 34748"
+          ],
+          [
+            "Serving",
+            "Breakfast, lunch and dinner"
+          ],
+          [
+            "Seating",
+            "Dine in, outdoor tables, pickup"
+          ]
+        ]
+      },
+      "form": {
+        "button": "Ask a question",
+        "fields": [
+          {
+            "id": "n",
+            "type": "text",
+            "label": "Your name",
+            "ph": "Jane Doe"
+          },
+          {
+            "id": "p",
+            "type": "tel",
+            "label": "Phone",
+            "ph": "(352) 000-0000"
+          },
+          {
+            "id": "s",
+            "type": "select",
+            "label": "What do you need",
+            "options": [
+              "A table for a group",
+              "Call-ahead pickup",
+              "Hours question",
+              "Something else"
+            ]
+          },
+          {
+            "id": "m",
+            "type": "textarea",
+            "label": "Anything else",
+            "ph": "Party of eight on Saturday morning..."
+          }
+        ]
+      },
+      "footer": [
+        [
+          "Old Time Diner",
+          "1350 W North Blvd<br>Leesburg, FL 34748"
+        ],
+        [
+          "Contact",
+          "(352) 805-4250<br>Breakfast, lunch and dinner"
+        ],
+        [
+          "Concept by",
+          "Caleb Pierce<br>cfwebdev.net"
+        ]
+      ],
+      "disclaimer": "Business name, address, phone, rating, review count, meal service and seating options are taken from the diner's public listings. The domain oldtimediner.com is registered to the business and currently serves an empty page; this concept illustrates what it could hold. Menu items and prices are deliberately left off rather than invented."
     }
   ]
 }
