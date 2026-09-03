@@ -233,15 +233,9 @@ section[id] { scroll-margin-top: 92px; }
   border-radius: 0;
   color: var(--accent-ink);
   background: var(--accent);
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: -0.12em;
-  /* The anonymous text node was not being centred by place-items, so the
-     glyphs sat flush against the left edge. text-indent cancels the
-     trailing letter-space that the negative tracking leaves behind. */
-  text-align: center;
-  text-indent: -0.12em;
+  /* The cut corner is the mark. It echoes the sharp geometry of the site,
+     and it is the one place a diagonal is allowed. */
+  clip-path: polygon(0 0, 100% 0, 100% 68%, 68% 100%, 0 100%);
 }
 
 .nav-links {
