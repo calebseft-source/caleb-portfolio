@@ -18,7 +18,8 @@ Rules the layout enforces, because they are the honesty rules for spec work:
   - nothing invented: any field a business has not given us is left visibly
     blank with a line saying why, never filled with a plausible guess
 """
-
+import io
+import os
 import json
 import sys
 from pathlib import Path
@@ -51,9 +52,9 @@ def css(c):
   }}
   *{{box-sizing:border-box}}
   html{{-webkit-font-smoothing:antialiased}}
-  body{{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}}
-  h1,h2,h3,.disp{{font-family:"{f['css']}",{f['fallback']},sans-serif;font-weight:{f.get("weight",400)};text-transform:uppercase;letter-spacing:{f.get('track','-.015em')};line-height:.95;margin:0}}
-  .serif{{font-family:"Instrument Serif",Georgia,serif;font-style:italic;text-transform:none;letter-spacing:0}}
+  body{{margin:0;background:var(--bg);color:var(--ink);font-family:Newsreader,Georgia,serif;font-optical-sizing:auto;font-weight:420;font-size:17px;line-height:1.68;overflow-x:hidden}}
+  h1,h2,h3,.disp{{font-family:"Big Shoulders","Arial Narrow",Impact,sans-serif;font-weight:620;text-transform:uppercase;letter-spacing:-.008em;line-height:.95;margin:0}}
+  .serif{{font-family:Newsreader,Georgia,serif;font-style:normal;text-transform:none;letter-spacing:0}}
   a{{color:inherit}}
   .wrap{{width:min(1240px,90vw);margin:0 auto}}
   img{{display:block;max-width:100%}}
@@ -71,8 +72,8 @@ def css(c):
   nav.stuck{{background:{p['bg']}d6;backdrop-filter:blur(14px);border-bottom-color:var(--line)}}
   .nb{{display:flex;align-items:center;gap:26px;padding:16px 0}}
   .brand{{display:flex;align-items:center;gap:12px;margin-right:auto;text-decoration:none}}
-  .bmark{{width:40px;height:40px;flex:none;{c.get('mark_style','background:var(--acc);color:'+p['bg']+';')}display:grid;place-items:center;font-family:"{f['css']}",sans-serif;font-size:15px}}
-  .bname{{font-family:"{f['css']}",sans-serif;font-size:17px;letter-spacing:-.01em}}
+  .bmark{{width:40px;height:40px;flex:none;{c.get('mark_style','background:var(--acc);color:'+p['bg']+';')}display:grid;place-items:center;font-family:"Big Shoulders","Arial Narrow",sans-serif;font-size:15px}}
+  .bname{{font-family:"Big Shoulders","Arial Narrow",sans-serif;font-size:17px;letter-spacing:-.01em}}
   .nlinks{{display:flex;gap:26px;font-size:12.5px;letter-spacing:.13em;text-transform:uppercase}}
   .nlinks a{{text-decoration:none;color:var(--mut);transition:color .2s}}
   .nlinks a:hover{{color:var(--ink)}}
@@ -95,7 +96,7 @@ def css(c):
   h1{{font-size:clamp(46px,{f.get('h1vw','10.6')}vw,{f.get('h1max','158')}px)}}
   h1 .ln{{display:block;overflow:hidden}}
   h1 .ln>span{{display:block;transform:translateY(110%)}}
-  h1 em{{font-family:"Instrument Serif",serif;font-style:italic;text-transform:none;color:var(--acc2);letter-spacing:-.02em}}
+  h1 em{{font-family:Newsreader,Georgia,serif;font-style:normal;text-transform:none;color:var(--acc2);letter-spacing:-.02em}}
   .herofoot{{display:flex;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:28px}}
   .herofoot p{{max-width:44ch;color:#C6C2BB;margin:0;font-size:17px}}
   .heroacts{{display:flex;gap:11px;margin-left:auto}}
@@ -103,14 +104,14 @@ def css(c):
 
   .mq{{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;background:var(--bg2)}}
   .mqin{{display:flex;gap:42px;padding:15px 0;white-space:nowrap;width:max-content;animation:mv 30s linear infinite}}
-  .mqin span{{font-family:"{f['css']}",sans-serif;font-size:23px;color:var(--dim);text-transform:uppercase;letter-spacing:-.01em}}
+  .mqin span{{font-family:"Big Shoulders","Arial Narrow",sans-serif;font-size:23px;color:var(--dim);text-transform:uppercase;letter-spacing:-.01em}}
   .mqin span:nth-child(even){{color:var(--acc);opacity:.9}}
   @keyframes mv{{to{{transform:translateX(-50%)}}}}
 
   .stats{{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}}
   .stat{{padding:42px 24px;border-right:1px solid var(--line)}}
   .stat:last-child{{border-right:0}}
-  .stat .n{{font-family:"{f['css']}",sans-serif;font-size:clamp(30px,4.2vw,58px);line-height:1}}
+  .stat .n{{font-family:"Big Shoulders","Arial Narrow",sans-serif;font-size:clamp(30px,4.2vw,58px);line-height:1}}
   .stat .n i{{font-style:normal;color:var(--acc)}}
   .stat .l{{color:var(--mut);font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-top:8px}}
   @media(max-width:820px){{.stats{{grid-template-columns:1fr 1fr}}.stat:nth-child(2){{border-right:0}}.stat:nth-child(-n+2){{border-bottom:1px solid var(--line)}}}}
@@ -140,7 +141,7 @@ def css(c):
   .svc::before{{content:"";position:absolute;inset:0;background:linear-gradient(90deg,{p['accent']}1a,transparent 62%);opacity:0;transition:opacity .35s}}
   .svc:hover::before{{opacity:1}}
   .svc:hover{{padding-left:24px}}
-  .svc .num{{font-family:"{f['css']}",sans-serif;color:var(--dim);font-size:13px}}
+  .svc .num{{font-family:"Big Shoulders","Arial Narrow",sans-serif;color:var(--dim);font-size:13px}}
   .svc h3{{font-size:clamp(21px,2.8vw,36px);transition:color .3s}}
   .svc:hover h3{{color:var(--acc2)}}
   .svc .go{{color:var(--dim);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:color .3s,transform .3s;white-space:nowrap}}
@@ -151,7 +152,7 @@ def css(c):
   @media(max-width:940px){{.split{{grid-template-columns:1fr;gap:36px}}}}
   .shot{{position:relative;overflow:hidden}}
   .shot img{{width:100%;height:100%;object-fit:cover;will-change:transform}}
-  .quotebig{{font-family:"Instrument Serif",serif;font-style:italic;font-size:clamp(24px,3.3vw,42px);line-height:1.24}}
+  .quotebig{{font-family:Newsreader,Georgia,serif;font-style:normal;font-size:clamp(24px,3.3vw,42px);line-height:1.24}}
   .qattr{{color:var(--dim);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;margin-top:18px}}
 
   .callout{{border:1px solid var(--line);padding:44px;display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center;background:var(--bg2)}}
@@ -163,7 +164,7 @@ def css(c):
   @media(max-width:860px){{.cards{{grid-template-columns:1fr}}}}
   .card{{border:1px solid var(--line);padding:30px 26px;transition:border-color .3s,transform .3s}}
   .card:hover{{border-color:{p['accent']}80;transform:translateY(-4px)}}
-  .card .cn{{font-family:"{f['css']}",sans-serif;font-size:13px;color:var(--acc);letter-spacing:.16em}}
+  .card .cn{{font-family:"Big Shoulders","Arial Narrow",sans-serif;font-size:13px;color:var(--acc);letter-spacing:.16em}}
   .card h3{{font-size:26px;margin:14px 0 6px}}
   .card p{{color:var(--mut);font-size:14px;margin:0}}
   .card .slot{{margin-top:20px;color:var(--dim);font-size:12px;letter-spacing:.14em;text-transform:uppercase}}
@@ -171,7 +172,7 @@ def css(c):
   .visit{{background:var(--bg2);border-top:1px solid var(--line)}}
   .vgrid{{display:grid;grid-template-columns:1.1fr .9fr;gap:64px}}
   @media(max-width:940px){{.vgrid{{grid-template-columns:1fr;gap:38px}}}}
-  .phone{{font-family:"{f['css']}",sans-serif;font-size:clamp(30px,5.2vw,66px);text-decoration:none;display:inline-block;line-height:1;transition:color .3s}}
+  .phone{{font-family:"Big Shoulders","Arial Narrow",sans-serif;font-size:clamp(30px,5.2vw,66px);text-decoration:none;display:inline-block;line-height:1;transition:color .3s}}
   .phone:hover{{color:var(--acc2)}}
   .meta{{list-style:none;padding:0;margin:32px 0 0}}
   .meta li{{display:flex;gap:20px;padding:15px 0;border-top:1px solid var(--line);font-size:15px}}
@@ -187,7 +188,7 @@ def css(c):
 
   footer{{border-top:1px solid var(--line);padding:52px 0 34px;color:var(--dim);font-size:14px}}
   .fgrid{{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap}}
-  footer b{{color:var(--ink);font-family:"{f['css']}",sans-serif;font-weight:400;font-size:16px;letter-spacing:-.01em}}
+  footer b{{color:var(--ink);font-family:"Big Shoulders","Arial Narrow",sans-serif;font-weight:400;font-size:16px;letter-spacing:-.01em}}
   .disc{{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;line-height:1.7;color:#4B4844}}
 
   .rev{{opacity:0;transform:translateY(30px)}}
@@ -264,10 +265,10 @@ def render(c):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>{esc(c['business'])} &#8212; {esc(c['tagline'])}</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={c['font']['google']}&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+<title>{esc(c['business'])} | {esc(c['tagline'])}</title>
+<style>
+{fontfaces(c)}
+</style>
 <style>
 {css(c)}
 </style>
@@ -439,6 +440,19 @@ addEventListener("scroll", () => nav.classList.toggle("stuck", scrollY > innerHe
 </body>
 </html>
 """
+
+
+_FACES = json.loads(io.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "fontface.json"),
+                            encoding="utf-8").read())
+
+
+def fontfaces(c):
+    """The two self-hosted house faces. No third-party font requests, so the
+    privacy policy holds, and every mockup shares one type system."""
+    out = []
+    for fam in ("Big Shoulders", "Newsreader"):
+        out.extend(_FACES.get(fam, []))
+    return " ".join(out)
 
 
 def main(argv):

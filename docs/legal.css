@@ -38,7 +38,7 @@
   padding: 20px 22px;
   border: 1px solid var(--border, #17271c);
   border-left: 3px solid var(--accent, #2fe66f);
-  border-radius: 12px;
+  border-radius: 0;
   background: rgba(47, 230, 111, 0.05);
 }
 
@@ -97,7 +97,7 @@
   margin-top: 48px;
   padding: 22px;
   border: 1px solid var(--border, #17271c);
-  border-radius: 12px;
+  border-radius: 0;
   background: var(--bg-raised, #080d0a);
 }
 
